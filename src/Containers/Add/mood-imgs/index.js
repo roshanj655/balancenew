@@ -1,0 +1,33 @@
+const moods = {
+  image: {
+    happy: require('../../../Assets/Images/Moods/happy.png'),
+    loved: require('../../../Assets/Images/Moods/loved.png'),
+    silly: require('../../../Assets/Images/Moods/silly.png'),
+    confident: require('../../../Assets/Images/Moods/confident.png'),
+    excited: require('../../../Assets/Images/Moods/excited.png'),
+    relaxed: require('../../../Assets/Images/Moods/relaxed.png'),
+    confused: require('../../../Assets/Images/Moods/confused.png'),
+    bored: require('../../../Assets/Images/Moods/bored.png'),
+    tired: require('../../../Assets/Images/Moods/tired.png'),
+    frustrated: require('../../../Assets/Images/Moods/frustrated.png'),
+    stressed: require('../../../Assets/Images/Moods/stressed.png'),
+    nervous: require('../../../Assets/Images/Moods/nervous.png'),
+    anxious: require('../../../Assets/Images/Moods/anxious.png'),
+    worried: require('../../../Assets/Images/Moods/worried.png'),
+    lonely: require('../../../Assets/Images/Moods/lonely.png'),
+    hurt: require('../../../Assets/Images/Moods/hurt.png'),
+    sick: require('../../../Assets/Images/Moods/sick.png'),
+    mad: require('../../../Assets/Images/Moods/angry.png'),
+    sad: require('../../../Assets/Images/Moods/sad.png'),
+    scared: require('../../../Assets/Images/Moods/scared.png'),
+    depressed: require('../../../Assets/Images/Moods/depressed.png'),
+    overwhelmed: require('../../../Assets/Images/Moods/overwhelmed.png'),
+    hopeful: require('../../../Assets/Images/Moods/hopeful.png'),
+    grateful: require('../../../Assets/Images/Moods/grateful.png'),
+    disappointed: require('../../../Assets/Images/Moods/disappointed.png'),
+    annoyed: require('../../../Assets/Images/Moods/annoyed.png'),
+    goofy: require('../../../Assets/Images/Moods/silly.png'),
+  },
+}
+
+export default moods

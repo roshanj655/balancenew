@@ -1,0 +1,30 @@
+const activity = {
+  image: {
+    baseball: require('../../../Assets/Images/Activities/baseball.png'),
+    basketball: require('../../../Assets/Images/Activities/basketball.png'),
+    biking: require('../../../Assets/Images/Activities/biking.png'),
+    cheer: require('../../../Assets/Images/Activities/cheer.png'),
+    football: require('../../../Assets/Images/Activities/football.png'),
+    golf: require('../../../Assets/Images/Activities/golf.png'),
+    gymnastics: require('../../../Assets/Images/Activities/gymnastics.png'),
+    hockey: require('../../../Assets/Images/Activities/hockey.png'),
+    lacrosse: require('../../../Assets/Images/Activities/lacrosse.png'),
+    running: require('../../../Assets/Images/Activities/running.png'),
+    scootering: require('../../../Assets/Images/Activities/scootering.png'),
+    skateboarding: require('../../../Assets/Images/Activities/skateboarding.png'),
+    skiing: require('../../../Assets/Images/Activities/skiing.png'),
+    soccer: require('../../../Assets/Images/Activities/soccer.png'),
+    surfing: require('../../../Assets/Images/Activities/surfing.png'),
+    swimming: require('../../../Assets/Images/Activities/swimming.png'),
+    tennis: require('../../../Assets/Images/Activities/tennis.png'),
+    volleyball: require('../../../Assets/Images/Activities/volleyball.png'),
+    weightlifting: require('../../../Assets/Images/Activities/weightlifting.png'),
+    yoga: require('../../../Assets/Images/Activities/yoga.png'),
+    dancing: require('../../../Assets/Images/Activities/dance.png'),
+    hiking: require('../../../Assets/Images/Activities/hike.png'),
+    walking: require('../../../Assets/Images/Activities/walk.png'),
+    martialarts: require('../../../Assets/Images/Activities/martialarts.png'),
+  },
+}
+
+export default activity
