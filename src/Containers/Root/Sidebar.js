@@ -1,12 +1,30 @@
-
-function Sidebar() {
+import React, { Component } from 'react'
+import {
+  TouchableOpacity
+} from 'react-native-web'
+import AddScreen from '../Add/AddScreen'
+export default class Sidebar extends Component {
+  constructor(props) {
+    super(props)
+    const today = new Date()
+    this.state = {}
+    this.state = {
+      ShowAdd: false
+    }
+  }
+  render(){
     return (
 <nav className="dark-bg sidebar sidebar-offcanvas" id="sidebar">
   <ul className="nav">
     <img className="logo" alt="" src="/assets/images/balance.png" />
     <li className="nav-item nav-profile">
-      
-        <button class="btn add-new-but"><i class="mdi mdi-plus"></i> Add New...</button>
+    <TouchableOpacity
+                  onPress={() => {
+                    this.setState({ ShowAdd: true })
+                  }}
+                >
+        <button className="btn add-new-but"><i className="mdi mdi-plus"></i> Add New...</button>
+      </TouchableOpacity>
       
     </li>
     <li className="nav-item">
@@ -42,9 +60,14 @@ function Sidebar() {
     </li>
 
   </ul>
+  {this.state.ShowAdd?(
+     <div>
+  <AddScreen />
+ </div>
+  ):("")}
+  
 </nav>
 
 );
 }
-
-export default Sidebar;
+}

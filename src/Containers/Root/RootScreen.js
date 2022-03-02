@@ -60,7 +60,8 @@ class RootScreen extends Component {
             {/* <LoginScreen /> */}
             {/* <MainScreen /> */}
             {/* <SubscriptionScreen /> */}
-            <AddScreen />
+          
+            
               {/* <BrowserRouter>
                 <Switch>
                   <Route path="/" exact={true} component={MainScreen} />

@@ -194,7 +194,7 @@ console.log("MS Token");
         ) : (
           <Fragment>
             <View>
-      //from here
+      {/* //from here */}
       <Modal
                 animationType="slide"
                 transparent={false}
@@ -303,7 +303,7 @@ console.log("MS Token");
                   </ScrollView>
                 </View>
               </Modal>
-      //Modl ends        
+      {/* //Modl ends         */}
             </View>
             <ScrollView>
               <ButtonGroup

@@ -1,8 +1,38 @@
+import ProgressChart from '../../mark/progress-chart'
+import {
+    View,
+    ActivityIndicator,
+    Dimensions,
+    Alert,
+    Modal,
+    Image,
+  } from 'react-native'
 function Rightpanel() {
+    const data = {
+        labels: ["Swim", "Bike", "Run"], // optional
+        data: [0.4, 0.6, 0.8]
+      };
     return (
         <div className="row rightpanel-bottom">
             <div className="col-md-12">
-                <img src="assets/images/chart.jpg" alt="image" className="img-fluid" />
+               
+                    <ProgressChart
+                      data={data}
+                      width={519}
+                      height={500}
+                      chartConfig={{
+                        backgroundColor: '#008000',
+                        backgroundGradientFrom: '#F0F2F3',
+                        backgroundGradientTo: '#F0F2F3',
+                        decimalPlaces: 0, // optional, defaults to 2dp
+                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                        style: {
+                          borderRadius: 16,
+                          marginVertical: 8,
+                        },
+                      }}
+                    />
             </div>
             <div className="col-md-12">
                 <div className="row">

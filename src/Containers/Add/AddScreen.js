@@ -56,6 +56,34 @@ function RenderType(props) {
     { "img": "depressed.png", "name": "Depressed", "param3": "depressed", "number": 1 }
 
   ];
+  const activeArr = [
+    { "img": "soccer.png", "name": "Soccer", "param3": "soccer" },
+    { "img": "football.png", "name": "Football", "param3": "football" },
+    { "img": "baseball.png", "name": "Baseball", "param3": "baseball" },
+    { "img": "lacrosse.png", "name": "Lacrosse", "param3": "lacrosse" },
+    { "img": "gymnastics.png", "name": "Gymnastics", "param3": "gymnastics" },
+    { "img": "golf.png", "name": "Golf", "param3": "golf" },
+    { "img": "yoga.png", "name": "Yoga", "param3": "yoga" },
+    { "img": "basketball.png", "name": "Basketball", "param3": "basketball" },
+    { "img": "biking.png", "name": "Biking", "param3": "biking" },
+    { "img": "running.png", "name": "Running", "param3": "running" },
+    { "img": "hockey.png", "name": "Hockey", "param3": "hockey" },
+    { "img": "weightlifting.png", "name": "Weightlifting", "param3": "weightlifting" },
+    { "img": "volleyball.png", "name": "Volleyball", "param3": "volleyball" },
+    { "img": "surfing.png", "name": "Surfing", "param3": "surfing" },
+    { "img": "swimming.png", "name": "Swimming", "param3": "swimming" },
+    { "img": "cheer.png", "name": "Cheer", "param3": "cheer" },
+    { "img": "tennis.png", "name": "Tennis", "param3": "tennis" },
+    { "img": "scootering.png", "name": "Scootering", "param3": "scootering" },
+    { "img": "skiing.png", "name": "Skiing", "param3": "skiing" },
+    { "img": "skateboarding.png", "name": "Skateboarding", "param3": "skateboarding" },
+    { "img": "dance.png", "name": "Dance", "param3": "dance" },
+    { "img": "hike.png", "name": "Hike", "param3": "hike" },
+    { "img": "martialarts.png", "name": "Martialarts", "param3": "martialarts" },
+    { "img": "walk.png", "name": "Walk", "param3": "walk" },
+    { "img": "soccer.png", "name": "Soccer", "param3": "soccer" }
+
+  ];
   if (props.onMood) {
     return (
       <div>
@@ -422,17 +450,17 @@ function RenderType(props) {
     return (
       <div>
         <div className="row">
-          {moodArr.map((prop, key) => {
+          {activeArr.map((prop, key) => {
             return (
               <div className="col-md-2 mood-icon"
               >
                 <TouchableOpacity
                   onPress={() => {
-                    props.onModal(true, prop.name, prop.param3, prop.number)
+                    props.onActivityModal(true, prop.name, prop.param3)
                   }}
                 >
                   <img
-                    src={"../../Assets/Images/Moods/" + prop.img}
+                    src={"../../Assets/Images/Activities/" + prop.img}
                   />
                 </TouchableOpacity>
                 <span>{prop.name}</span>
@@ -441,339 +469,7 @@ function RenderType(props) {
           })}
         </div>
       </div>
-      // <View style={Style.emojiColumn}>
-      //   <Text h4 h4Style={Style.emotionText}>
-      //     What Activities Have You Done?{' '}
-      //   </Text>
-      //   <ScrollView>
-      //     <View style={Style.emojiRow}>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Soccer</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Soccer', 'soccer')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/soccer.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Football</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Football', 'football')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/football.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Baseball</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Baseball', 'baseball')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/baseball.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Lacrosse</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Lacrosse', 'lacrosse')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/lacrosse.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-      //     <View style={Style.emojiRow}>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Gymnastics</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Gymnastics', 'gymnastics')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/gymnastics.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Golf</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Golf', 'golf')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/golf.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Yoga</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Yoga', 'yoga')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/yoga.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Basketball</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Basketball', 'basketball')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/basketball.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-      //     <View style={Style.emojiRow}>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Biking</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Biking', 'biking')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/biking.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Running</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Running', 'running')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/running.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Hockey</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Hockey', 'hockey')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/hockey.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Lifting</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Weightlifting', 'weightlifting')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/weightlifting.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-      //     <View style={Style.emojiRow}>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Volleyball</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Volleyball', 'volleyball')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/volleyball.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Surfing</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Surfing', 'surfing')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/surfing.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Swimming</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Swimming', 'swimming')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/swimming.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Cheer</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Cheer', 'cheer')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/cheer.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-
-      //     <View style={Style.emojiRow}>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Tennis</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Tennis', 'tennis')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/tennis.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Scootering</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Scootering', 'scootering')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/scootering.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Skiing</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Skiing', 'skiing')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/skiing.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Boarding</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Skateboarding', 'skateboarding')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/skateboarding.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-
-      //     <View style={Style.emojiRow}>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Dancing</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Dancing', 'dancing')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/dance.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Hiking</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Hiking', 'hiking')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/hike.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Martial Arts</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Martial Arts', 'martialarts')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/martialarts.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //       <View style={Style.centerWithin}>
-      //         <Text style={Style.centerText}> Walking</Text>
-      //         <TouchableOpacity
-      //           onPress={() => {
-      //             props.onActivityModal(true, 'Walking', 'walking')
-      //           }}
-      //         >
-      //           <Image
-      //             style={{ width: activitySize, height: activitySize }}
-      //             source={require('../../Assets/Images/Activities/walk.png')}
-      //           />
-      //         </TouchableOpacity>
-      //       </View>
-      //     </View>
-      //   </ScrollView>
-      // </View>
+     
     )
   }
   if (props.onSleep) {
@@ -1294,7 +990,7 @@ class AddScreen extends React.Component {
             {/* <Text h4 h4Style={Style.headerText}>
                 Add{' '}
               </Text> */}
-            <div className='row'>
+            {/* <div className='row'>
               <div className='col-md-12 main-title'>
                 <h2 className='wish-title'>Good Morning, Susan</h2>
                 <p className='wish-sub-title'>You have <span className="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p>
@@ -1325,7 +1021,7 @@ class AddScreen extends React.Component {
                     style={Style.calendarStrip}
                   />
                 </Fragment>
-              </div></div>
+              </div></div> */}
             {/* <Fragment>
               <Button
                 style={Style.todayButton}
@@ -1401,7 +1097,7 @@ class AddScreen extends React.Component {
               onSleep={this.state.onSleep}
               editSleep={this.state.editSleep}
             ></RenderType> */}
-            <div className={"modal-backdrop fade" + ((this.state.modalVisible || this.state.clockModalVisible || this.state.journalModalVisible || this.state.durationModalVisible || this.state.activityModalVisible) ? " show" : " show")}></div>
+            <div className={"modal-backdrop fade" + ((this.state.modalVisible || this.state.clockModalVisible || this.state.journalModalVisible || this.state.durationModalVisible || this.state.activityModalVisible || this.state.mainModalVisible) ? " show" : " hide")}></div>
 
             <div className={"modal fade bd-example-modal-lg addpopup" + ((this.state.mainModalVisible) ? " show" : " hide")} tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <div className="modal-dialog modal-lg  modal-dialog-centered">
@@ -1409,7 +1105,7 @@ class AddScreen extends React.Component {
                   <div className="row">
                     <div className="col-md-4">
                       <ul className="side-nav">
-                        <li className="active">
+                        <li  className={this.state.onMood?"active":""}>
 
                           <TouchableOpacity
                             onPress={() =>
@@ -1432,7 +1128,7 @@ class AddScreen extends React.Component {
 
 
                         </li>
-                        <li>
+                        <li  className={this.state.onSleep?"active":""}>
                         <TouchableOpacity
                             onPress={() =>
                               this.setState({
@@ -1452,7 +1148,7 @@ class AddScreen extends React.Component {
                             <div className="clear"></div>
                           </TouchableOpacity>
                         </li>
-                        <li>
+                        <li className={this.state.onActivity?"active":""}>
                         <TouchableOpacity
                             onPress={() =>
                               this.setState({
@@ -1485,6 +1181,13 @@ class AddScreen extends React.Component {
                       </ul>
                     </div>
                     <div className="col-md-8 moodsicons">
+                    <TouchableOpacity
+                  onPress={() => {
+                    this.setState({ mainModalVisible: false })
+                  }}
+                >
+        <button className="btn add-new-but"><i className="mdi mdi-plus"></i> Add New...</button>
+      </TouchableOpacity>
                       <h2>Select Your Mood Now</h2>
                       <RenderType
                         onSleepConfirm={this.onSleepConfirm.bind(this)}
@@ -1571,6 +1274,7 @@ class AddScreen extends React.Component {
   }
 
   setActivityModalVisible(visible, name, activity) {
+    this.setState({ mainModalVisible: false })
     this.setState({ activityModalVisible: visible })
     this.setState({ localActivity: name })
     this.setState({ localActivityImg: activity })
