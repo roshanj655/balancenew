@@ -15,6 +15,7 @@ import SignupScreen from '../Signup/SignupScreen'
 import LoginScreen from '../Login/LoginScreen'
 import CalendarScreen from '../Calendar/CalendarScreen'
 import MainScreen from '../Main/MainScreen'
+import Meditaion from '../Meditation/Medition'
 import ProfileScreen from '../Profile/ProfileScreen'
 import {BrowserRouter,Switch,Route,Redirect,BackButton,DeepLinking} from "react-native-web-router";
 // import Header from '../Header/Header'
@@ -56,7 +57,8 @@ class RootScreen extends Component {
         <Sidebar />
         <div className="main-panel">
           <div className='row'>
-            <div className='col-md-8'>
+            <div className='col-md-8 middle-center'>
+              <Meditaion />
             {/* <LoginScreen /> */}
             {/* <MainScreen /> */}
             {/* <SubscriptionScreen /> */}

@@ -14758,3 +14758,78 @@ select{
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
+.text-right{
+  text-align: right;
+}
+.middle-center{
+  background-color: #f8f8f8;
+}
+
+
+/* meditation */
+.meditation .side-nav{
+  background: #fff;
+    padding: 10px;
+    border-radius: 16px;
+    width: 95%;
+    margin: auto;
+}
+.meditation .side-nav li{
+  list-style:none;
+}
+.meditation .side-nav li .iconbox{
+  margin-right: 10px;
+}
+.meditation .iconbox span{
+  padding: 20px;
+border-radius: 49%;
+background: #e0f4ff;
+color: #d2866d;
+}
+.meditation .side-nav li .navtext p{
+  margin:0;
+}
+.meditation .side-nav li .navtext p:nth-child(1)
+{
+  color: #0d3345;
+  font-weight: 500;
+  font-size: 28px;
+  margin-top: 18px;
+}
+.meditation .side-nav li{
+  margin: 20px auto;
+padding:10px;
+}
+.meditation .side-nav li.active{
+background: #fbf3f1;
+padding: 10px;
+border-radius: 7px;
+}
+.meditation .side-nav li .navtext p:nth-child(2)
+{
+color: #dfc2bb;
+font-size: 16px;
+letter-spacing: 1px;
+margin-top: -3px;
+}
+.meditation .main-head{
+  margin:10px;
+}
+.meditation .main-head h2{
+  font-size: 28px;
+}
+.meditation .main-head p{
+  margin-bottom: 0px;
+font-size: 13px;
+margin-top: -6px;
+}
+.meditation .iconbox img {
+  width: 54%;
+  padding: 12px;
+  border-radius: 49%;
+  background: #e0f4ff;
+  color: #d2866d;
+}
+.meditation .navtext{
+  margin-left: -7%;
+}
