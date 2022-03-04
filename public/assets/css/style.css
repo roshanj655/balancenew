@@ -14833,3 +14833,119 @@ margin-top: -6px;
 .meditation .navtext{
   margin-left: -7%;
 }
+
+.score-text{
+  margin-top:17px !important;
+}
+.score-drop:after {
+  color: #b66dff;
+  font-size: 1rem;
+  margin-top: -14px !important;
+}
+.search-field{
+  background: #f9fafa;
+  width: 40%;
+  margin: 10px;
+}
+.add-new-but{
+  background-color: #d2866d;
+  color: #fff !important;
+  width: 90%;
+  border-radius: 10px;
+}
+.btn i{
+    margin-left: -71%;
+    margin-right: 8%;
+
+}
+.logo{
+  width: 40%;
+  margin-left: 27%;
+  margin-bottom: 23px;
+  margin-top: -4px;
+
+}
+.dark-bg{
+  background:#174e69 !important;
+}
+.sidebar .nav:not(.sub-menu) > .nav-item:hover:not(.nav-category):not(.nav-profile) > .nav-link, .sidebar .nav .nav-item:hover {
+  background: #264b5c !important;
+}
+.sidebar .nav .nav-item .nav-link {
+  color:#9ea4b0 !important;
+}
+.slept h4{
+            position: relative;
+            top: 21px;
+            font-size: 23px;
+            padding-left: 10px;
+            width: 42%;
+}
+.slept .col-md-8{
+  padding: 21px;
+}
+.slept .nav-tabs{
+    border-bottom: none !important;
+}
+.slept .nav-tabs{
+  margin-top: -25px;
+}
+.slept .nav-item{
+  background: #f5f5f6;
+  padding: 6px;
+}
+.slept .nav-link{
+  color: #040415;
+}
+.slept .nav-link.active{
+  background: #0d3345;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 14px;
+}
+.slept h2{
+  color:#d2866d;
+}
+.slept .add{
+  color:#b6b6b6;
+}
+.flexbox {
+  display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 296px;
+    flex-direction: column;
+}
+.activity-icon{
+  font-size: 49px;
+}
+.time-slider-text{
+  font-size: 17px;
+  font-weight: bold;
+  margin-top:10px;
+}
+.slept .not-found{
+  color: #d8dde8 !important;
+}
+.wish-title{
+  font-size: 3rem;
+  margin-left: 14px;
+  margin-top: 20px;
+}
+.wish-sub-title{
+  font-size: 1.2rem;
+    margin-left: 20px;
+    color: #84818a;
+}
+.main-panel .col-md-8{
+  background: #fff;
+}
+.slept{
+  background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;;
+
+}
+
