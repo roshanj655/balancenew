@@ -28,32 +28,42 @@ import Footer from './Footer';
 import Sidebar from './Sidebar';
 import logo from '../../../logo.svg';
 import '../../../App.css';
-
+import ExampleActions from '../../Stores/Example/Actions'
 import SubscriptionScreen from '../Subscription/SubscriptionScreen'
 import AddScreen from '../Add/AddScreen'
+import StartUp from '../StartUp/StartUp'
 
 class RootScreen extends Component {
-  
+
+  state={
+    show: false
+ }
+
   componentDidMount() {
      // Run the startup saga when the application is starting
     this.props.startup()
+    // Add your logic for the transition
+    this.props.loginUser({
+        email: "abc@abc.com",
+        password: "stub",
+        firstName: 'sub',
+    })
+
+    setTimeout(()=>{
+      this.setState({show: true})
+   },5000)
   }
 
   render() { 
     console.log("Hello");
+    
     return (
-      
-      // <View style={styles.container}>
-        
-          //  {/* <SubscriptionScreen /> */}
-          //  {/* <LoginScreen />
-          //  <AddScreen /> */}
-// {/* <MainScreen /> */}
-
-            // {/* <ProfileScreen />        */}
-          //  </View>
-          <div className="container-scroller">
-      <Header />
+      <>
+      {this.state.show && 
+      <div>
+      <div className="container-scroller">
+      {/* <Header /> */}
+<MainScreen /> 
       <div className="container-fluid page-body-wrapper">
         <Sidebar />
         <div className="main-panel">
@@ -61,11 +71,6 @@ class RootScreen extends Component {
             <div className='col-md-8 middle-center'>
               {/* <Meditaion /> */}
               <Dashboard />
-            {/* <LoginScreen /> */}
-            {/* <MainScreen /> */}
-            {/* <SubscriptionScreen /> */}
-          
-            
               {/* <BrowserRouter>
                 <Switch>
                   <Route path="/" exact={true} component={MainScreen} />
@@ -86,18 +91,23 @@ class RootScreen extends Component {
         </div>
       </div>
     </div>
+    </div>
+  }
+    </>
     )
   }
 }
 
 RootScreen.propTypes = {
   startup: PropTypes.func,
+  login: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup()),
+  loginUser: (user) => dispatch(ExampleActions.loginUser(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootScreen)

@@ -1299,9 +1299,9 @@ async function saveItem(item, selectedValue) {
 function loginUser(action) {
   console.log("login 1 US");
   const payload = {
-    email: action.user.email,
-    password: action.user.password,
-    firstName: action.user.firstName,
+    email: "test@test.com",//action.user.email,
+    password: "TEST123!",//action.user.password,
+    firstName:"MARK TEST",//action.user.firstName,
     strategy: 'local',
   }
 
@@ -1366,24 +1366,28 @@ function authenticate(options) {
 }
 
 function _authenticate(payload) {
-  console.log("_auth US");
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU0MzczMTIsImV4cCI6MTY0NTUyMzcxMiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiZDBhZGI3MzctZTNlNC00NWMxLTlmZWYtZDQxYjliMzdjMDg2In0.Zl0Icbay_JNF_ffM9dfVWyB8vn7sTE6AJR1xRa9jb-w"
+  console.log("_auth US 1");
   return app
-    .authenticate(token)
+    .authenticate(payload)
     .then((response) => {
       const temp = app.passport.verifyJWT(response.accessToken)
-      console.log("Here" + temp)
+      saveItem('id_token', response.accessToken)
+      console.log("User Authenticated Success"+response.accessToken)
       return temp
     })
     .then((payload) => {
+      console.log("Auth 2 Ashu")  
       return app.service('users').get(payload.sub)
     })
     .then((user) => {
+      console.log("Auth 3 Ashu"+app.get('user'))
       app.set('user', user)
       return app.service('users').get(app.get('user'))
     })
     .catch((e) => {
+      console.log("ERRRRR " + e.message)
       if (e.message === 'Invalid login') {
+        console.log(e.message)
         return createUser(payload)
       }
     })
