@@ -140,6 +140,7 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
+    //this.pullNewDay1()
   }
 
   async logout() {
@@ -161,7 +162,9 @@ console.log("MS Token");
   // }
 
   fetchAll() {
+    
     this._fetchUser()
+    this._fetchMoods(this.state.initDate)
     this.fetchMain()
     this._fetchAgenda(this.state.initDate)
   }
@@ -178,11 +181,58 @@ console.log("MS Token");
     }
   }
 
+  pullNewDay1(day) {
+    console.log("pullllllllllllllllllll")
+    const formatDay = new Date()
+    this._fetchAll(formatDay)
+    console.log("pulll" + this.props.activities)
+    let finalObj = {}
+    for (var a in this.props.activities) {
+      console.log("pulll activities" + a)
+      if (this.props.activities.hasOwnProperty(a)) {
+        const date = this.props.activities[a].day.split('T')[0]
+        if (finalObj[date]) {
+          finalObj[date].push(this.props.activities[a])
+        } else {
+          finalObj[date] = [this.props.activities[a]]
+        }
+      }
+    }
+    for (var b in this.props.moods) {
+      console.log("pulll moods" + b)
+      if (this.props.moods.hasOwnProperty(b)) {
+        const date = this.props.moods[b].day.split('T')[0]
+        if (finalObj[date]) {
+          finalObj[date].push(this.props.moods[b])
+        } else {
+          finalObj[date] = [this.props.moods[b]]
+        }
+      }
+    }
+    for (var c in this.props.sleeps) {
+      console.log("pulll Sleeps" + c)
+      if (this.props.moods.hasOwnProperty(c)) {
+        const date = this.props.sleeps[c].day.split('T')[0]
+        if (finalObj[date]) {
+          finalObj[date].push(this.props.sleeps[c])
+        } else {
+          finalObj[date] = [this.props.sleeps[c]]
+        }
+      }
+    }
+    console.log(finalObj)
+    this.setState({
+      items: finalObj,
+    })
+    console.log("Pulll "+this.props.moods[0])
+    console.log("Pulll ends")
+  }
+
   render() {
     const { initDate, date } = this.state
     const buttons = ['Progress', 'Journal']
     const { selectedIndex } = this.state
-
+    
     return (
       
       <View style={Style.container}>
@@ -673,10 +723,13 @@ console.log("MS event "+event+"date = "+date);
   _fetchUser() {
     this.props.fetchUser()
   }
-
+  _fetchMoods(moodDate) {
+    console.log(' fetchMood date', moodDate)
+    this.props.fetchMoods(moodDate)
+  }
   _fetchAll(moodDate) {
     this.props.fetchAll(moodDate)
-    console.log('MOODDATE', moodDate)
+    console.log(' fetchAll Mooddate', moodDate)
   }
   _fetchAgenda(moodDate) {
     this.props.fetchAgenda(moodDate)
@@ -700,6 +753,7 @@ MainScreen.propTypes = {
   fetchAll: PropTypes.func,
   fetchAgenda: PropTypes.func,
   fetchMoodScores: PropTypes.func,
+  fetchMoods: PropTypes.func,
   moods: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   sleeps: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   activities: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
@@ -739,6 +793,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: () => dispatch(ExampleActions.fetchUser()),
+  fetchMoods: (moodDate) => dispatch(ExampleActions.fetchMoods(moodDate)),
   addBirthdate: (user) => dispatch(ExampleActions.addBirthdate(user)),
   fetchAll: (moodDate) => dispatch(ExampleActions.fetchAll(moodDate)),
   fetchAgenda: (moodDate) => dispatch(ExampleActions.fetchAgenda(moodDate)),

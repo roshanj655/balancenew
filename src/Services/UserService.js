@@ -56,6 +56,7 @@ function fetchUser() {
     .service('users')
     .find()
     .then((response) => {
+      console.log("Fetch User 1 "+response.data[0])
       return response.data[0]
     })
 }
@@ -93,6 +94,7 @@ function fetchAverage(overall) {
   }
   var average = Math.round(total / overall.length)
   const response = { average: average, commitsData: commitsData }
+  
   return response
 }
 
@@ -106,11 +108,12 @@ function fetchTriangle(moodScores, sleepScores, activityScores) {
       sleepScores.length === 1 ? sleepScores[0].score / 100 : 0,
     ],
   }
+  console.log("US fetchTRaingle " + response.data);
   return response
 }
 
 function fetchMoods(action) {
-  console.log("fetchMoods");
+  console.log("US fetchMoods");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -148,6 +151,7 @@ function fetchMoods(action) {
       },
     })
     .then((response) => {
+      console.log("Moods Dataaa" + response)
       return response.data
     })
 }
