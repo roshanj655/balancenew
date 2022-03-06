@@ -140,6 +140,10 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
+    console.log("ahfghgfgfhgfh",this.props.moods)
+    this.props.moods.forEach(element => {
+      console.log("element",element);      
+    });
     //this.pullNewDay1()
   }
 
@@ -403,8 +407,8 @@ console.log("MS Token");
                   <View style={Style.progressTop}>
                     <ProgressChart
                       data={this.props.data}
-                      width={300}
-                      height={500}
+                      width={ Dimensions.get("window").width - 15 }
+                      height={1000}
                       chartConfig={{
                         backgroundColor: '#008000',
                         backgroundGradientFrom: '#F0F2F3',

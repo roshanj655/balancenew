@@ -172,9 +172,9 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   progressTop: {
+    flex: 1,
     alignItems: 'center',
-    flex: 0,
-    marginRight: 0,
+    justifyContent: 'center'
   },
   result: {
     ...Fonts.style.normal,

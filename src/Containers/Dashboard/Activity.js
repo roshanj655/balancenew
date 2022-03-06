@@ -1,6 +1,44 @@
 
-function Activity() {
 
+
+
+
+
+
+function Activity(props) {
+    let activity1 = props.activity.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>=0 && hours<3)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    let activity2 = props.activity.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>3 && hours<10)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    let activity3 = props.activity.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>10 && hours<12)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    let activity4 = props.activity.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>12 && hours<23)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    
     return (
         <div className="slept">
             <h4>Your Activity</h4>
@@ -45,29 +83,21 @@ function Activity() {
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center">&nbsp;</div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/dance.png" alt="image" /></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/gymnastics.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/surfing.png" alt="image" /></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/hike.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/swimming.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/weightlifting.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Activities/tennis.png" alt="image" /></div>
+
+                    <div className="row h341">
+                        <div className="col-md-3 activity-icon text-center">
+                            {activity1}
+                        </div>
+                        <div className="col-md-3 activity-icon text-center">
+                        {activity2}
+                            
+                        </div>
+                        <div className="col-md-3">
+                            {activity3}
+                        </div>
+                        <div className="col-md-3">
+                            {activity4}
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-md-3 text-center time-slider-text">2:25 am</div>

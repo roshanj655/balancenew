@@ -14919,6 +14919,7 @@ margin-top: -6px;
 }
 .activity-icon{
   font-size: 49px;
+  margin-bottom: 15px;
 }
 .time-slider-text{
   font-size: 17px;
@@ -14949,3 +14950,6 @@ margin-top: -6px;
 
 }
 
+.h341{
+  height:342px;
+}

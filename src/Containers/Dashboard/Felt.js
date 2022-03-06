@@ -1,6 +1,44 @@
 
-function Felt() {
 
+
+
+
+
+
+function Felt(props) {
+    let moods1 = props.moods.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>=0 && hours<3)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    let moods2 = props.moods.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>3 && hours<10)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    let moods3 = props.moods.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>10 && hours<12)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    let moods4 = props.moods.map((item, index) => {
+        let day=new Date(item.createdAt).getDate();
+        let hours=new Date(item.createdAt).getHours();
+        if(day==6){
+            if(hours>12 && hours<23)
+            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+        }
+    })
+    
     return (
         <div className="slept">
             <h4>Your Felt</h4>
@@ -45,29 +83,21 @@ function Felt() {
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center">&nbsp;</div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center">&nbsp;</div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Moods/worried.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Moods/annoyed.png" alt="image" /></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Moods/annoyed.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Moods/afraid.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Moods/hopeful.png" alt="image" /></div>
-                        <div className="col-md-3 activity-icon text-center"><img src="assets/images/Moods/worried.png" alt="image" /></div>
+
+                    <div className="row h341">
+                        <div className="col-md-3 activity-icon text-center">
+                            {moods1}
+                        </div>
+                        <div className="col-md-3 activity-icon text-center">
+                        {moods2}
+                            
+                        </div>
+                        <div className="col-md-3">
+                            {moods3}
+                        </div>
+                        <div className="col-md-3">
+                            {moods4}
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-md-3 text-center time-slider-text">2:25 am</div>

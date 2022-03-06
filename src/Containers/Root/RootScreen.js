@@ -62,8 +62,8 @@ class RootScreen extends Component {
       {this.state.show && 
       <div>
       <div className="container-scroller">
-      {/* <Header /> */}
-<MainScreen /> 
+      <Header />
+{/* <MainScreen />  */}
       <div className="container-fluid page-body-wrapper">
         <Sidebar />
         <div className="main-panel">
