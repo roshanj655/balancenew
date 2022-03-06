@@ -83,6 +83,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     textAlign: 'center',
     marginBottom: 30,
+    marginTop: 30,
     justifyContent: 'space-around',
   },
   container: {
@@ -94,6 +95,7 @@ export default StyleSheet.create({
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 1,
     // shadowRadius: 0,
+  
   },
   durationText: {
     color: Colors.$lightHighlight,
