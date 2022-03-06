@@ -3,9 +3,7 @@ import Slept from './Slept';
 import Activity1 from './Activity';
 import Felt from './Felt';
 import Mindfull from './Mindfull';
-/* eslint-disable react-native/no-inline-styles */
-
-//import { NavigationEvents } from 'react-navigation'
+import Style from '../Main/MainScreenStyle'
 import { Text, Button, Card, ButtonGroup } from 'react-native-elements'
 import {
   View,
@@ -146,7 +144,7 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
-    console.log("ahfghgfgfhgfh",this.props.activities)
+    console.log("ahfghgfgfhgfh",this.props)
     this.props.activities.forEach(element => {
       console.log("element",element);      
     });
@@ -252,13 +250,38 @@ console.log("MS Token");
                 <h2 className='wish-title'>Good Morning, Susan</h2>
                 <p className='wish-sub-title'>You have <span class="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p>
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-12 cal'>
+            <CalendarStrip
+                calendarAnimation={{ type: 'sequence', duration: 30 }}
+                onDateSelected={(day) => this.changeSelectedDay(day)}
+                daySelectionAnimation={{
+                  type: 'border',
+                  duration: 200,
+                  borderWidth: 0,
+                  borderHighlightColor: 'grey',
+                }}
+                 style={{height: 200, paddingTop: 20, paddingBottom: 10}}
+                calendarHeaderStyle={Style.titleText}
+                // calendarColor={'#7743CE'}
+                dateNumberStyle={Style.titleText}
+                dateNameStyle={Style.titleText}
+                highlightDateNumberStyle={Style.lightHighlight}
+                highlightDateNameStyle={Style.lightHighlight}
+                disabledDateNameStyle={Style.titleText}
+                disabledDateNumberStyle={Style.titleText}
+                iconLeft={require('../../Assets/Images/leftArrow.png')}
+                iconRight={require('../../Assets/Images/rightArrow.png')}
+                iconContainer={{ flex: 0.1 }}
+                style={Style.calendarStrip}
+              />    
+            </div>
+            <div className='col-md-6 pr0'>
                 <Felt moods={this.props.moods}/>
             </div>
             <div className='col-md-6'>
                 <Slept />
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-6 pr0'>
                 <Activity1  activity={this.props.activities}/>
             </div>
             <div className='col-md-6' name={this.state.isBoxVisible}  onClick={this.toggleBox}>

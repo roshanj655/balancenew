@@ -14940,7 +14940,10 @@ margin-top: -6px;
     color: #84818a;
 }
 .main-panel .col-md-8{
-  background: #fff;
+  background: #f8f8f8;
+}
+.main-panel .col-md-8 .row{
+  padding-left: 18px;
 }
 .slept{
   background: #fff;
@@ -14949,7 +14952,19 @@ margin-top: -6px;
     margin-bottom: 20px;;
 
 }
-
+.cal div{
+  background: #fff;
+  padding-bottom: 4px;
+}
+.cal{
+  margin-bottom: 16px;
+}
+.pr0{
+  padding-right: 0 !important;
+}
 .h341{
   height:342px;
+}
+.h371{
+  height: 371px;
 }

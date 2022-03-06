@@ -39,7 +39,7 @@ function Mindfull() {
                     >Month</a>
                 </li>
             </ul>
-            <div className="tab-content" id="ex1-content">
+            <div className="tab-content h371" id="ex1-content">
                 <div
                     className="flexbox tab-pane fade show active"
                     id="ex1-tabs-1"
