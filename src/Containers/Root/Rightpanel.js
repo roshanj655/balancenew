@@ -6,17 +6,45 @@ import {
     Alert,
     Modal,
     Image,
-  } from 'react-native'
+  } from 'react-native-web'
+  import { RadialBarChart, RadialBar } from 'recharts'; 
 function Rightpanel() {
-    const data = {
-        labels: ["Swim", "Bike", "Run"], // optional
-        data: [0.4, 0.6, 0.8]
-      };
+    // const data = {
+    //     labels: ["Swim", "Bike", "Run"], // optional
+    //     data: [0.4, 0.6, 0.8]
+    //   };
+
+      const data = [
+        {
+          name: 'Swim',
+          x: 31.47,
+          fill: '#ff6622',
+        },
+        {
+          name: 'Bike',
+          x: 26.69,
+          fill: '#00bbb6',
+        },
+        {
+          name: 'Cycling',
+          x: 15.69,
+          fill: '#41b9f8',
+        },
+          
+      ];  
     return (
         <div className="row rightpanel-bottom">
             <div className="col-md-12">
-               
-                    <ProgressChart
+            <RadialBarChart width={500}
+                height={500}
+                data={data} 
+                innerRadius="20%"
+                outerRadius="70%">
+                <RadialBar minAngle={30}
+                    dataKey="x" clockWise/>
+            </RadialBarChart>
+             
+                    {/* <ProgressChart
                       data={data}
                       width={519}
                       height={500}
@@ -31,7 +59,8 @@ function Rightpanel() {
                           borderRadius: 16,
                           marginVertical: 8,
                         },
-                      }}
+                      }
+                    } */}
                     />
             </div>
             <div className="col-md-12">
