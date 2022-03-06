@@ -144,6 +144,7 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
+    localStorage.setItem('chartData',JSON.stringify(this.props.data));
     console.log("ahfghgfgfhgfh",this.props)
     this.props.activities.forEach(element => {
       console.log("element",element);      

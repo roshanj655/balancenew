@@ -6,45 +6,58 @@ import {
     Alert,
     Modal,
     Image,
-  } from 'react-native-web'
-  import { RadialBarChart, RadialBar } from 'recharts'; 
+} from 'react-native-web'
+import { RadialBarChart, RadialBar } from 'recharts';
 function Rightpanel() {
     // const data = {
     //     labels: ["Swim", "Bike", "Run"], // optional
     //     data: [0.4, 0.6, 0.8]
     //   };
+    let data = [];
+    // const myTimeout = setTimeout(function () {
+        let cData = JSON.parse(localStorage.getItem("chartData"));
+        let color = ["#ff6622", "#00bbb6", "#41b9f8"];
+        let graph = cData.data.map((item, index) => {
+            data.push({
+                name: "Activity",
+                x: item,
+                fill: color[index],
+            });
+        })
+        console.log('right', data);
+    // }, 1000);
 
-      const data = [
-        {
-          name: 'Swim',
-          x: 31.47,
-          fill: '#ff6622',
-        },
-        {
-          name: 'Bike',
-          x: 26.69,
-          fill: '#00bbb6',
-        },
-        {
-          name: 'Cycling',
-          x: 15.69,
-          fill: '#41b9f8',
-        },
-          
-      ];  
+
+    //   const data = [
+    //     {
+    //       name: 'Swim',
+    //       x: 31.47,
+    //       fill: '#ff6622',
+    //     },
+    //     {
+    //       name: 'Bike',
+    //       x: 26.69,
+    //       fill: '#00bbb6',
+    //     },
+    //     {
+    //       name: 'Cycling',
+    //       x: 15.69,
+    //       fill: '#41b9f8',
+    //     },
+
+    //   ];  
     return (
         <div className="row rightpanel-bottom">
             <div className="col-md-12">
-            <RadialBarChart width={500}
-                height={500}
-                data={data} 
-                innerRadius="20%"
-                outerRadius="70%">
-                <RadialBar minAngle={30}
-                    dataKey="x" clockWise/>
-            </RadialBarChart>
-             
-                    {/* <ProgressChart
+                <RadialBarChart width={500}
+                    height={500}
+                    data={data}
+                    innerRadius="20%"
+                    outerRadius="70%">
+                    <RadialBar minAngle={30}
+                        dataKey="x" clockWise />
+                </RadialBarChart>
+                {/* <ProgressChart
                       data={data}
                       width={519}
                       height={500}
@@ -60,8 +73,8 @@ function Rightpanel() {
                           marginVertical: 8,
                         },
                       }
-                    } */}
-                    />
+                    } 
+                    />*/}
             </div>
             <div className="col-md-12">
                 <div className="row">
@@ -89,7 +102,7 @@ function Rightpanel() {
                         <ul class="side-nav">
                             <li class="">
                                 <div class="float-left iconbox">
-                                <img src="assets/images/Activities/swimming.png" alt="image" />
+                                    <img src="assets/images/Activities/swimming.png" alt="image" />
                                 </div>
                                 <div class="float-left navtext">
                                     <p>Reduce Anxiety <span>2:45 pm</span></p>
@@ -99,7 +112,7 @@ function Rightpanel() {
                             </li>
                             <li>
                                 <div class="float-left iconbox">
-                                <img src="assets/images/Activities/swimming.png" alt="image" />
+                                    <img src="assets/images/Activities/swimming.png" alt="image" />
                                 </div>
                                 <div class="float-left navtext">
                                     <p>Relax <span>2:45 pm</span></p>
@@ -119,7 +132,7 @@ function Rightpanel() {
                         <ul class="side-nav">
                             <li class="">
                                 <div class="float-left iconbox">
-                                <img src="assets/images/Activities/swimming.png" alt="image" />
+                                    <img src="assets/images/Activities/swimming.png" alt="image" />
                                 </div>
                                 <div class="float-left navtext">
                                     <p>Reduce Anxiety <span>2:45 pm</span></p>
@@ -129,7 +142,7 @@ function Rightpanel() {
                             </li>
                             <li>
                                 <div class="float-left iconbox">
-                                <img src="assets/images/Activities/swimming.png" alt="image" />
+                                    <img src="assets/images/Activities/swimming.png" alt="image" />
                                 </div>
                                 <div class="float-left navtext">
                                     <p>Relax <span>2:45 pm</span></p>
