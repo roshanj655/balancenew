@@ -416,6 +416,7 @@ class AddScreen extends React.Component {
                                 'grinning',
                                 this.state.moodScore
                               )
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -470,6 +471,7 @@ class AddScreen extends React.Component {
                             style={Style.height50}
                             onPress={() => {
                               this.setClockModalVisible(!this.state.clockModalVisible)
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -589,6 +591,7 @@ class AddScreen extends React.Component {
                             style={Style.height50}
                             onPress={() => {
                               this.setDurationModalVisible(!this.state.durationModalVisible)
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -641,6 +644,7 @@ class AddScreen extends React.Component {
                             style={Style.height50}
                             onPress={() => {
                               this.setActivityModalVisible(!this.state.activityModalVisible)
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -852,6 +856,7 @@ class AddScreen extends React.Component {
                     <TouchableOpacity
                   onPress={() => {
                     this.setState({ mainModalVisible: false })
+                    this.props.data.showHideAddScreen(false); 
                   }}
                 >
         <button className="btn text-right">X</button>
@@ -994,6 +999,7 @@ class AddScreen extends React.Component {
   onActivityConfirm() {
     this._createActivity(this.state.localActivity, this.state.date, this.state.duration)
     this.setDurationModalVisible(!this.state.durationModalVisible, '', 'running')
+    this.props.data.showHideAddScreen(false);
   }
 
   confirmLogic() {
@@ -1003,6 +1009,7 @@ class AddScreen extends React.Component {
     if (this.state.onMood) {
       this.onConfirm()
     }
+    this.props.data.showHideAddScreen(false);
   }
 
   onConfirm() {

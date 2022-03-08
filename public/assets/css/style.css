@@ -14964,6 +14964,8 @@ margin-top: -6px;
 }
 .h341{
   height:342px;
+      overflow-y: auto;
+
 }
 .h371{
   height: 371px;

@@ -12,6 +12,10 @@ export default class Sidebar extends Component {
       ShowAdd: false
     }
   }
+  showHideAddScreen(data){
+    console.log(data);
+    this.setState({ ShowAdd: data })
+  }
   render(){
     return (
 <nav className="dark-bg sidebar sidebar-offcanvas" id="sidebar">
@@ -62,7 +66,7 @@ export default class Sidebar extends Component {
   </ul>
   {this.state.ShowAdd?(
      <div>
-  <AddScreen />
+  <AddScreen data={{showHideAddScreen:this.showHideAddScreen.bind(this)}} />
  </div>
   ):("")}
   
