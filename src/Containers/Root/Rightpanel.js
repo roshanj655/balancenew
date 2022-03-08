@@ -15,7 +15,8 @@ function Rightpanel() {
     //   };
     let data = [];
     // const myTimeout = setTimeout(function () {
-        let cData = JSON.parse(localStorage.getItem("chartData"));
+        
+        let cData = localStorage.getItem("chartData")!=null?JSON.parse(localStorage.getItem("chartData")):JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}');
         let color = ["#ff6622", "#00bbb6", "#41b9f8"];
         let graph = cData.data.map((item, index) => {
             data.push({

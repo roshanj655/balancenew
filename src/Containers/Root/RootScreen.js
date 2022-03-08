@@ -51,7 +51,7 @@ class RootScreen extends Component {
 
     setTimeout(()=>{
       this.setState({show: true})
-   },5000)
+   },1000)
   }
 
   render() { 

@@ -405,7 +405,7 @@ console.log("MS Token");
                   </View>
 
                   <View style={Style.progressTop}>
-                    <ProgressChart
+                    {/* <ProgressChart
                       data={this.props.data}
                       width={ Dimensions.get("window").width - 15 }
                       height={1000}
@@ -421,7 +421,7 @@ console.log("MS Token");
                           marginVertical: 8,
                         },
                       }}
-                    />
+                    /> */}
                   </View>
                 </Fragment>
               )}
