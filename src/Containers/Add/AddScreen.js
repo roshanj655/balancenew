@@ -887,10 +887,10 @@ class AddScreen extends React.Component {
     )
   }
 
-  setTime = (event, date) => {
+  setTime = (date,event) => {
     date = date || this.state.date
 
-    var today = new Date(this.state.selectedDay)
+    var today = new Date(this.state.date)
 
     var year = today.getFullYear()
     var month = today.getMonth()
@@ -901,12 +901,12 @@ class AddScreen extends React.Component {
     date = new Date(year, month, day, hours, minutes, 0, 0)
 
     this.setState({
-      show: Platform.OS === 'ios',
+      show: true,
       date,
     })
   }
 
-  resetTime = (event, date) => {
+  resetTime = (date,event) => {
     date = date || this.state.date
 
     var now = new Date()
@@ -920,7 +920,7 @@ class AddScreen extends React.Component {
     date = new Date(year, month, day, hours, minutes, 0, 0)
 
     this.setState({
-      show: Platform.OS === 'ios',
+      show: true,
       date,
     })
   }
