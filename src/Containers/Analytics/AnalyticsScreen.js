@@ -42,6 +42,7 @@ function RenderType(props) {
 
 class AnalyticsScreen extends React.Component {
   constructor(props) {
+    console.log("analy",props);
     super(props)
     const today = new Date()
     this.state = {}
@@ -107,6 +108,7 @@ class AnalyticsScreen extends React.Component {
   render() {
     const { date } = this.state
     return (
+      
       <SafeAreaView style={Style.container}>
         {this.props.userIsLoading ? (
           <ActivityIndicator size="large" color="#9086A6" />

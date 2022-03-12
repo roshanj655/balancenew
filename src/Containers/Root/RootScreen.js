@@ -9,6 +9,7 @@ import styles from './RootScreenStyle'
 import { connect } from 'react-redux'
 //import StartupActions from '../../Stores/Startup/Actions'
 import StartupActions from '../../Stores/Startup/Actions'
+import AnalyticsScreen from '../Analytics/AnalyticsScreen'
 import { PropTypes } from 'prop-types'
 import SplashScreen from '../SplashScreen/SplashScreen'
 import SignupScreen from '../Signup/SignupScreen'
@@ -70,7 +71,9 @@ class RootScreen extends Component {
           <div className='row'>
             <div className='col-md-8 middle-center'>
               {/* <Meditaion /> */}
+              
               <Dashboard />
+              {/* <AnalyticsScreen /> */}
               {/* <BrowserRouter>
                 <Switch>
                   <Route path="/" exact={true} component={MainScreen} />

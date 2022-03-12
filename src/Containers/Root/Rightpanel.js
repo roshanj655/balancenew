@@ -15,7 +15,58 @@ function Rightpanel() {
     //   };
     let data = [];
     // const myTimeout = setTimeout(function () {
-        
+        let journal=[];
+        let activity=JSON.parse(localStorage.getItem("activities"));
+        let moods=JSON.parse(localStorage.getItem("moods"));
+        activity.map((item, index) => {
+            item['title']="Activity";
+            item['description']="You play "+item.type+ " for "+item.duration+" min"
+            journal.push(item);
+        });
+        moods.map((item, index) => {
+            item['title']="Mood";
+            item['description']="You felt "+item.type
+            journal.push(item);
+        });
+        let journalArray=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+        journal.map((item, index)=>{
+            let dateTime=new Date(item.day);
+            item['time']=dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            journalArray[dateTime.getDate()].push(item);
+        });
+        console.log("journal",journalArray);
+        let journals = journalArray.map((item, index) => {
+            if(item.length){
+            return(
+                <div>
+            <div className="row journal">
+                    <div className="col-md-3">
+                        <div className="journal-date">{index} Sat</div>
+                    </div>
+                    <div className="col-md-9">
+                        <ul class="side-nav">
+                            {item.map((item1,index1)=>{
+                                return(
+                            <li class="">
+                                <div class="float-left iconbox">
+                                    <img src="assets/images/Activities/swimming.png" alt="image" />
+                                </div>
+                                <div class="float-left navtext">
+                                    <p>{item1.title} <span>{item1.time}</span></p>
+                                    <p>{item1.description}</p>
+                                </div>
+                                <div className="clear"></div>
+                            </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </div>
+                <hr/>
+                </div>
+            )
+                        }
+        })
         let cData = localStorage.getItem("chartData")!=null?JSON.parse(localStorage.getItem("chartData")):JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}');
         let color = ["#ff6622", "#00bbb6", "#41b9f8"];
         let graph = cData.data.map((item, index) => {
@@ -25,7 +76,6 @@ function Rightpanel() {
                 fill: color[index],
             });
         })
-        console.log('right', data);
     // }, 1000);
 
 
@@ -95,65 +145,8 @@ function Rightpanel() {
                         </div>
                     </div>
                 </div>
-                <div className="row journal">
-                    <div className="col-md-3">
-                        <div className="journal-date">18 Sat</div>
-                    </div>
-                    <div className="col-md-9">
-                        <ul class="side-nav">
-                            <li class="">
-                                <div class="float-left iconbox">
-                                    <img src="assets/images/Activities/swimming.png" alt="image" />
-                                </div>
-                                <div class="float-left navtext">
-                                    <p>Reduce Anxiety <span>2:45 pm</span></p>
-                                    <p>This is for test</p>
-                                </div>
-                                <div className="clear"></div>
-                            </li>
-                            <li>
-                                <div class="float-left iconbox">
-                                    <img src="assets/images/Activities/swimming.png" alt="image" />
-                                </div>
-                                <div class="float-left navtext">
-                                    <p>Relax <span>2:45 pm</span></p>
-                                    <p>Add Your Sleep Time</p>
-                                </div>
-                                <div className="clear"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <hr />
-                <div className="row journal">
-                    <div className="col-md-3">
-                        <div className="journal-date">18 Sat</div>
-                    </div>
-                    <div className="col-md-9">
-                        <ul class="side-nav">
-                            <li class="">
-                                <div class="float-left iconbox">
-                                    <img src="assets/images/Activities/swimming.png" alt="image" />
-                                </div>
-                                <div class="float-left navtext">
-                                    <p>Reduce Anxiety <span>2:45 pm</span></p>
-                                    <p>This is for test</p>
-                                </div>
-                                <div className="clear"></div>
-                            </li>
-                            <li>
-                                <div class="float-left iconbox">
-                                    <img src="assets/images/Activities/swimming.png" alt="image" />
-                                </div>
-                                <div class="float-left navtext">
-                                    <p>Relax <span>2:45 pm</span></p>
-                                    <p>Add Your Sleep Time</p>
-                                </div>
-                                <div className="clear"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {journals}
+                
             </div>
         </div>
     );
