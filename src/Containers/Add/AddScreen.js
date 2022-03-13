@@ -26,6 +26,7 @@ import CalendarStrip from 'react-native-calendar-strip'
 import DateTimePicker from 'react-datetime-picker';
 import Activity from './imgs/index'
 import Mood from './mood-imgs/index'
+import AnalyticsScreen from '../Analytics/AnalyticsScreen'
 //import { ScrollView } from 'react-native-gesture-handler'
 
 function RenderType(props) {
@@ -313,6 +314,7 @@ class AddScreen extends React.Component {
       selectedDay: today,
       onSleep: false,
       mainModalVisible: true,
+      improve:false,
       modalVisible: false,
       clockModalVisible: false,
       journalModalVisible: false,
@@ -782,6 +784,7 @@ class AddScreen extends React.Component {
                           <TouchableOpacity
                             onPress={() =>
                               this.setState({
+                                improve:false,
                                 onActivity: false,
                                 onMood: true,
                                 onSleep: false,
@@ -804,6 +807,7 @@ class AddScreen extends React.Component {
                         <TouchableOpacity
                             onPress={() =>
                               this.setState({
+                                improve:false,
                                 onActivity: false,
                                 onMood: false,
                                 onSleep: true,
@@ -824,6 +828,7 @@ class AddScreen extends React.Component {
                         <TouchableOpacity
                             onPress={() =>
                               this.setState({
+                                improve:false,
                                 onActivity: true,
                                 onMood: false,
                                 onSleep: false,
@@ -841,6 +846,16 @@ class AddScreen extends React.Component {
                           </TouchableOpacity>
                         </li>
                         <li>
+                        <TouchableOpacity
+                            onPress={() =>
+                              this.setState({
+                                improve:true,
+                                onActivity: false,
+                                onMood: false,
+                                onSleep: false,
+                              })
+                            }
+                          >
                           <div className="float-left iconbox">
                             <img src='../../Assets/Images/Moods/loved.png' />
                           </div>
@@ -849,6 +864,7 @@ class AddScreen extends React.Component {
                             <p>Add New Activity to Track</p>
                           </div>
                           <div className="clear"></div>
+                          </TouchableOpacity>
                         </li>
                       </ul>
                     </div>
@@ -861,6 +877,10 @@ class AddScreen extends React.Component {
                 >
         <button className="btn text-right">X</button>
       </TouchableOpacity>
+      {this.state.improve?
+                  (<AnalyticsScreen />)
+                  :(
+                    <div>
                       <h2>Select Your Mood Now</h2>
                       <RenderType
                         onSleepConfirm={this.onSleepConfirm.bind(this)}
@@ -874,10 +894,14 @@ class AddScreen extends React.Component {
                         onSleep={this.state.onSleep}
                         editSleep={this.state.editSleep}
                       ></RenderType>
+                      </div>
+                      )}
                     </div>
                   </div>
+                  
                 </div>
               </div>
+              
             </div>
           </div>
         )

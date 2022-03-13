@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 function Felt(props) {
     let moods1 = props.moods.map((item, index) => {
         let day=new Date(item.day).getDate();

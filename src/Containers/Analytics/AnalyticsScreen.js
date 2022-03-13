@@ -10,7 +10,7 @@ import {
   SafeAreaView,
   Modal,
   Alert,
-} from 'react-native-web'
+} from 'react-native'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ExampleActions from '../../Stores/Example/Actions'
@@ -18,14 +18,59 @@ import Style from './AnalyticsStyle'
 // import CalendarStrip from 'react-native-calendar-strip'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import Mindfulness from './mindfulness-imgs/index'
-//import Video from 'react-native-video'
+// import Video from 'react-native-video'
 import Util from './Utils'
 
 function RenderType(props) {
+
+  const mindArr = [
+    { "img": "cook.png", "name": "Cook/Bake", "param3": "cook", "number": 5 },
+    { "img": "playwithanimals.png", "name": "Pet Time", "param3": "pettime", "number": 5 },
+    { "img": "listentomusic.png", "name": "Journal", "Listen To Music": "music", "number": 5 },
+    { "img": "journal.png", "name": "Journal", "param3": "journal", "number": 5 },
+    { "img": "color.png", "name": "Color", "param3": "color", "number": 5 },
+    { "img": "park.png", "name": "Go to Park", "param3": "gotopark", "number": 5 },
+    { "img": "garden.png", "name": "Garden", "param3": "garden", "number": 5 },
+    { "img": "artsandcrafts.png", "name": "Arts & Crafts", "param3": "artsandcrafts", "number": 5 },
+    { "img": "listeningwalk.png", "name": "Listening Walk", "param3": "listeningwalk", "number": 5 },
+    { "img": "playagame.png", "name": "Play a Game", "param3": "playagame", "number": 5 },
+    { "img": "stretch.png", "name": "Stretch", "param3": "stretch", "number": 5 },
+    { "img": "family.png", "name": "Family Time", "param3": "familytime", "number": 5 },
+    { "img": "stargaze.png", "name": "Stargaze", "param3": "stargaze", "number": 5 },
+
+  ];
+
   const activitySize = 70
   const meditationSize = 90
 
   if (props.onImprove) {
+    return (
+      <View style={Style.mainContain}>
+        <div>
+        <div className="row">
+          {mindArr.map((prop, key) => {
+            return (
+              <div className="col-md-2 mood-icon"
+              >
+                <TouchableOpacity
+                  onPress={() => {
+                    props.onModal(true, prop.name, prop.param3, prop.number)
+                  }}
+                >
+                  <img
+                    src={"../../Assets/Images/Mindfulness/" + prop.img}
+                  />
+                </TouchableOpacity>
+                <span>{prop.name}</span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      </View>
+    )
+  }
+  if (props.onRelax) {
     return (
       <View style={Style.mainContain}>
         <Button
@@ -35,19 +80,857 @@ function RenderType(props) {
             props.clickBack()
           }}
         ></Button>
+        <View style={Style.improveColumn}>
+          <Text h4 h4Style={Style.improveText}>
+            Meditations
+          </Text>
+
+          <Text h4 h4Style={Style.descText}>
+            Choose a video below.
+          </Text>
+
+          <View style={Style.improveColumn}>
+            {/* <Text h4 h4Style={Style.improveText}>
+            Achieve Mindfulness{' '}
+          </Text> */}
+
+            <View style={Style.emojiRow}>
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Reduce Anxiety</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickReduceAnxiety()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/reduceAnxiety.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Enhance Calm</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickEnhanceCalm()
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/enhanceCalm.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={Style.emojiRow}>
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Relax</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickRelaxSub()
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/relax.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Build Focus</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickBuildFocus()
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/buildFocus.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={Style.emojiRow}>
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Decrease Stress</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickDecreaseStress()
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/decreaseStress.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Improve Sleep</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickImproveSleep()
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/improveSleep.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={Style.emojiRow}>
+              <View style={Style.centerWithin}>
+                <Text style={Style.centerText}>Soothing Sounds</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickSoothingSounds()
+                  }}
+                >
+                  <Image
+                    style={{ width: meditationSize, height: meditationSize }}
+                    source={require('../../Assets/Images/Meditation/soothingSounds.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            {/* <View style={Style.emojiRow}>
+          <View style={Style.centerWithin}>
+              <Text style={Style.centerText}>Do a Puzzle</Text>
+              <TouchableOpacity
+                // onPress={() => {
+                //   props.onModal(true, 'Do a Puzzle', 'doapuzzle', '5')
+                // }}
+              >
+                <Image
+                  style={{ width: meditationSize, height: meditationSize }}
+                  source={require('../../Assets/Images/Meditation/improveSleep.png')}
+                />
+              </TouchableOpacity>
+            </View>
+            </View> */}
+
+            {/* <Video
+              ref={(p) => {
+                this.videoPlayer = p
+              }}
+              source={require('./videos/finding-calm.mp4')}
+              paused={true}
+              onEnd={() => {
+                props.onVideoEnd(this.videoPlayer, 'Finding Calm')
+              }}
+              style={Style.videoPlayer}
+              controls={false}
+            /> */}
+          </View>
+
+          {/* <View onLayout={this.onLayout} style={Style.videoContainer}>
+            <Video
+              ref={(p) => {
+                this.videoPlayer = p
+              }}
+              source={require('./videos/finding-calm.mp4')}
+              paused={true}
+              onEnd={() => {
+                props.onVideoEnd(this.videoPlayer, 'Finding Calm')
+              }}
+              style={Style.videoPlayer}
+              controls={false}
+            />
+            <View style={Style.findingCalm}>
+              <TouchableOpacity
+                onPress={() => {
+                  props.onButtonPress(this.videoPlayer, 'Finding Calm')
+                }}
+              >
+                <Image
+                  source={require('../../Assets/Images/calm.png')}
+                  style={Style.bannerButton}
+                ></Image>
+              </TouchableOpacity>
+            </View>
+          </View> */}
+
+          {/* <View onLayout={this.onLayout} style={Style.videoContainer}>
+            <Video
+              ref={(p) => {
+                this.videoPlayer2 = p
+              }}
+              source={require('./videos/beach-meditation.mp4')}
+              paused={true}
+              onEnd={() => {
+                props.onVideoEnd(this.videoPlayer, 'Beach Meditation')
+              }}
+              style={Style.videoPlayer}
+              controls={false}
+            />
+            <View style={Style.findingCalm}>
+              <TouchableOpacity
+                onPress={() => {
+                  props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                }}
+              >
+                <Image
+                  source={require('../../Assets/Images/beach.png')}
+                  style={Style.bannerButton}
+                ></Image>
+              </TouchableOpacity>
+            </View>
+          </View> */}
+
+          {/* <View style={Style.height300}></View> */}
         </View>
-)
+      </View>
+    )
+  }
+  if (props.onReduceAnxiety) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoPlayerWaterfall = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoPlayerWaterfall, 'Waterfall')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoPlayerLettingGo = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoPlayerLettingGo, 'Letting Go')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Reduce Anxiety</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoPlayerWaterfall, 'Waterfall')
+          }}
+          title="Waterfall"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoPlayerLettingGo, 'Letting Go')
+          }}
+          title="Letting Go"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  }
+  if (props.onEnhanceCalm) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoFindingCalm = p
+          }}
+          source={{
+            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/finding-calm.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoFindingCalm, 'Finding Calm')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoSunset = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+3.2.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoSunset, 'Sunset')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Video
+          ref={(p) => {
+            this.videoBeachMeditation = p
+          }}
+          source={{
+            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoBeachMeditation, 'Beach Meditation')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Enhance Calm</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoFindingCalm, 'Finding Calm')
+          }}
+          title="Finding Calm"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoSunset, 'Sunset')
+          }}
+          title="Sunset"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoBeachMeditation, 'Beach Meditation')
+          }}
+          title="Beach Meditation"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  }
+  if (props.onRelaxSub) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoStargaze = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoStargaze, 'Stargaze')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Relax</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoStargaze, 'Stargaze')
+          }}
+          title="Stargaze"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  }
+  if (props.onBuildFocus) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoUnhook = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Unhooking+from+Thoughts.+Focus.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoUnhook, 'Unhooking from Thoughts')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoMountains = p
+          }}
+          source={{
+            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+Meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoMountains, 'Mountains')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoFocusGratitude = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+and+Gratitude+meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoFocusGratitude, 'Focus & Gratitude')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoStargaze = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoStargaze, 'Stargaze')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Build Focus</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoUnhook, 'Unhooking from Thoughts')
+          }}
+          title="Unhooking from Thoughts"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoMountains, 'Mountains')
+          }}
+          title="Mountains"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoFocusGratitude, 'Focus & Gratitude')
+          }}
+          title="Focus & Gratitude"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoStargaze, 'Stargaze')
+          }}
+          title="Stargaze"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  }
+  if (props.onDecreaseStress) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoNature = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music+(1).mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoNature, 'Nature')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoPlayerLettingGo = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoPlayerLettingGo, 'Letting Go')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoBeachMeditation = p
+          }}
+          source={{
+            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoBeachMeditation, 'Beach Meditation')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoPlayerWaterfall = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoPlayerWaterfall, 'Waterfall')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Decrease Stress</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoNature, 'Nature')
+          }}
+          title="Nature"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoPlayerLettingGo, 'Letting Go')
+          }}
+          title="Letting Go"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoBeachMeditation, 'Beach Meditation')
+          }}
+          title="Beach Meditation"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoPlayerWaterfall, 'Waterfall')
+          }}
+          title="Waterfall"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  }
+  if (props.onImproveSleep) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoRainyDay = p
+          }}
+          source={{
+            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Sleep+Meditation.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoRainyDay, 'Rainy Day')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoStaryNight = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+1.2.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoStaryNight, 'Stary Night')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Improve Sleep</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoRainyDay, 'Rainy Day')
+          }}
+          title="Rainy Day"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoStaryNight, 'Stary Night')
+          }}
+          title="Stary Night"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  }
+  if (props.onSoothingSounds) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Video
+          ref={(p) => {
+            this.videoRainforest = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoRainforest, 'Rainforest')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoPlayerForest = p
+          }}
+          source={{
+            uri:
+              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music3.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoPlayerForest, 'Forest')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+        <Video
+          ref={(p) => {
+            this.videoNature = p
+          }}
+          source={{
+            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Mountain.mp4',
+          }}
+          paused={true}
+          onEnd={() => {
+            props.onVideoEnd(this.videoNature, 'Nature')
+          }}
+          style={Style.videoPlayer}
+          controls={false}
+        />
+
+        <Button
+          buttonStyle={Style.backButton}
+          title="Back"
+          onPress={() => {
+            props.clickBackOne()
+          }}
+        ></Button>
+
+        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Soothing Sounds</Text>
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoRainforest, 'Rainforest')
+          }}
+          title="Rainforest"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoPlayerForest, 'Forest')
+          }}
+          title="Forest"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+        <Button
+          style={Style.height50}
+          onPress={() => {
+            props.onButtonPress(this.videoNature, 'Nature')
+          }}
+          title="Nature"
+          type="solid"
+          titleStyle={Style.titleStyle}
+          buttonStyle={Style.buttonStyle}
+        />
+      </View>
+    )
+  } else {
+    return (
+      <View style={Style.topContainer}>
+        <View style={Style.topView}>
+          <Text style={Style.descStyle}>
+            Increase your focus and awareness of thoughts, feelings, and body sensations.
+          </Text>
+        </View>
+        <View style={Style.button30View}>
+          <TouchableOpacity
+            onPress={() => {
+              props.clickImprove()
+            }}
+          >
+            <Image
+              source={require('../../Assets/Images/mindful.png')}
+              style={Style.bannerButton}
+            ></Image>
+          </TouchableOpacity>
+        </View>
+        <View style={Style.button50View}>
+          <TouchableOpacity
+            onPress={() => {
+              props.clickRelax()
+            }}
+          >
+            <Image
+              source={require('../../Assets/Images/relax.png')}
+              style={Style.bannerButton}
+            ></Image>
+          </TouchableOpacity>
+        </View>
+      </View>
+    )
   }
 }
 
 class AnalyticsScreen extends React.Component {
   constructor(props) {
-    console.log("analy",props);
     super(props)
     const today = new Date()
     this.state = {}
     this.state = {
-      onImprove: false,
+      onImprove: true,
+      onImproveModal:false,
       onRelax: false,
       onReduceAnxiety: false,
       onEnhanceCalm: false,
@@ -115,16 +998,15 @@ class AnalyticsScreen extends React.Component {
         ) : (
           <Fragment>
             <Fragment>
-              <View>
-                <Modal
-                  animationType="slide"
-                  transparent={false}
-                  visible={this.state.modalVisible}
-                  onRequestClose={() => {
-                    Alert.alert('Modal has been closed.')
-                  }}
-                >
-                  <View style={Style.centerFlex}>
+            <div className={"modal fade " + (this.state.onImproveModal ? "show" : "")}
+              onRequestClose={() => {
+                // Alert.alert('Modal has been closed.')
+              }}
+              role="dialog">
+              <div className="modal-dialog  modal-dialog-centered" role="document">
+                <div className="modal-content">
+                  <div className="modal-body">
+                    <View style={Style.centerFlex}>
                     <View>
                       <Text h4 h4Style={Style.modalText}>
                         {' '}
@@ -166,9 +1048,10 @@ class AnalyticsScreen extends React.Component {
                       </View>
                     </View>
                   </View>
-                </Modal>
-              </View>
-
+                  </div>
+                </div>
+              </div>
+            </div>
               <View>
                 <Modal
                   animationType="slide"
@@ -327,6 +1210,7 @@ class AnalyticsScreen extends React.Component {
 
   setModalVisible(visible, name, emoji, score) {
     this.setState({ modalVisible: visible })
+    this.setState({ onImproveModal: visible })
     this.setState({ localMood: name })
     this.setState({ localEmoji: emoji })
     this.setState({ moodScore: score })
