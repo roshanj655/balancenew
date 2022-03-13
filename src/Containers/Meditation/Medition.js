@@ -13,7 +13,7 @@ import {
 
 // Use prebuilt version of RNVI in dist folder
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-
+import AnalyticsScreen from '../Analytics/AnalyticsScreen';
 // Generate required css
 import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
 const iconFontStyles = `@font-face {
@@ -52,73 +52,13 @@ class Meditation extends React.Component {
     
     return (
         <div className="row meditation">
+          
         <div className="col-md-12">
             <div className="main-head">
             <h2>Meditations</h2>
             <p>Choose a video below to get started</p>
         </div>
-            <ul className="side-nav">
-                <li className="active">
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/enhanceCalm.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Reduce Anxiety</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                </li>
-                <li>
-                    <div className="float-left iconbox">
-                    <img
-                    src="../../Assets/Images/Meditation/enhanceCalm.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Relax</p>
-                        <p>Add Your Sleep Time</p>
-                    </div>
-                    <div className="clear"></div>
-                </li>
-                <li>
-                    <div className="float-left iconbox">
-                    <img
-                    src="../../Assets/Images/Meditation/enhanceCalm.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Enhance Calm</p>
-                        <p>Add New Activity to Track</p>
-                    </div>
-                    <div className="clear"></div>
-                </li>
-                <li>
-                    <div className="float-left iconbox">
-                    <img
-                    src="../../Assets/Images/Meditation/enhanceCalm.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Build Focus</p>
-                        <p>Add New Activity to Track</p>
-                    </div>
-                    <div className="clear"></div>
-                </li>
-                <li>
-                    <div className="float-left iconbox">
-                    <img
-                    src="../../Assets/Images/Meditation/enhanceCalm.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Decrease Stress</p>
-                        <p>Add New Activity to Track</p>
-                    </div>
-                    <div className="clear"></div>
-                </li>
-            </ul>
+        <AnalyticsScreen meditationShow="true"/>
         </div>
     </div>
       

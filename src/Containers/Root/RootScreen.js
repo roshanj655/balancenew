@@ -70,9 +70,9 @@ class RootScreen extends Component {
         <div className="main-panel">
           <div className='row'>
             <div className='col-md-8 middle-center'>
-              {/* <Meditaion /> */}
+              <Meditaion />
               
-              <Dashboard />
+              {/* <Dashboard /> */}
               {/* <AnalyticsScreen /> */}
               {/* <BrowserRouter>
                 <Switch>

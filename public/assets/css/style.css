@@ -14785,6 +14785,9 @@ select{
 .meditation .side-nav li .iconbox{
   margin-right: 10px;
 }
+.meditation li .iconbox{
+  margin-right: 30px !important;
+}
 .meditation .iconbox span{
   padding: 20px;
 border-radius: 49%;
@@ -14799,7 +14802,11 @@ color: #d2866d;
   color: #0d3345;
   font-weight: 500;
   font-size: 28px;
-  margin-top: 18px;
+  margin-top: 12px;
+}
+.meditation li .navtext p:nth-child(1)
+{
+  text-align: left;
 }
 .meditation .side-nav li{
   margin: 20px auto;
@@ -14816,6 +14823,11 @@ color: #dfc2bb;
 font-size: 16px;
 letter-spacing: 1px;
 margin-top: -3px;
+}
+
+.meditation li .navtext p:nth-child(2)
+{
+text-align: left;
 }
 .meditation .main-head{
   margin:10px;

@@ -878,7 +878,7 @@ class AddScreen extends React.Component {
         <button className="btn text-right">X</button>
       </TouchableOpacity>
       {this.state.improve?
-                  (<AnalyticsScreen data={{showAnaHideAddScreen:this.showAnaHideAddScreen.bind(this)}}/>)
+                  (<AnalyticsScreen mindfullShow="true" data={{showAnaHideAddScreen:this.showAnaHideAddScreen.bind(this)}}/>)
                   :(
                     <div>
                       <h2>Select Your Mood Now</h2>

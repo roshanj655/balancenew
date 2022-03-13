@@ -73,28 +73,157 @@ function RenderType(props) {
   if (props.onRelax) {
     return (
       <View style={Style.mainContain}>
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBack()
-          }}
-        ></Button>
+        
         <View style={Style.improveColumn}>
-          <Text h4 h4Style={Style.improveText}>
+          {/* <Text h4 h4Style={Style.improveText}>
             Meditations
-          </Text>
-
+          </Text> */}
+{/* 
           <Text h4 h4Style={Style.descText}>
             Choose a video below.
-          </Text>
+          </Text> */}
 
           <View style={Style.improveColumn}>
             {/* <Text h4 h4Style={Style.improveText}>
             Achieve Mindfulness{' '}
           </Text> */}
+            <ul className="side-nav meditation">
+                <li className="active">
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickReduceAnxiety()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/reduceAnxiety.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Reduce Anxiety</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li>
+				<li>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickEnhanceCalm()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/enhanceCalm.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Enhance Calm</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li>
+				<li>
 
-            <View style={Style.emojiRow}>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickRelaxSub()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/relax.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Relax</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li>
+                <li>
+                <TouchableOpacity
+                  onPress={() => {
+                    props.clickBuildFocus()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/buildFocus.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Build Focus</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li> 
+				<li>
+				<TouchableOpacity
+                  onPress={() => {
+                    props.clickImproveSleep()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/decreaseStress.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Improve Sleep</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li>
+				<li>
+				<TouchableOpacity
+                  onPress={() => {
+                    props.clickSoothingSounds()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/soothingSounds.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Soothing Sounds</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li>
+				<li>
+				<TouchableOpacity
+                  onPress={() => {
+                    props.clickDecreaseStress()
+                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                  }}
+                >
+                    <div className="float-left iconbox">
+                        <img
+                    src="../../Assets/Images/Meditation/decreaseStress.png"
+                  />
+                    </div>
+                    <div className="float-left navtext">
+                        <p>Decrease Stress</p>
+                        <p>This is for test</p>
+                    </div>
+                    <div className="clear"></div>
+                    </TouchableOpacity>
+                </li>
+				</ul>
+            {/* <View style={Style.emojiRow}>
               <View style={Style.centerWithin}>
                 <Text style={Style.centerText}>Reduce Anxiety</Text>
                 <TouchableOpacity
@@ -197,7 +326,7 @@ function RenderType(props) {
                   />
                 </TouchableOpacity>
               </View>
-            </View>
+            </View> */}
 
             {/* <View style={Style.emojiRow}>
           <View style={Style.centerWithin}>
@@ -929,9 +1058,9 @@ class AnalyticsScreen extends React.Component {
     const today = new Date()
     this.state = {}
     this.state = {
-      onImprove: true,
+      onImprove: this.props.mindfullShow,
       onImproveModal:false,
-      onRelax: false,
+      onRelax: this.props.meditationShow,
       onReduceAnxiety: false,
       onEnhanceCalm: false,
       onRelaxSub: false,
@@ -957,7 +1086,6 @@ class AnalyticsScreen extends React.Component {
       date: today,
       mode: 'time',
     }
-
     this.onLayout = this.onLayout.bind(this)
   }
 
@@ -1103,10 +1231,11 @@ class AnalyticsScreen extends React.Component {
                   </View>
                 </Modal>
               </View>
-
+              {this.props.mindfullShow?
               <Text h4 h4Style={Style.headerText}>
                 Mindfulness{' '}
               </Text>
+              :("")}
             </Fragment>
             {/* <Fragment>
               <View style={Style.circles}>
