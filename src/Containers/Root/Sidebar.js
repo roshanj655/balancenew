@@ -37,7 +37,7 @@ export default class Sidebar extends Component {
       </a>
     </li>
     <li className="nav-item">
-      <a className="nav-link" data-bs-toggle="collapse" href="/" aria-expanded="false" aria-controls="ui-basic">
+      <a className="nav-link" onClick={()=>this.props.navdata.showHideScreen(true) } data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
         <span className="menu-title">Dashboard</span>
         <i className="menu-arrow"></i>
         <i className="mdi mdi-crosshairs-gps menu-icon"></i>
@@ -50,7 +50,7 @@ export default class Sidebar extends Component {
       </div>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="/med">
+      <a className="nav-link" onClick={()=>this.props.navdata.showHideScreen(false) } href="#">
         <span className="menu-title">Medition</span>
         <i className="mdi mdi-format-list-bulleted menu-icon"></i>
       </a>

@@ -37,7 +37,8 @@ import StartUp from '../StartUp/StartUp'
 class RootScreen extends Component {
 
   state={
-    show: false
+    show: false,
+    changeScreen:true
  }
 
   componentDidMount() {
@@ -54,10 +55,12 @@ class RootScreen extends Component {
       this.setState({show: true})
    },1000)
   }
-
+  showHideScreen(data){
+    this.setState({ changeScreen: data })
+  }
   render() { 
     console.log("Hello");
-    
+   
     return (
       <>
       {this.state.show && 
@@ -66,13 +69,15 @@ class RootScreen extends Component {
       <Header />
 {/* <MainScreen />  */}
       <div className="container-fluid page-body-wrapper">
-        <Sidebar />
+        <Sidebar  navdata={{showHideScreen:this.showHideScreen.bind(this)}} />
         <div className="main-panel">
           <div className='row'>
             <div className='col-md-8 middle-center'>
+              {(!this.state.changeScreen)?
               <Meditaion />
-              
-              {/* <Dashboard /> */}
+              :
+              <Dashboard />
+            }
               {/* <AnalyticsScreen /> */}
               {/* <BrowserRouter>
                 <Switch>
