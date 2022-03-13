@@ -41,7 +41,7 @@ function Rightpanel() {
                 <div>
             <div className="row journal">
                     <div className="col-md-3">
-                        <div className="journal-date">{index} Sat</div>
+                        <div className="journal-date">{index}<br /> Sat</div>
                     </div>
                     <div className="col-md-9">
                         <ul class="side-nav">
@@ -132,7 +132,7 @@ function Rightpanel() {
                     <div className="col-md-6 journal">
                         <h3>Journal</h3>
                     </div>
-                    <div className="col-md-6">
+                    {/* <div className="col-md-6">
                         <div class="dropdown">
                             <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 18 December 2021
@@ -143,10 +143,11 @@ function Rightpanel() {
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
+                <div className='journal-scroll'>
                 {journals}
-                
+                </div>
             </div>
         </div>
     );
