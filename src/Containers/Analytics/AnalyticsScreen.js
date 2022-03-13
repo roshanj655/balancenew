@@ -19,6 +19,8 @@ import Style from './AnalyticsStyle'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import Mindfulness from './mindfulness-imgs/index'
 // import Video from 'react-native-video'
+import { Player } from 'video-react';
+import "/node_modules/video-react/dist/video-react.css";
 import Util from './Utils'
 
 function RenderType(props) {
@@ -419,52 +421,37 @@ function RenderType(props) {
   }
   if (props.onReduceAnxiety) {
     return (
+      
       <View style={{ alignItems: 'center' }}>
-        <Video
-          ref={(p) => {
-            this.videoPlayerWaterfall = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoPlayerWaterfall, 'Waterfall')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoPlayerLettingGo = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoPlayerLettingGo, 'Letting Go')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
-        <Button
+        {props.videoSource=="waterfall"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="lettinggo"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
+        </Player>
+        :("")}
+  <Button
           buttonStyle={Style.backButton}
           title="Back"
           onPress={() => {
             props.clickBackOne()
           }}
         ></Button>
-
         <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Reduce Anxiety</Text>
 
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoPlayerWaterfall, 'Waterfall')
+            props.videoSrc("waterfall")
           }}
           title="Waterfall"
           type="solid"
@@ -475,7 +462,8 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoPlayerLettingGo, 'Letting Go')
+            // props.onButtonPress(this.videoPlayerLettingGo, 'Letting Go')
+            props.videoSrc("lettinggo")
           }}
           title="Letting Go"
           type="solid"
@@ -488,51 +476,31 @@ function RenderType(props) {
   if (props.onEnhanceCalm) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Video
-          ref={(p) => {
-            this.videoFindingCalm = p
-          }}
-          source={{
-            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/finding-calm.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoFindingCalm, 'Finding Calm')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoSunset = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+3.2.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoSunset, 'Sunset')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
-        <Video
-          ref={(p) => {
-            this.videoBeachMeditation = p
-          }}
-          source={{
-            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoBeachMeditation, 'Beach Meditation')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
+        {props.videoSource=="fcalm"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/finding-calm.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="sunset"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+3.2.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="bmed"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
+        </Player>
+        :("")}
+       
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -546,7 +514,8 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoFindingCalm, 'Finding Calm')
+            props.videoSrc("fcalm")
+            // props.onButtonPress(this.videoFindingCalm, 'Finding Calm')
           }}
           title="Finding Calm"
           type="solid"
@@ -557,7 +526,8 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoSunset, 'Sunset')
+            props.videoSrc("sunset")
+            // props.onButtonPress(this.videoSunset, 'Sunset')
           }}
           title="Sunset"
           type="solid"
@@ -568,7 +538,8 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoBeachMeditation, 'Beach Meditation')
+            props.videoSrc("bmed")
+            // props.onButtonPress(this.videoBeachMeditation, 'Beach Meditation')
           }}
           title="Beach Meditation"
           type="solid"
@@ -1062,6 +1033,7 @@ class AnalyticsScreen extends React.Component {
       onImproveModal:false,
       onRelax: this.props.meditationShow,
       onReduceAnxiety: false,
+      videosource:"",
       onEnhanceCalm: false,
       onRelaxSub: false,
       onBuildFocus: false,
@@ -1284,12 +1256,14 @@ class AnalyticsScreen extends React.Component {
               clickBuildFocus={this.clickBuildFocus.bind(this)}
               clickDecreaseStress={this.clickDecreaseStress.bind(this)}
               clickImproveSleep={this.clickImproveSleep.bind(this)}
+              videoSrc={this.videoSrc.bind(this)}
               clickSoothingSounds={this.clickSoothingSounds.bind(this)}
               clickBack={this.clickBack.bind(this)}
               clickBackOne={this.clickBackOne.bind(this)}
               onVideoEnd={this.onVideoEnd.bind(this)}
               onImprove={this.state.onImprove}
               sleep={this.state.sleep}
+              videoSource={this.state.videosource}
               duration={this.state.duration}
               onRelax={this.state.onRelax}
               onReduceAnxiety={this.state.onReduceAnxiety}
@@ -1329,6 +1303,9 @@ class AnalyticsScreen extends React.Component {
 
   updateDuration = (duration) => {
     this.setState({ duration: duration })
+  }
+  videoSrc(url){
+    this.setState({videosource:url});
   }
 
   changeSelectedDay(day) {
