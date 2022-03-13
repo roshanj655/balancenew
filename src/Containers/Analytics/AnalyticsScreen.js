@@ -1023,7 +1023,8 @@ class AnalyticsScreen extends React.Component {
                         <Button
                           style={Style.height50}
                           onPress={() => {
-                            this.confirmLogic()
+                            this.confirmLogic(),
+                            this.props.data.showAnaHideAddScreen(false);
                           }}
                           title="Confirm"
                           type="solid"

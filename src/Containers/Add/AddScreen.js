@@ -878,7 +878,7 @@ class AddScreen extends React.Component {
         <button className="btn text-right">X</button>
       </TouchableOpacity>
       {this.state.improve?
-                  (<AnalyticsScreen />)
+                  (<AnalyticsScreen data={{showAnaHideAddScreen:this.showAnaHideAddScreen.bind(this)}}/>)
                   :(
                     <div>
                       <h2>Select Your Mood Now</h2>
@@ -909,6 +909,10 @@ class AddScreen extends React.Component {
       </SafeAreaView>
 
     )
+  }
+
+  showAnaHideAddScreen(){
+    this.props.data.showHideAddScreen(false);
   }
 
   setTime = (date,event) => {

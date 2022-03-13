@@ -13,7 +13,6 @@ export default class Sidebar extends Component {
     }
   }
   showHideAddScreen(data){
-    console.log(data);
     this.setState({ ShowAdd: data })
   }
   render(){
