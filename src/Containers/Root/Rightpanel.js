@@ -16,8 +16,8 @@ function Rightpanel() {
     let data = [];
     // const myTimeout = setTimeout(function () {
         let journal=[];
-        let activity=JSON.parse(localStorage.getItem("activities"));
-        let moods=JSON.parse(localStorage.getItem("moods"));
+        let activity=JSON.parse(localStorage.getItem("activities"))??[];
+        let moods=JSON.parse(localStorage.getItem("moods"))??[];
         activity.map((item, index) => {
             item['title']="Activity";
             item['description']="You play "+item.type+ " for "+item.duration+" min"
