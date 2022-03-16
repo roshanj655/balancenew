@@ -4,7 +4,7 @@
 
 
 
-
+import React, { useState } from 'react';
 function Activity(props) {
     let activity1 = props.activity.map((item, index) => {
         let day=new Date(item.createdAt).getDate();
@@ -38,42 +38,48 @@ function Activity(props) {
             return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
         }
     })
-    
+    const [tabActivity, setActivity] = useState("activityDay");
     return (
         <div className="slept">
             <h4>Your Activity</h4>
             <ul className=" justify-content-end nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a
-                        className="nav-link active"
+                        className={"nav-link "+((tabActivity=="activityDay")?"active":"")}
                         id="ex1-tab-1"
                         data-mdb-toggle="tab"
                         href="#ex1-tabs-1"
                         role="tab"
                         aria-controls="ex1-tabs-1"
                         aria-selected="true"
+                        onClick={() => {
+                            setActivity("activityDay")}}
                     >Day</a>
                 </li>
                 <li className="nav-item" role="presentation">
                     <a
-                        className="nav-link"
+                        className={"nav-link "+((tabActivity=="activityWeek")?"active":"")}
                         id="ex1-tab-2"
                         data-mdb-toggle="tab"
                         href="#ex1-tabs-2"
                         role="tab"
                         aria-controls="ex1-tabs-2"
                         aria-selected="false"
+                        onClick={() => {
+                            setActivity("activityWeek")}}
                     >Week</a>
                 </li>
                 <li className="nav-item" role="presentation">
                     <a
-                        className="nav-link"
+                        className={"nav-link "+((tabActivity=="activityMonth")?"active":"")}
                         id="ex1-tab-3"
                         data-mdb-toggle="tab"
                         href="#ex1-tabs-3"
                         role="tab"
                         aria-controls="ex1-tabs-3"
                         aria-selected="false"
+                        onClick={() => {
+                            setActivity("activityMonth")}}
                     >Month</a>
                 </li>
             </ul>
