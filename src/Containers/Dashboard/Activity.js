@@ -6,7 +6,31 @@
 
 import React, { useState } from 'react';
 function Activity(props) {
-    let activity1 = props.activity.map((item, index) => {
+    let activitiesArray = [];
+    const [activityArray, setActivityArray] = useState([]);
+    const updateActivityArray = (check) => {
+        var date = new Date();
+        var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
+        var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
+        var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
+        // var weekBeforeDay = week.getDate();
+        // var monthBeforeDay = month.getDate();
+        props.activity.forEach((element, index) => {
+            let day = new Date(element.day).getTime();
+            let currentDate = new Date().getTime();
+            if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
+                activitiesArray.push(element);
+            }
+            else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
+                activitiesArray.push(element);
+            }
+            else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
+                activitiesArray.push(element);
+            }
+            setActivityArray(activitiesArray);
+        });
+    }
+    let activity1 = activityArray.map((item, index) => {
         let day=new Date(item.createdAt).getDate();
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
@@ -14,7 +38,7 @@ function Activity(props) {
             return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
         }
     })
-    let activity2 = props.activity.map((item, index) => {
+    let activity2 = activityArray.map((item, index) => {
         let day=new Date(item.createdAt).getDate();
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
@@ -22,7 +46,7 @@ function Activity(props) {
             return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
         }
     })
-    let activity3 = props.activity.map((item, index) => {
+    let activity3 = activityArray.map((item, index) => {
         let day=new Date(item.createdAt).getDate();
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
@@ -30,7 +54,7 @@ function Activity(props) {
             return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
         }
     })
-    let activity4 = props.activity.map((item, index) => {
+    let activity4 = activityArray.map((item, index) => {
         let day=new Date(item.createdAt).getDate();
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
@@ -53,7 +77,9 @@ function Activity(props) {
                         aria-controls="ex1-tabs-1"
                         aria-selected="true"
                         onClick={() => {
-                            setActivity("activityDay")}}
+                            setActivity("activityDay")
+                            updateActivityArray("day");
+                        }}
                     >Day</a>
                 </li>
                 <li className="nav-item" role="presentation">
@@ -66,7 +92,9 @@ function Activity(props) {
                         aria-controls="ex1-tabs-2"
                         aria-selected="false"
                         onClick={() => {
-                            setActivity("activityWeek")}}
+                            setActivity("activityWeek")
+                            updateActivityArray("week");
+                        }}
                     >Week</a>
                 </li>
                 <li className="nav-item" role="presentation">
@@ -79,7 +107,9 @@ function Activity(props) {
                         aria-controls="ex1-tabs-3"
                         aria-selected="false"
                         onClick={() => {
-                            setActivity("activityMonth")}}
+                            setActivity("activityMonth")
+                            updateActivityArray("month");
+                        }}
                     >Month</a>
                 </li>
             </ul>

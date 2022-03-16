@@ -24,6 +24,8 @@ function Felt(props) {
             setMoodArray(moodsArray);
         });
     }
+
+
     let moods1 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
@@ -58,7 +60,6 @@ function Felt(props) {
         }
     })
     const [tabMood, settabMood] = useState("moodDay");
-
     return (
         <div className="slept">
             <h4>Your Felt</h4>
@@ -71,6 +72,10 @@ function Felt(props) {
                         role="tab"
                         aria-controls="ex1-tabs-1"
                         aria-selected="true"
+                        onLoad={()=>{
+                            updateMoodArray("day")
+                            settabMood("moodDay")
+                        }}
                         onClick={() => {
                             updateMoodArray("day")
                             settabMood("moodDay")
@@ -118,71 +123,21 @@ function Felt(props) {
                     aria-labelledby="ex1-tab-1">
 
                     <div className="row h341">
-                        {tabMood == "moodDay" ?
-                            <div className="col-md-3 activity-icon text-center">
-                                {moods1}
-                            </div>
-                            : ("")}
-                        {tabMood == "moodDay" ?
-                            <div className="col-md-3 activity-icon text-center">
-                                {moods2}
+                        <div className="col-md-3 activity-icon text-center">
+                            {moods1}
+                        </div>
+                        <div className="col-md-3 activity-icon text-center">
+                            {moods2}
 
-                            </div>
-                            : ("")}
-                        {tabMood == "moodDay" ?
-                            <div className="col-md-3">
-                                {moods3}
-                            </div>
-                            : ("")}
-                        {tabMood == "moodDay" ?
-                            <div className="col-md-3">
-                                {moods4}
-                            </div>
-                            : ("")}
+                        </div>
+                        <div className="col-md-3">
+                            {moods3}
+                        </div>
+                        <div className="col-md-3">
+                            {moods4}
+                        </div>
 
-                        {tabMood == "moodWeek" ?
-                            <div className="col-md-3 activity-icon text-center">
-                                {moods1}
-                            </div>
-                            : ("")}
-                        {tabMood == "moodWeek" ?
-                            <div className="col-md-3 activity-icon text-center">
-                                {moods2}
 
-                            </div>
-                            : ("")}
-                        {tabMood == "moodWeek" ?
-                            <div className="col-md-3">
-                                {moods3}
-                            </div>
-                            : ("")}
-                        {tabMood == "moodWeek" ?
-                            <div className="col-md-3">
-                                {moods4}
-                            </div>
-                            : ("")}
-
-                        {tabMood == "moodMonth" ?
-                            <div className="col-md-3 activity-icon text-center">
-                                {moods1}
-                            </div>
-                            : ("")}
-                        {tabMood == "moodMonth" ?
-                            <div className="col-md-3 activity-icon text-center">
-                                {moods2}
-
-                            </div>
-                            : ("")}
-                        {tabMood == "moodMonth" ?
-                            <div className="col-md-3">
-                                {moods3}
-                            </div>
-                            : ("")}
-                        {tabMood == "moodMonth" ?
-                            <div className="col-md-3">
-                                {moods4}
-                            </div>
-                            : ("")}
                     </div>
 
                     <div className="row">
