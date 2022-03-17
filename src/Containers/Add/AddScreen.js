@@ -345,7 +345,6 @@ class AddScreen extends React.Component {
   }
 
   onSleepConfirm = () => {
-    alert(this.state.sleep);
     this._createSleep(this.state.sleep, this.state.selectedDay)
     this._fetchSleeps(this.state.selectedDay)
     Alert.alert(
@@ -1060,7 +1059,7 @@ class AddScreen extends React.Component {
 
   _createSleep(sleepHours, targetDate) {
     this.props.createSleep(sleepHours, targetDate)
-    this.props.sleeps = ['1']
+    // this.props.sleeps = ['1']
     this._fetchSleeps(this.state.selectedDay)
     this.setState({ onActivity: false, onMood: true, onSleep: false })
   }
