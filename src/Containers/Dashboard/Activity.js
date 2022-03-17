@@ -9,7 +9,7 @@ function Activity(props) {
     let activitiesArray = [];
     const [activityArray, setActivityArray] = useState([]);
     const updateActivityArray = (check) => {
-        var date = new Date();
+        var date = new Date(props.selectedDate);
         var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
         var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
         var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
@@ -17,7 +17,7 @@ function Activity(props) {
         // var monthBeforeDay = month.getDate();
         props.activity.forEach((element, index) => {
             let day = new Date(element.day).getTime();
-            let currentDate = new Date().getTime();
+            let currentDate = date.getTime();
             if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
                 activitiesArray.push(element);
             }

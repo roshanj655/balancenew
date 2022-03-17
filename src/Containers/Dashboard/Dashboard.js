@@ -60,6 +60,7 @@ class Dashboard extends React.Component {
       isNew: false,
       isTrue: true,
       selectedDay: pullToday,
+      newSelectedDate:new Date(),
       selectedIndex: 0,
       date: null,
       mode: 'date',
@@ -91,6 +92,31 @@ class Dashboard extends React.Component {
     this.setState({ selectedIndex })
   }
 
+  changeSelectedDay(day) {
+    this.setState({ selectedDay: day._d, newSelectedDate:day._d }, () => {
+      // this._fetchSleeps(this.state.selectedDay)
+      this.setTime(this.state.newSelectedDate)
+    })
+  }
+
+  setTime = (date,event) => {
+    date = date || this.state.date
+
+    var today = new Date(this.state.date)
+    
+    var year = today.getFullYear()
+    var month = today.getMonth()
+    var day = today.getDate()
+    var hours = date.getHours()
+    var minutes = date.getMinutes()
+
+    date = new Date(year, month, day, hours, minutes, 0, 0)
+
+    this.setState({
+      show: true,
+      date,
+    })
+  }
   onRegistered = (deviceToken) => {
 console.log("MS Token");
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU1NTY0OTYsImV4cCI6MTY0NTY0Mjg5NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiNDc4MDdkMTEtZmQ5NC00MDIyLWJmN2UtMGM1MjFiZDFkZTQ3In0.rxzyn-T7zPFpq3LzyYc0HNS4eowZLMPtFWRFpsNSYAw"
@@ -275,13 +301,13 @@ console.log("MS Token");
               />    
             </div>
             <div className='col-md-6 pr0'>
-                <Felt moods={this.props.moods}/>
+                <Felt moods={this.props.moods} selectedDate={this.state.newSelectedDate}/>
             </div>
             <div className='col-md-6'>
                 <Slept />
             </div>
             <div className='col-md-6 pr0'>
-                <Activity1  activity={this.props.activities}/>
+                <Activity1  activity={this.props.activities} selectedDate={this.state.newSelectedDate}/>
             </div>
             <div className='col-md-6' name={this.state.isBoxVisible}  onClick={this.toggleBox}>
                 <Mindfull />
@@ -515,7 +541,7 @@ _fetchAll(moodDate) {
 }
 _fetchAgenda(moodDate) {
   this.props.fetchAgenda(moodDate)
-  console.log('MOODDATE', moodDate)
+  console.log('MOODDATE', this.props.fetchAgenda(moodDate))
 }
 }
 

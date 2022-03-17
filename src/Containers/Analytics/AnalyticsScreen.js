@@ -1059,6 +1059,7 @@ class AnalyticsScreen extends React.Component {
       mode: 'time',
     }
     this.onLayout = this.onLayout.bind(this)
+    console.log("ana",this._fetchAgenda(this.state.initDate));
   }
 
   componentDidMount() {
@@ -1438,14 +1439,16 @@ class AnalyticsScreen extends React.Component {
   }
 
   confirmLogic() {
+    
     if (this.state.onRelax) {
       this.setDurationModalVisible(true)
     }
     if (this.state.onImprove) {
       this.setState({ clockModalVisible: false }, () => {
         this.setModalVisible(false, this.state.localMood, 'grinning', this.state.moodScore)
-        this.onConfirm()
+        
       })
+      this.onConfirm()
     }
   }
 
