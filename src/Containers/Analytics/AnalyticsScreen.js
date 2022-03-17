@@ -1026,6 +1026,8 @@ function RenderType(props) {
 class AnalyticsScreen extends React.Component {
   constructor(props) {
     super(props)
+
+    console.log("ana",props);
     const today = new Date()
     this.state = {}
     this.state = {
@@ -1059,7 +1061,6 @@ class AnalyticsScreen extends React.Component {
       mode: 'time',
     }
     this.onLayout = this.onLayout.bind(this)
-    console.log("ana",this._fetchAgenda(this.state.initDate));
   }
 
   componentDidMount() {
@@ -1453,6 +1454,7 @@ class AnalyticsScreen extends React.Component {
   }
 
   onConfirm() {
+    console.log("mind",this.state.localMood, this.state.date, this.state.moodScore);
     this._createMindfulness(this.state.localMood, this.state.date, this.state.moodScore)
     // this.setClockModalVisible(!this.state.clockModalVisible, '', 'grinning', this.state.moodScore)
   }

@@ -198,6 +198,7 @@ console.log("MS Token");
     
     this._fetchUser()
     this._fetchMoods(this.state.initDate)
+    this._mindfullness(this.state.initDate)
     this.fetchMain()
     this._fetchAgenda(this.state.initDate)
   }
@@ -309,8 +310,8 @@ console.log("MS Token");
             <div className='col-md-6 pr0'>
                 <Activity1  activity={this.props.activities} selectedDate={this.state.newSelectedDate}/>
             </div>
-            <div className='col-md-6' name={this.state.isBoxVisible}  onClick={this.toggleBox}>
-                <Mindfull />
+            <div className='col-md-6'>
+                <Mindfull mindfulness={this.props.mindfullness} selectedDate={this.state.newSelectedDate}/>
             </div>
         </div>
     )
@@ -535,6 +536,11 @@ _fetchMoods(moodDate) {
   console.log(' fetchMood date', moodDate)
   this.props.fetchMoods(moodDate)
 }
+_mindfullness(moodDate) {
+  
+  this.props.fetchMindfullness(moodDate)
+  console.log(' fetchMood dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.props.fetchMindfullness(moodDate))
+}
 _fetchAll(moodDate) {
   this.props.fetchAll(moodDate)
   console.log(' fetchAll Mooddate', moodDate)
@@ -562,6 +568,8 @@ fetchAll: PropTypes.func,
 fetchAgenda: PropTypes.func,
 fetchMoodScores: PropTypes.func,
 fetchMoods: PropTypes.func,
+fetchMindfullness:PropTypes.func,
+mindfullness: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 moods: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 sleeps: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 activities: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
@@ -585,6 +593,7 @@ dob: state.example.user.dob,
 moods: state.example.moods,
 sleeps: state.example.sleeps,
 activities: state.example.activities,
+mindfullness:state.example.mindfulnesses,
 // startTrial: state.example.startTrial,
 balanceScores: state.example.balanceScores,
 moodScores: state.example.moodScores,
@@ -603,6 +612,7 @@ const mapDispatchToProps = (dispatch) => ({
 fetchUser: () => dispatch(ExampleActions.fetchUser()),
 fetchMoods: (moodDate) => dispatch(ExampleActions.fetchMoods(moodDate)),
 addBirthdate: (user) => dispatch(ExampleActions.addBirthdate(user)),
+fetchMindfullness: (moodDate) => dispatch(ExampleActions.fetchMindfulnesses(moodDate)),
 fetchAll: (moodDate) => dispatch(ExampleActions.fetchAll(moodDate)),
 fetchAgenda: (moodDate) => dispatch(ExampleActions.fetchAgenda(moodDate)),
 fetchMain: (todayDate) => dispatch(ExampleActions.fetchMain(todayDate)),
