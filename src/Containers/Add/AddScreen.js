@@ -189,7 +189,7 @@ function RenderType(props) {
                           style={Style.height50}
                           onPress={() => {
                             props.onSleepConfirm()
-                            this.editSleep(false)
+                            props.editSleeps(false)
                           }}
                           title="Confirm"
                           type="solid"
@@ -213,7 +213,7 @@ function RenderType(props) {
                         buttonStyle={Style.lightBackground}
                         title="Edit Sleep"
                         onPress={() => {
-                          this.editSleep(true)
+                          props.editSleeps(true)
                         }}
                       ></Button>
                     </Fragment>
@@ -345,6 +345,7 @@ class AddScreen extends React.Component {
   }
 
   onSleepConfirm = () => {
+    alert(this.state.sleep);
     this._createSleep(this.state.sleep, this.state.selectedDay)
     this._fetchSleeps(this.state.selectedDay)
     Alert.alert(
@@ -889,6 +890,7 @@ class AddScreen extends React.Component {
                         todaySleep={this.props.sleeps}
                         onActivityModal={this.setActivityModalVisible.bind(this)}
                         updateSleep={this.updateSleep.bind(this)}
+                        editSleeps={this.editSleep.bind(this)}
                         onModal={this.setModalVisible.bind(this)}
                         onMood={this.state.onMood}
                         sleep={this.state.sleep}
