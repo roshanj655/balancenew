@@ -31,7 +31,7 @@ import AnalyticsScreen from '../Analytics/AnalyticsScreen'
 
 function RenderType(props) {
   const activitySize = 50
-  console.log(props.todaySleep);
+  
   const moodArr = [
     { "img": "loved.png", "name": "Loved", "param3": "loved", "number": 10 },
     { "img": "happy.png", "name": "Happy", "param3": "happy", "number": 10 },
@@ -303,7 +303,6 @@ function RenderType(props) {
 
 class AddScreen extends React.Component {
   constructor(props) {
-    console.log('sdn',props)
     super(props)
     const today = new Date()
     this.state = {}
@@ -347,6 +346,7 @@ class AddScreen extends React.Component {
   onSleepConfirm = () => {
     this._createSleep(this.state.sleep, this.state.selectedDay)
     this._fetchSleeps(this.state.selectedDay)
+    this.props.data.showHideAddScreen(false)
     Alert.alert(
       'Success',
       'Sleep Submitted',

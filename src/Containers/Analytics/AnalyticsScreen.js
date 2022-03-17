@@ -552,7 +552,15 @@ function RenderType(props) {
   if (props.onRelaxSub) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Video
+        {props.videoSource=="Stargaze"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
+        </Player>
+        :("")}
+        {/* <Video
           ref={(p) => {
             this.videoStargaze = p
           }}
@@ -566,7 +574,7 @@ function RenderType(props) {
           }}
           style={Style.videoPlayer}
           controls={false}
-        />
+        /> */}
 
         <Button
           buttonStyle={Style.backButton}
@@ -581,7 +589,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoStargaze, 'Stargaze')
+            props.videoSrc('Stargaze')
           }}
           title="Stargaze"
           type="solid"
@@ -594,66 +602,39 @@ function RenderType(props) {
   if (props.onBuildFocus) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Video
-          ref={(p) => {
-            this.videoUnhook = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Unhooking+from+Thoughts.+Focus.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoUnhook, 'Unhooking from Thoughts')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoMountains = p
-          }}
-          source={{
-            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+Meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoMountains, 'Mountains')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoFocusGratitude = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+and+Gratitude+meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoFocusGratitude, 'Focus & Gratitude')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoStargaze = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoStargaze, 'Stargaze')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
+        {props.videoSource=="Unhooking from Thoughts"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Unhooking+from+Thoughts.+Focus.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Mountains"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+Meditation.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Focus & Gratitude"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+and+Gratitude+meditation.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Stargaze"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
+        </Player>
+        :("")}
+        
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -667,7 +648,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoUnhook, 'Unhooking from Thoughts')
+            props.videoSrc('Unhooking from Thoughts')
           }}
           title="Unhooking from Thoughts"
           type="solid"
@@ -678,7 +659,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoMountains, 'Mountains')
+            props.videoSrc('Mountains')
           }}
           title="Mountains"
           type="solid"
@@ -689,7 +670,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoFocusGratitude, 'Focus & Gratitude')
+            props.videoSrc('Focus & Gratitude')
           }}
           title="Focus & Gratitude"
           type="solid"
@@ -700,7 +681,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoStargaze, 'Stargaze')
+            props.videoSrc('Stargaze')
           }}
           title="Stargaze"
           type="solid"
@@ -713,66 +694,39 @@ function RenderType(props) {
   if (props.onDecreaseStress) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Video
-          ref={(p) => {
-            this.videoNature = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music+(1).mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoNature, 'Nature')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoPlayerLettingGo = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoPlayerLettingGo, 'Letting Go')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoBeachMeditation = p
-          }}
-          source={{
-            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoBeachMeditation, 'Beach Meditation')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoPlayerWaterfall = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoPlayerWaterfall, 'Waterfall')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
+        {props.videoSource=="Nature"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music+(1).mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Letting Go"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Beach Meditation"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Waterfall"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
+        </Player>
+        :("")}
+       
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -786,7 +740,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoNature, 'Nature')
+            props.videoSrc('Nature')
           }}
           title="Nature"
           type="solid"
@@ -797,7 +751,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoPlayerLettingGo, 'Letting Go')
+            props.videoSrc('Letting Go')
           }}
           title="Letting Go"
           type="solid"
@@ -808,7 +762,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoBeachMeditation, 'Beach Meditation')
+            props.videoSrc('Beach Meditation')
           }}
           title="Beach Meditation"
           type="solid"
@@ -818,7 +772,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoPlayerWaterfall, 'Waterfall')
+            props.videoSrc('Waterfall')
           }}
           title="Waterfall"
           type="solid"
@@ -831,36 +785,23 @@ function RenderType(props) {
   if (props.onImproveSleep) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Video
-          ref={(p) => {
-            this.videoRainyDay = p
-          }}
-          source={{
-            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Sleep+Meditation.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoRainyDay, 'Rainy Day')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoStaryNight = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+1.2.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoStaryNight, 'Stary Night')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
+        {props.videoSource=="Rainy Day"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Sleep+Meditation.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Stary Night"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+1.2.mp4" />
+        </Player>
+        :("")}
+        
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -874,7 +815,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoRainyDay, 'Rainy Day')
+            props.videoSrc('Rainy Day')
           }}
           title="Rainy Day"
           type="solid"
@@ -885,7 +826,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoStaryNight, 'Stary Night')
+            props.videoSrc('Stary Night')
           }}
           title="Stary Night"
           type="solid"
@@ -898,51 +839,31 @@ function RenderType(props) {
   if (props.onSoothingSounds) {
     return (
       <View style={{ alignItems: 'center' }}>
-        <Video
-          ref={(p) => {
-            this.videoRainforest = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoRainforest, 'Rainforest')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoPlayerForest = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music3.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoPlayerForest, 'Forest')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-        <Video
-          ref={(p) => {
-            this.videoNature = p
-          }}
-          source={{
-            uri: 'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Mountain.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoNature, 'Nature')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        />
-
+        {props.videoSource=="Rainforest"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Forest"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music3.mp4" />
+        </Player>
+        :("")}
+        {props.videoSource=="Nature"?
+        <Player
+         playsInline
+         poster="../../Assets/Images/poster.png"
+        >
+          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Mountain.mp4" />
+        </Player>
+        :("")}
+        
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -956,7 +877,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoRainforest, 'Rainforest')
+            props.videoSrc('Rainforest')
           }}
           title="Rainforest"
           type="solid"
@@ -967,7 +888,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoPlayerForest, 'Forest')
+            props.videoSrc('Forest')
           }}
           title="Forest"
           type="solid"
@@ -977,7 +898,7 @@ function RenderType(props) {
         <Button
           style={Style.height50}
           onPress={() => {
-            props.onButtonPress(this.videoNature, 'Nature')
+            props.videoSrc('Nature')
           }}
           title="Nature"
           type="solid"

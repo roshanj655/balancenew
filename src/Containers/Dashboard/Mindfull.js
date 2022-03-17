@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 function Mindfull(props) {
-    console.log("mindfullness",props.mindfulness);
     let mindsArray = [];
     const [mindArray, setMindArray] = useState([]);
     const updatemindArray = (check) => {
