@@ -156,7 +156,7 @@ function RenderType(props) {
                       <Text h3 h3Style={Style.emotionText}>
                         {props.sleep} Hours
                       </Text>
-                      <Picker selectedValue={props.sleep} onValueChange={this.updateSleep}>
+                      <Picker selectedValue={props.sleep} onValueChange={props.updateSleep}>
                         <Picker.Item label="1" value="1" />
                         <Picker.Item label="1.5" value="1.5" />
                         <Picker.Item label="2" value="2" />
@@ -230,7 +230,7 @@ function RenderType(props) {
             <Text h3 h3Style={Style.emotionText}>
               {props.sleep} Hours
             </Text>
-            <Picker selectedValue={props.sleep} onValueChange={this.updateSleep}>
+            <Picker selectedValue={props.sleep} onValueChange={props.updateSleep}>
               <Picker.Item label="1" value="1" />
               <Picker.Item label="1.5" value="1.5" />
               <Picker.Item label="2" value="2" />
@@ -333,13 +333,15 @@ class AddScreen extends React.Component {
       mode: 'time',
     }
     // eslint-disable-next-line no-undef
-    var updateSleep = (sleep) => {
-      this.setState({ sleep: sleep })
-    }
-    // eslint-disable-next-line no-undef
-    var editSleep = (bool) => {
-      this.setState({ editSleep: bool })
-    }
+    
+  }
+
+  updateSleep(sleep) {
+    this.setState({ sleep: sleep })
+  }
+  // eslint-disable-next-line no-undef
+  editSleep(bool) {
+    this.setState({ editSleep: bool })
   }
 
   onSleepConfirm = () => {
@@ -886,6 +888,7 @@ class AddScreen extends React.Component {
                         onSleepConfirm={this.onSleepConfirm.bind(this)}
                         todaySleep={this.props.sleeps}
                         onActivityModal={this.setActivityModalVisible.bind(this)}
+                        updateSleep={this.updateSleep.bind(this)}
                         onModal={this.setModalVisible.bind(this)}
                         onMood={this.state.onMood}
                         sleep={this.state.sleep}
