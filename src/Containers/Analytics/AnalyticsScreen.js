@@ -94,7 +94,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickReduceAnxiety()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'waterfall')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -113,7 +113,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickEnhanceCalm()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'fcalm')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -133,7 +133,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickRelaxSub()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'Stargaze')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -152,7 +152,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickBuildFocus()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'Unhooking from Thoughts')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -171,7 +171,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickImproveSleep()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'Rainy Day')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -190,7 +190,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickSoothingSounds()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'Rainforest')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -209,7 +209,7 @@ function RenderType(props) {
                 <TouchableOpacity
                   onPress={() => {
                     props.clickDecreaseStress()
-                    // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
+                    props.onButtonPress("", 'Nature')
                   }}
                 >
                   <div className="float-left iconbox">
@@ -424,15 +424,15 @@ function RenderType(props) {
 
       <View style={{ alignItems: 'center' }}>
         <div className='row w100 main-head p0'>
-        <div className='col-md-9 p0'>
-          <h2>Reduce Anxiety</h2>
+          <div className='col-md-9 p0'>
+            <h2>Reduce Anxiety</h2>
           </div>
           <div className='col-md-3 p0'>
             <button class="btn btn-danger float-right" onClick={() => {
               props.clickBackOne()
             }}><i class="fa fa-arrow-left"></i> Back</button>
           </div>
-          
+
         </div>
         {/* <Button
             </div>
@@ -461,17 +461,17 @@ function RenderType(props) {
           </Player>
           : ("")}
 
-        
+
         <div className='row w100 p0 pt20'>
           <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
-          <br />
+            <br />
           </div>
           <div className='col-md-12 p0'>
-          <ul class="list-group cursor-pointer video-list">
-            <li class="list-group-item" onClick={() => {props.videoSrc("waterfall")}}><i class="fa fa-video-camera" aria-hidden="true"></i> Waterfall</li>
-            <li class="list-group-item" onClick={() => {props.videoSrc("lettinggo")}}><i class="fa fa-video-camera" aria-hidden="true"></i> Letting Go</li>
-          </ul>
-          
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("waterfall") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Waterfall</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("lettinggo") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Letting Go</li>
+            </ul>
+
           </div>
         </div>
 
@@ -483,6 +483,17 @@ function RenderType(props) {
   if (props.onEnhanceCalm) {
     return (
       <View style={{ alignItems: 'center' }}>
+        <div className='row w100 main-head p0'>
+          <div className='col-md-9 p0'>
+            <h2>Enhance Calm</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
         {props.videoSource == "fcalm" ?
           <Player
             playsInline
@@ -508,57 +519,37 @@ function RenderType(props) {
           </Player>
           : ("")}
 
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBackOne()
-          }}
-        ></Button>
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+            <br />
+          </div>
+          <div className='col-md-12 p0'>
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("fcalm") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Finding Calm</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("sunset") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Sunset</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("bmed") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Beach Meditation</li>
+            </ul>
 
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Enhance Calm</Text>
+          </div>
+        </div>
 
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc("fcalm")
-            // props.onButtonPress(this.videoFindingCalm, 'Finding Calm')
-          }}
-          title="Finding Calm"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc("sunset")
-            // props.onButtonPress(this.videoSunset, 'Sunset')
-          }}
-          title="Sunset"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc("bmed")
-            // props.onButtonPress(this.videoBeachMeditation, 'Beach Meditation')
-          }}
-          title="Beach Meditation"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
       </View>
     )
   }
   if (props.onRelaxSub) {
     return (
       <View style={{ alignItems: 'center' }}>
+        <div className='row w100 main-head p0'>
+          <div className='col-md-9 p0'>
+            <h2>Relax</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
         {props.videoSource == "Stargaze" ?
           <Player
             playsInline
@@ -567,48 +558,35 @@ function RenderType(props) {
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
           </Player>
           : ("")}
-        {/* <Video
-          ref={(p) => {
-            this.videoStargaze = p
-          }}
-          source={{
-            uri:
-              'https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4',
-          }}
-          paused={true}
-          onEnd={() => {
-            props.onVideoEnd(this.videoStargaze, 'Stargaze')
-          }}
-          style={Style.videoPlayer}
-          controls={false}
-        /> */}
 
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBackOne()
-          }}
-        ></Button>
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+            <br />
+          </div>
+          <div className='col-md-12 p0'>
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("Stargaze") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Stargaze</li>
+            </ul>
 
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Relax</Text>
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Stargaze')
-          }}
-          title="Stargaze"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
+          </div>
+        </div>
       </View>
     )
   }
   if (props.onBuildFocus) {
     return (
       <View style={{ alignItems: 'center' }}>
+        <div className='row w100 main-head p0'>
+          <div className='col-md-9 p0'>
+            <h2>Build Focus</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
         {props.videoSource == "Unhooking from Thoughts" ?
           <Player
             playsInline
@@ -642,65 +620,38 @@ function RenderType(props) {
           </Player>
           : ("")}
 
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBackOne()
-          }}
-        ></Button>
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+            <br />
+          </div>
+          <div className='col-md-12 p0'>
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("Unhooking from Thoughts") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Unhooking from Thoughts</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Mountains") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Mountains</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Focus & Gratitude") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Focus & Gratitude</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Stargaze") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Stargaze</li>
+            </ul>
 
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Build Focus</Text>
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Unhooking from Thoughts')
-          }}
-          title="Unhooking from Thoughts"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Mountains')
-          }}
-          title="Mountains"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Focus & Gratitude')
-          }}
-          title="Focus & Gratitude"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Stargaze')
-          }}
-          title="Stargaze"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
+          </div>
+        </div>
+        
       </View>
     )
   }
   if (props.onDecreaseStress) {
     return (
       <View style={{ alignItems: 'center' }}>
+        <div className='row w100 main-head p0'>
+          <div className='col-md-9 p0'>
+            <h2>Decrease Stress</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
         {props.videoSource == "Nature" ?
           <Player
             playsInline
@@ -734,64 +685,38 @@ function RenderType(props) {
           </Player>
           : ("")}
 
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBackOne()
-          }}
-        ></Button>
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+            <br />
+          </div>
+          <div className='col-md-12 p0'>
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("Nature") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Nature</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Letting Go") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Letting Go</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Beach Meditation") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Beach Meditation</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Waterfall") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Waterfall</li>
+            </ul>
 
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Decrease Stress</Text>
+          </div>
+        </div>
 
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Nature')
-          }}
-          title="Nature"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Letting Go')
-          }}
-          title="Letting Go"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Beach Meditation')
-          }}
-          title="Beach Meditation"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Waterfall')
-          }}
-          title="Waterfall"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
       </View>
     )
   }
   if (props.onImproveSleep) {
     return (
       <View style={{ alignItems: 'center' }}>
+        <div className='row w100 main-head p0'>
+          <div className='col-md-9 p0'>
+            <h2>Improve Sleep</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
         {props.videoSource == "Rainy Day" ?
           <Player
             playsInline
@@ -809,43 +734,36 @@ function RenderType(props) {
           </Player>
           : ("")}
 
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBackOne()
-          }}
-        ></Button>
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+            <br />
+          </div>
+          <div className='col-md-12 p0'>
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("Rainy Day") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Rainy Day</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Stary Night") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Stary Night</li>
+            </ul>
 
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Improve Sleep</Text>
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Rainy Day')
-          }}
-          title="Rainy Day"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Stary Night')
-          }}
-          title="Stary Night"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
+          </div>
+        </div>
+        
       </View>
     )
   }
   if (props.onSoothingSounds) {
     return (
       <View style={{ alignItems: 'center' }}>
+        <div className='row w100 main-head p0'>
+          <div className='col-md-9 p0'>
+            <h2>Soothing Sounds</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+
+        </div>
         {props.videoSource == "Rainforest" ?
           <Player
             playsInline
@@ -871,47 +789,20 @@ function RenderType(props) {
           </Player>
           : ("")}
 
-        <Button
-          buttonStyle={Style.backButton}
-          title="Back"
-          onPress={() => {
-            props.clickBackOne()
-          }}
-        ></Button>
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+            <br />
+          </div>
+          <div className='col-md-12 p0'>
+            <ul class="list-group cursor-pointer video-list">
+              <li class="list-group-item" onClick={() => { props.videoSrc("Rainforest") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Rainforest</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Forest") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Forest</li>
+              <li class="list-group-item" onClick={() => { props.videoSrc("Nature") }}><i class="fa fa-video-camera" aria-hidden="true"></i> Nature</li>
+            </ul>
 
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Soothing Sounds</Text>
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Rainforest')
-          }}
-          title="Rainforest"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Forest')
-          }}
-          title="Forest"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc('Nature')
-          }}
-          title="Nature"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
+          </div>
+        </div>
+        
       </View>
     )
   } else {
@@ -1336,8 +1227,7 @@ class AnalyticsScreen extends React.Component {
   }
 
   onButtonPress(video, type) {
-    if (video != null) this._createVideo(type, this.state.date, 1)
-    video.presentFullscreenPlayer()
+    this.setState({ videosource: type })
   }
 
   onVideoEnd(video, type) {
