@@ -14987,3 +14987,19 @@ margin-top: -6px;
 .h371{
   height: 371px;
 }
+.p0{
+  padding: 0 !important;
+}
+.pt20{
+  margin-top:20px;
+}
+.w100 {
+  width: 100% !important;
+}
+.cursor-pointer li{
+  cursor: pointer !important;
+}
+.video-list li{
+  font-size: 19px;
+  color: #0d3345;
+}

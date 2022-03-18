@@ -49,38 +49,38 @@ function RenderType(props) {
     return (
       <View style={Style.mainContain}>
         <div>
-        <div className="row">
-          {mindArr.map((prop, key) => {
-            return (
-              <div className="col-md-2 mood-icon"
-              >
-                <TouchableOpacity
-                  onPress={() => {
-                    props.onModal(true, prop.name, prop.param3, prop.number)
-                  }}
+          <div className="row">
+            {mindArr.map((prop, key) => {
+              return (
+                <div className="col-md-2 mood-icon"
                 >
-                  <img
-                    src={"../../Assets/Images/Mindfulness/" + prop.img}
-                  />
-                </TouchableOpacity>
-                <span>{prop.name}</span>
-              </div>
-            )
-          })}
+                  <TouchableOpacity
+                    onPress={() => {
+                      props.onModal(true, prop.name, prop.param3, prop.number)
+                    }}
+                  >
+                    <img
+                      src={"../../Assets/Images/Mindfulness/" + prop.img}
+                    />
+                  </TouchableOpacity>
+                  <span>{prop.name}</span>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
       </View>
     )
   }
   if (props.onRelax) {
     return (
       <View style={Style.mainContain}>
-        
+
         <View style={Style.improveColumn}>
           {/* <Text h4 h4Style={Style.improveText}>
             Meditations
           </Text> */}
-{/* 
+          {/* 
           <Text h4 h4Style={Style.descText}>
             Choose a video below.
           </Text> */}
@@ -90,45 +90,45 @@ function RenderType(props) {
             Achieve Mindfulness{' '}
           </Text> */}
             <ul className="side-nav meditation">
-                <li className="active">
+              <li className="active">
                 <TouchableOpacity
                   onPress={() => {
                     props.clickReduceAnxiety()
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/reduceAnxiety.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Reduce Anxiety</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li>
-				<li>
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/reduceAnxiety.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Reduce Anxiety</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+              <li>
                 <TouchableOpacity
                   onPress={() => {
                     props.clickEnhanceCalm()
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/enhanceCalm.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Enhance Calm</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li>
-				<li>
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/enhanceCalm.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Enhance Calm</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+              <li>
 
                 <TouchableOpacity
                   onPress={() => {
@@ -136,95 +136,95 @@ function RenderType(props) {
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/relax.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Relax</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li>
-                <li>
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/relax.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Relax</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+              <li>
                 <TouchableOpacity
                   onPress={() => {
                     props.clickBuildFocus()
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/buildFocus.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Build Focus</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li> 
-				<li>
-				<TouchableOpacity
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/buildFocus.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Build Focus</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+              <li>
+                <TouchableOpacity
                   onPress={() => {
                     props.clickImproveSleep()
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/decreaseStress.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Improve Sleep</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li>
-				<li>
-				<TouchableOpacity
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/decreaseStress.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Improve Sleep</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+              <li>
+                <TouchableOpacity
                   onPress={() => {
                     props.clickSoothingSounds()
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/soothingSounds.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Soothing Sounds</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li>
-				<li>
-				<TouchableOpacity
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/soothingSounds.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Soothing Sounds</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+              <li>
+                <TouchableOpacity
                   onPress={() => {
                     props.clickDecreaseStress()
                     // props.onButtonPress(this.videoPlayer2, 'Beach Meditation')
                   }}
                 >
-                    <div className="float-left iconbox">
-                        <img
-                    src="../../Assets/Images/Meditation/decreaseStress.png"
-                  />
-                    </div>
-                    <div className="float-left navtext">
-                        <p>Decrease Stress</p>
-                        <p>This is for test</p>
-                    </div>
-                    <div className="clear"></div>
-                    </TouchableOpacity>
-                </li>
-				</ul>
+                  <div className="float-left iconbox">
+                    <img
+                      src="../../Assets/Images/Meditation/decreaseStress.png"
+                    />
+                  </div>
+                  <div className="float-left navtext">
+                    <p>Decrease Stress</p>
+                    <p>This is for test</p>
+                  </div>
+                  <div className="clear"></div>
+                </TouchableOpacity>
+              </li>
+            </ul>
             {/* <View style={Style.emojiRow}>
               <View style={Style.centerWithin}>
                 <Text style={Style.centerText}>Reduce Anxiety</Text>
@@ -421,86 +421,93 @@ function RenderType(props) {
   }
   if (props.onReduceAnxiety) {
     return (
-      
+
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="waterfall"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="lettinggo"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
-        </Player>
-        :("")}
-  <Button
+        <div className='row w100 main-head p0'>
+        <div className='col-md-9 p0'>
+          <h2>Reduce Anxiety</h2>
+          </div>
+          <div className='col-md-3 p0'>
+            <button class="btn btn-danger float-right" onClick={() => {
+              props.clickBackOne()
+            }}><i class="fa fa-arrow-left"></i> Back</button>
+          </div>
+          
+        </div>
+        {/* <Button
+            </div>
+        </div>
+        
           buttonStyle={Style.backButton}
           title="Back"
           onPress={() => {
             props.clickBackOne()
           }}
-        ></Button>
-        <Text style={{ fontSize: 30, marginTop: 20, marginBottom: 20 }}>Reduce Anxiety</Text>
+        ></Button> */}
+        {props.videoSource == "waterfall" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "lettinggo" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
+          </Player>
+          : ("")}
 
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            props.videoSrc("waterfall")
-          }}
-          title="Waterfall"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
+        
+        <div className='row w100 p0 pt20'>
+          <div className='col-md-12 p0'> <h3>Choose a video below to play</h3>
+          <br />
+          </div>
+          <div className='col-md-12 p0'>
+          <ul class="list-group cursor-pointer video-list">
+            <li class="list-group-item" onClick={() => {props.videoSrc("waterfall")}}><i class="fa fa-video-camera" aria-hidden="true"></i> Waterfall</li>
+            <li class="list-group-item" onClick={() => {props.videoSrc("lettinggo")}}><i class="fa fa-video-camera" aria-hidden="true"></i> Letting Go</li>
+          </ul>
+          
+          </div>
+        </div>
 
-        <Button
-          style={Style.height50}
-          onPress={() => {
-            // props.onButtonPress(this.videoPlayerLettingGo, 'Letting Go')
-            props.videoSrc("lettinggo")
-          }}
-          title="Letting Go"
-          type="solid"
-          titleStyle={Style.titleStyle}
-          buttonStyle={Style.buttonStyle}
-        />
+
+
       </View>
     )
   }
   if (props.onEnhanceCalm) {
     return (
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="fcalm"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/finding-calm.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="sunset"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+3.2.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="bmed"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
-        </Player>
-        :("")}
-       
+        {props.videoSource == "fcalm" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/finding-calm.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "sunset" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+3.2.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "bmed" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
+          </Player>
+          : ("")}
+
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -552,14 +559,14 @@ function RenderType(props) {
   if (props.onRelaxSub) {
     return (
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="Stargaze"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
-        </Player>
-        :("")}
+        {props.videoSource == "Stargaze" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
+          </Player>
+          : ("")}
         {/* <Video
           ref={(p) => {
             this.videoStargaze = p
@@ -602,39 +609,39 @@ function RenderType(props) {
   if (props.onBuildFocus) {
     return (
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="Unhooking from Thoughts"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Unhooking+from+Thoughts.+Focus.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Mountains"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+Meditation.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Focus & Gratitude"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+and+Gratitude+meditation.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Stargaze"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
-        </Player>
-        :("")}
-        
+        {props.videoSource == "Unhooking from Thoughts" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Unhooking+from+Thoughts.+Focus.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Mountains" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+Meditation.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Focus & Gratitude" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+and+Gratitude+meditation.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Stargaze" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
+          </Player>
+          : ("")}
+
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -694,39 +701,39 @@ function RenderType(props) {
   if (props.onDecreaseStress) {
     return (
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="Nature"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music+(1).mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Letting Go"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Beach Meditation"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Waterfall"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
-        </Player>
-        :("")}
-       
+        {props.videoSource == "Nature" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music+(1).mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Letting Go" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Beach Meditation" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Waterfall" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
+          </Player>
+          : ("")}
+
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -785,23 +792,23 @@ function RenderType(props) {
   if (props.onImproveSleep) {
     return (
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="Rainy Day"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Sleep+Meditation.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Stary Night"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+1.2.mp4" />
-        </Player>
-        :("")}
-        
+        {props.videoSource == "Rainy Day" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Sleep+Meditation.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Stary Night" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+1.2.mp4" />
+          </Player>
+          : ("")}
+
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -839,31 +846,31 @@ function RenderType(props) {
   if (props.onSoothingSounds) {
     return (
       <View style={{ alignItems: 'center' }}>
-        {props.videoSource=="Rainforest"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Forest"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music3.mp4" />
-        </Player>
-        :("")}
-        {props.videoSource=="Nature"?
-        <Player
-         playsInline
-         poster="../../Assets/Images/poster.png"
-        >
-          <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Mountain.mp4" />
-        </Player>
-        :("")}
-        
+        {props.videoSource == "Rainforest" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Forest" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music3.mp4" />
+          </Player>
+          : ("")}
+        {props.videoSource == "Nature" ?
+          <Player
+            playsInline
+            poster="../../Assets/Images/poster.png"
+          >
+            <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Mountain.mp4" />
+          </Player>
+          : ("")}
+
         <Button
           buttonStyle={Style.backButton}
           title="Back"
@@ -948,15 +955,15 @@ class AnalyticsScreen extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log("ana",props);
+    console.log("ana", props);
     const today = new Date()
     this.state = {}
     this.state = {
       onImprove: this.props.mindfullShow,
-      onImproveModal:false,
+      onImproveModal: false,
       onRelax: this.props.meditationShow,
       onReduceAnxiety: false,
-      videosource:"",
+      videosource: "",
       onEnhanceCalm: false,
       onRelaxSub: false,
       onBuildFocus: false,
@@ -1014,68 +1021,68 @@ class AnalyticsScreen extends React.Component {
   render() {
     const { date } = this.state
     return (
-      
+
       <SafeAreaView style={Style.container}>
         {this.props.userIsLoading ? (
           <ActivityIndicator size="large" color="#9086A6" />
         ) : (
           <Fragment>
             <Fragment>
-            <div className={"modal fade " + (this.state.onImproveModal ? "show" : "")}
-              onRequestClose={() => {
-                // Alert.alert('Modal has been closed.')
-              }}
-              role="dialog">
-              <div className="modal-dialog  modal-dialog-centered" role="document">
-                <div className="modal-content">
-                  <div className="modal-body">
-                    <View style={Style.centerFlex}>
-                    <View>
-                      <Text h4 h4Style={Style.modalText}>
-                        {' '}
-                        {this.state.localMood}{' '}
-                      </Text>
+              <div className={"modal fade " + (this.state.onImproveModal ? "show" : "")}
+                onRequestClose={() => {
+                  // Alert.alert('Modal has been closed.')
+                }}
+                role="dialog">
+                <div className="modal-dialog  modal-dialog-centered" role="document">
+                  <div className="modal-content">
+                    <div className="modal-body">
+                      <View style={Style.centerFlex}>
+                        <View>
+                          <Text h4 h4Style={Style.modalText}>
+                            {' '}
+                            {this.state.localMood}{' '}
+                          </Text>
 
-                      <View style={Style.centerMargin}>
-                        <Image
-                          style={Style.bigActivity}
-                          source={Mindfulness.image[this.state.localEmoji]}
-                        />
+                          <View style={Style.centerMargin}>
+                            <Image
+                              style={Style.bigActivity}
+                              source={Mindfulness.image[this.state.localEmoji]}
+                            />
+                          </View>
+                          <View style={Style.confirmButton}>
+                            <Button
+                              style={Style.height50}
+                              onPress={() => {
+                                this.confirmLogic(),
+                                  this.props.data.showAnaHideAddScreen(false);
+                              }}
+                              title="Confirm"
+                              type="solid"
+                              titleStyle={Style.titleStyle}
+                              buttonStyle={Style.buttonStyle}
+                            />
+                            <Button
+                              style={Style.height50}
+                              onPress={() => {
+                                this.setModalVisible(
+                                  !this.state.modalVisible,
+                                  '',
+                                  'grinning',
+                                  this.state.moodScore
+                                )
+                              }}
+                              title="Cancel"
+                              type="solid"
+                              titleStyle={Style.titleStyle}
+                              buttonStyle={Style.cancelStyle}
+                            />
+                          </View>
+                        </View>
                       </View>
-                      <View style={Style.confirmButton}>
-                        <Button
-                          style={Style.height50}
-                          onPress={() => {
-                            this.confirmLogic(),
-                            this.props.data.showAnaHideAddScreen(false);
-                          }}
-                          title="Confirm"
-                          type="solid"
-                          titleStyle={Style.titleStyle}
-                          buttonStyle={Style.buttonStyle}
-                        />
-                        <Button
-                          style={Style.height50}
-                          onPress={() => {
-                            this.setModalVisible(
-                              !this.state.modalVisible,
-                              '',
-                              'grinning',
-                              this.state.moodScore
-                            )
-                          }}
-                          title="Cancel"
-                          type="solid"
-                          titleStyle={Style.titleStyle}
-                          buttonStyle={Style.cancelStyle}
-                        />
-                      </View>
-                    </View>
-                  </View>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
               <View>
                 <Modal
                   animationType="slide"
@@ -1126,11 +1133,11 @@ class AnalyticsScreen extends React.Component {
                   </View>
                 </Modal>
               </View>
-              {this.props.mindfullShow?
-              <Text h4 h4Style={Style.headerText}>
-                Mindfulness{' '}
-              </Text>
-              :("")}
+              {this.props.mindfullShow ?
+                <Text h4 h4Style={Style.headerText}>
+                  Mindfulness{' '}
+                </Text>
+                : ("")}
             </Fragment>
             {/* <Fragment>
               <View style={Style.circles}>
@@ -1227,8 +1234,8 @@ class AnalyticsScreen extends React.Component {
   updateDuration = (duration) => {
     this.setState({ duration: duration })
   }
-  videoSrc(url){
-    this.setState({videosource:url});
+  videoSrc(url) {
+    this.setState({ videosource: url });
   }
 
   changeSelectedDay(day) {
@@ -1361,21 +1368,21 @@ class AnalyticsScreen extends React.Component {
   }
 
   confirmLogic() {
-    
+
     if (this.state.onRelax) {
       this.setDurationModalVisible(true)
     }
     if (this.state.onImprove) {
       this.setState({ clockModalVisible: false }, () => {
         this.setModalVisible(false, this.state.localMood, 'grinning', this.state.moodScore)
-        
+
       })
       this.onConfirm()
     }
   }
 
   onConfirm() {
-    console.log("mind",this.state.localMood, this.state.date, this.state.moodScore);
+    console.log("mind", this.state.localMood, this.state.date, this.state.moodScore);
     this._createMindfulness(this.state.localMood, this.state.date, this.state.moodScore)
     // this.setClockModalVisible(!this.state.clockModalVisible, '', 'grinning', this.state.moodScore)
   }
