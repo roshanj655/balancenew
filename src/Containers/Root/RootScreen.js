@@ -73,6 +73,7 @@ class RootScreen extends Component {
         <div className="main-panel">
           <div className='row'>
             <div className='col-md-8 middle-center'>
+              
               {(!this.state.changeScreen)?
               <Meditaion />
               :
