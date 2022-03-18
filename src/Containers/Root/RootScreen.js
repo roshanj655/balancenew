@@ -43,6 +43,7 @@ class RootScreen extends Component {
 
   componentDidMount() {
      // Run the startup saga when the application is starting
+     console.log("rootscreen",this.props.balanceScores);
     this.props.startup()
     // Add your logic for the transition
     this.props.loginUser({
@@ -66,14 +67,14 @@ class RootScreen extends Component {
       {this.state.show && 
       <div>
       <div className="container-scroller">
-      <Header />
+      <Header balanceScore={this.props.balanceScores[0]}/>
 {/* <MainScreen />  */}
       <div className="container-fluid page-body-wrapper">
         <Sidebar  navdata={{showHideScreen:this.showHideScreen.bind(this)}} />
         <div className="main-panel">
           <div className='row'>
             <div className='col-md-8 middle-center'>
-              
+
               {(!this.state.changeScreen)?
               <Meditaion />
               :
@@ -110,9 +111,13 @@ class RootScreen extends Component {
 RootScreen.propTypes = {
   startup: PropTypes.func,
   login: PropTypes.func,
+  fetchBalanceScores: PropTypes.func,
+  balanceScores: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+  balanceScores: state.example.balanceScores,
+})
 
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup()),

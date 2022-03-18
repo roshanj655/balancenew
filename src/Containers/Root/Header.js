@@ -1,4 +1,4 @@
-function Header() {
+function Header(props) {
     return (
 <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div className="dark-bg text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -13,7 +13,7 @@ function Header() {
                 </div>
                 <div className="nav-profile-text score-text">
                   <p className="mb-1 text-black">Your Balance Score</p>
-                  <h4>76</h4>
+                  <h4>{props.balanceScore.score}</h4>
                 </div>
               </a>
             </li>
