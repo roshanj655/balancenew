@@ -1,6 +1,6 @@
 
-function Slept() {
-    
+function Slept(props) {
+    var sleeptime=props.sleep.hours.split('.');
     return (
         <div className="slept">
             <h4>You Slept</h4>
@@ -45,7 +45,7 @@ function Slept() {
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
-                    <h2 className="flex-item">7hr 30min</h2>
+                    <h2 className="flex-item">{sleeptime[0]}hr {sleeptime[1]||0}min</h2>
                     <p className="add btn">+  Add Sleep</p>
                 </div>
                 {/* <div className="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">

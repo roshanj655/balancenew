@@ -13,7 +13,7 @@ function Header(props) {
                 </div>
                 <div className="nav-profile-text score-text">
                   <p className="mb-1 text-black">Your Balance Score</p>
-                  <h4>{props.balanceScore.score}</h4>
+                  <h4>{props.balanceScore?props.balanceScore.score:0}</h4>
                 </div>
               </a>
             </li>
