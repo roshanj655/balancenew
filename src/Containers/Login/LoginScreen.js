@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from 'react-native-elements'
 import { View, ActivityIndicator, Image, KeyboardAvoidingView, Text, Linking } from 'react-native'
-import { Button} from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import AsyncStorage from '@callstack/async-storage';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
@@ -48,7 +48,7 @@ const handlePress = (href) => {
 }
 
 const Anchor = (props) => (
-  <Text {...props} style={{color: '#1559b7'}} onPress={() => handlePress(props.href)}>
+  <Text {...props} style={{ color: '#1559b7' }} onPress={() => handlePress(props.href)}>
     {props.children}
   </Text>
 )
@@ -132,51 +132,93 @@ class LoginScreen extends React.Component {
     }
   }
 
-  onChangeEmail(text) {
-    this.email = text
+  onChangeEmail = (text) => {
+    this.setState({ email: text.target.value })
   }
 
-  onChangePassword(text) {
-    this.password = text
+  onChangePassword = (text) => {
+    this.setState({ password: text.target.value });
   }
 
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <KeyboardAvoidingView style={Style.container} behavior="padding" enabled>
-          {/* {this.props.isFetching ? (
-            <ActivityIndicator size="large" style={Style.lightHighlight} />
-          ) :  */}
-          
-            <View style={Style.margin30}>
-              <View style={Style.logoContainer}>
-                <Image style={Style.logo} source={Images.balance} resizeMode={'contain'} />
-              </View>
-              <View>
-              <Button variant="primary">Primary</Button>{' '}
-                <Button
-                   //buttonStyle={Button.Style.WHITE}
-                   //buttonType={Button.Type.SIGN_IN}
-                  // style={Style.appleButton}
-                  onPress={() => this.onPress()}
-                />
-              </View>
-            </View>
-          
-          <View style={Style.legalSection}> 
-            <View style={Style.link}>
-              <Anchor href="https://www.websitepolicies.com/policies/view/x8zoKEp2"> 
-                Privacy Policy 
-              </Anchor> 
-            </View> 
-            <View style={Style.link}> 
-              <Anchor href="https://findingbalance.io/tos.html"> 
-                Terms and Conditions 
-              </Anchor> 
-            </View> 
-          </View>
-        </KeyboardAvoidingView>
-      </ThemeProvider>
+      <section className="vh-100">
+        <div className="container py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-10">
+              <div className="card shadow-2-strong">
+                <div className="card-body p-5 text-center">
+
+                  <h3 className="mb-5">Sign in</h3>
+
+                  <div className="form-outline mb-4">
+                    <input type="email" placeholder='Username' id="typeEmailX-2" onChange={this.onChangeEmail} className="form-control form-control-lg" />
+                  </div>
+
+                  <div className="form-outline mb-4">
+                    <input type="password" placeholder='Password' id="typePasswordX-2" onChange={this.onChangePassword} className="form-control form-control-lg" />
+                  </div>
+
+                  <div className="form-check d-flex justify-content-start mb-4">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="form1Example3"
+                    />
+                    <label className="form-check-label" for="form1Example3"> Remember password </label>
+                  </div>
+
+                  <button className="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+                  <hr className="my-4" />
+
+                  <button className="btn btn-lg btn-block btn-primary w70" type="submit"><i className="fa fa-google me-2"></i> Sign in with google</button>
+                  <button className="btn btn-lg btn-block btn-primary mb-2 w70 pt20" type="submit"><i className="fa fa-facebook-f me-2"></i>Sign in with facebook</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      //   <ThemeProvider theme={theme}>
+      //     <KeyboardAvoidingView style={Style.container} behavior="padding" enabled>
+      //       {/* {this.props.isFetching ? (
+      //         <ActivityIndicator size="large" style={Style.lightHighlight} />
+      //       ) :  */}
+
+      //         <View style={Style.margin30}>
+      //           <View style={Style.logoContainer}>
+      //             <Image style={Style.logo} source={Images.balance} resizeMode={'contain'} />
+      //           </View>
+      //           <View>
+      //           <Button variant="primary">Primary</Button>{' '}
+      //             <Button
+      //                //buttonStyle={Button.Style.WHITE}
+      //                //buttonType={Button.Type.SIGN_IN}
+      //               // style={Style.appleButton}
+      //               onPress={() => this.onPress()}
+      //             />
+      //           </View>
+      //         </View>
+
+      //       <View style={Style.legalSection}> 
+      //         <View style={Style.link}>
+      //           <Anchor href="https://www.websitepolicies.com/policies/view/x8zoKEp2"> 
+      //             Privacy Policy 
+      //           </Anchor> 
+      //         </View> 
+      //         <View style={Style.link}> 
+      //           <Anchor href="https://findingbalance.io/tos.html"> 
+      //             Terms and Conditions 
+      //           </Anchor> 
+      //         </View> 
+      //       </View>
+      //     </KeyboardAvoidingView>
+      //   </ThemeProvider>
     )
   }
 

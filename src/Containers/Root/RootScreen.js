@@ -78,7 +78,8 @@ class RootScreen extends Component {
               {(!this.state.changeScreen)?
               <Meditaion />
               :
-              <Dashboard />
+              <LoginScreen  />
+              // <Dashboard />
             }
               {/* <AnalyticsScreen /> */}
               {/* <BrowserRouter>

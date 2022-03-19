@@ -14996,6 +14996,9 @@ margin-top: -6px;
 .w100 {
   width: 100% !important;
 }
+.w70{
+  width: 70% !important;
+}
 .cursor-pointer li{
   cursor: pointer !important;
 }
