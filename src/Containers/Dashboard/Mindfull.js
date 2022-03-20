@@ -31,7 +31,7 @@ function Mindfull(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours >= 0 && hours < 3) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type=='Pet Time'?"playwithanimals": item.type) + ".png"} alt="image" /></div>
         }
         // }
     })
@@ -40,7 +40,7 @@ function Mindfull(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours > 3 && hours < 10) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type=='Pet Time'?"playwithanimals": item.type) + ".png"} alt="image" /></div>
         }
     })
     let minds3 = mindsArray.map((item, index) => {
@@ -48,7 +48,7 @@ function Mindfull(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours > 10 && hours < 12) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type=='Pet Time'?"playwithanimals": item.type) + ".png"} alt="image" /></div>
         }
     })
     let minds4 = mindArray.map((item, index) => {
@@ -56,7 +56,7 @@ function Mindfull(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours > 12 && hours < 23) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type=='Pet Time'?"playwithanimals": item.type) + ".png"} alt="image" /></div>
         }
     })
     const [tabmind, settabmind] = useState("mindDay");
