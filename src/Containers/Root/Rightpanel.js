@@ -7,7 +7,7 @@ import {
     Modal,
     Image,
 } from 'react-native-web'
-import { RadialBarChart, RadialBar } from 'recharts';
+import { RadialBarChart, RadialBar,Legend } from 'recharts';
 function Rightpanel() {
     // const data = {
     //     labels: ["Swim", "Bike", "Run"], // optional
@@ -15,98 +15,84 @@ function Rightpanel() {
     //   };
     let data = [];
     // const myTimeout = setTimeout(function () {
-        let journal=[];
-        let activity=JSON.parse(localStorage.getItem("activities"))??[];
-        let moods=JSON.parse(localStorage.getItem("moods"))??[];
-        activity.map((item, index) => {
-            item['title']="Activity";
-            item['description']="You play "+item.type+ " for "+item.duration+" min"
-            journal.push(item);
-        });
-        moods.map((item, index) => {
-            item['title']="Mood";
-            item['description']="You felt "+item.type
-            journal.push(item);
-        });
-        let journalArray=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
-        journal.map((item, index)=>{
-            let dateTime=new Date(item.day);
-            item['time']=dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-            journalArray[dateTime.getDate()].push(item);
-        });
-        console.log("journal",journalArray);
-        let journals = journalArray.map((item, index) => {
-            if(item.length){
-            return(
+    let journal = [];
+    let activity = JSON.parse(localStorage.getItem("activities")) ?? [];
+    let moods = JSON.parse(localStorage.getItem("moods")) ?? [];
+    activity.map((item, index) => {
+        item['title'] = "Activity";
+        item['description'] = "You play " + item.type + " for " + item.duration + " min"
+        journal.push(item);
+    });
+    moods.map((item, index) => {
+        item['title'] = "Mood";
+        item['description'] = "You felt " + item.type
+        journal.push(item);
+    });
+    let journalArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+    journal.map((item, index) => {
+        let dateTime = new Date(item.day);
+        item['time'] = dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        journalArray[dateTime.getDate()].push(item);
+    });
+    console.log("journal", journalArray);
+    let journals = journalArray.map((item, index) => {
+        if (item.length) {
+            return (
                 <div>
-            <div className="row journal">
-                    <div className="col-md-3">
-                        <div className="journal-date">{index}<br /> Sat</div>
+                    <div className="row journal">
+                        <div className="col-md-3">
+                            <div className="journal-date">{index}<br /> Sat</div>
+                        </div>
+                        <div className="col-md-9">
+                            <ul class="side-nav">
+                                {item.map((item1, index1) => {
+                                    return (
+                                        <li class="">
+                                            <div class="float-left iconbox">
+                                                <img src="assets/images/Activities/swimming.png" alt="image" />
+                                            </div>
+                                            <div class="float-left navtext">
+                                                <p>{item1.title} <span>{item1.time}</span></p>
+                                                <p>{item1.description}</p>
+                                            </div>
+                                            <div className="clear"></div>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
                     </div>
-                    <div className="col-md-9">
-                        <ul class="side-nav">
-                            {item.map((item1,index1)=>{
-                                return(
-                            <li class="">
-                                <div class="float-left iconbox">
-                                    <img src="assets/images/Activities/swimming.png" alt="image" />
-                                </div>
-                                <div class="float-left navtext">
-                                    <p>{item1.title} <span>{item1.time}</span></p>
-                                    <p>{item1.description}</p>
-                                </div>
-                                <div className="clear"></div>
-                            </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </div>
-                <hr/>
+                    <hr />
                 </div>
             )
-                        }
-        })
-        let cData = localStorage.getItem("chartData")!=null?JSON.parse(localStorage.getItem("chartData")):JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}');
-        let color = ["#ff6622", "#00bbb6", "#41b9f8"];
-        let graph = cData.data.map((item, index) => {
-            data.push({
-                name: "Activity",
-                x: item,
-                fill: color[index],
-            });
-        })
+        }
+    })
+    let cData = localStorage.getItem("chartData") != null ? JSON.parse(localStorage.getItem("chartData")) : JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}');
+    let color = ["#ff6622", "#00bbb6", "#41b9f8"];
+    let legend = ["Activity","Mood","Sleep"];
+    let graph = cData.data.map((item, index) => {
+        data.push({
+            name: legend[index],
+            x: item,
+            fill: color[index],
+        });
+    })
+    const style = {
+        lineHeight: '24px',
+        left:"10px",
+        width:'100%'
+    };
     // }, 1000);
-
-
-    //   const data = [
-    //     {
-    //       name: 'Swim',
-    //       x: 31.47,
-    //       fill: '#ff6622',
-    //     },
-    //     {
-    //       name: 'Bike',
-    //       x: 26.69,
-    //       fill: '#00bbb6',
-    //     },
-    //     {
-    //       name: 'Cycling',
-    //       x: 15.69,
-    //       fill: '#41b9f8',
-    //     },
-
-    //   ];  
+  
     return (
         <div className="row rightpanel-bottom">
             <div className="col-md-12">
-                <RadialBarChart width={500}
-                    height={500}
+                <RadialBarChart width={400}
+                    height={450}
                     data={data}
-                    innerRadius="20%"
-                    outerRadius="70%">
-                    <RadialBar minAngle={30}
-                        dataKey="x" clockWise />
+                    cx={200} cy={150} innerRadius={20} outerRadius={140} barSize={20}>
+                    <RadialBar  minAngle={30} label={{ position: 'insideStart', fill: '#fff' }} background clockWise dataKey="uv" />
+                    <Legend iconSize={10} width={120} height={140} layout="horizontal" verticalAlign="bottom" wrapperStyle={style} />
                 </RadialBarChart>
                 {/* <ProgressChart
                       data={data}
@@ -146,7 +132,7 @@ function Rightpanel() {
                     </div> */}
                 </div>
                 <div className='journal-scroll'>
-                {journals}
+                    {journals}
                 </div>
             </div>
         </div>
