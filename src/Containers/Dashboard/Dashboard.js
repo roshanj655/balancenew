@@ -305,7 +305,7 @@ console.log("MS Token");
                 <Felt moods={this.props.moods} selectedDate={this.state.newSelectedDate}/>
             </div>
             <div className='col-md-6'>
-                <Slept sleep={this.props.sleeps[this.props.sleeps.length-1]}/>
+                <Slept sleep={this.props.sleeps} selectedDate={this.state.newSelectedDate}/>
             </div>
             <div className='col-md-6 pr0'>
                 <Activity1  activity={this.props.activities} selectedDate={this.state.newSelectedDate}/>

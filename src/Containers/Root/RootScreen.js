@@ -27,8 +27,7 @@ import Header from './Header';
 import Rightpanel from './Rightpanel';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
-import logo from '../../../logo.svg';
-import '../../../App.css';
+// import '../../../App.css';
 import ExampleActions from '../../Stores/Example/Actions'
 import SubscriptionScreen from '../Subscription/SubscriptionScreen'
 import AddScreen from '../Add/AddScreen'
