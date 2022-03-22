@@ -1303,6 +1303,10 @@ async function saveItem(item, selectedValue) {
 function loginUser(action) {
   console.log("login 1 US");
   const payload = {
+    // email: action.user.email,
+    // password: action.user.password,
+    // firstName:action.user.firstName,
+    // strategy: 'local',
     email: "test@test.com",//action.user.email,
     password: "TEST123!",//action.user.password,
     firstName:"MARK TEST",//action.user.firstName,

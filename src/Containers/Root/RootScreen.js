@@ -19,6 +19,7 @@ import MainScreen from '../Main/MainScreen'
 import Meditaion from '../Meditation/Medition'
 import Dashboard from '../Dashboard/Dashboard'
 import ProfileScreen from '../Profile/ProfileScreen'
+import USerDetails from '../Profile/userDetails'
 import {BrowserRouter,Switch,Route,Redirect,BackButton,DeepLinking} from "react-native-web-router";
 // import Header from '../Header/Header'
 // import Sidebar from '../Header/Sidebar'
@@ -42,7 +43,6 @@ class RootScreen extends Component {
 
   componentDidMount() {
      // Run the startup saga when the application is starting
-     console.log("rootscreen",this.props.balanceScores);
     this.props.startup()
     // Add your logic for the transition
     this.props.loginUser({
@@ -73,11 +73,14 @@ class RootScreen extends Component {
         <div className="main-panel">
           <div className='row'>
             <div className='col-md-8 middle-center'>
-
-              {(!this.state.changeScreen)?
+              {(this.state.changeScreen=="med")?
               <Meditaion />
               :
+              (this.state.changeScreen=="profile")?
+              <ProfileScreen />
+              :
               <Dashboard />
+              
             }
               {/* <AnalyticsScreen /> */}
               {/* <BrowserRouter>

@@ -1,18 +1,21 @@
 import React, { Fragment } from 'react'
-import { Text, ListItem,
-  Button } from 'react-native-elements'
 import {
-  View, 
+  Text, ListItem,
+  Button
+} from 'react-native-elements'
+import {
+  View,
   ActivityIndicator,
   Modal,
   Alert,
   ScrollView,
-  Linking 
+  Linking
 } from 'react-native-web'
 import AsyncStorage from '@callstack/async-storage';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ExampleActions from '../../Stores/Example/Actions'
+import USerDetails from './userDetails';
 import Style from './ProfileScreenStyle'
 //import NavigationService from 'App/Services/NavigationService'
 //import { ScrollView } from 'react-native-gesture-handler'
@@ -47,7 +50,7 @@ const handlePress = (href) => {
 }
 
 const Anchor = (props) => (
-  <Text {...props} style={{color: '#1559b7'}} onPress={() => handlePress(props.href)}>
+  <Text {...props} style={{ color: '#1559b7' }} onPress={() => handlePress(props.href)}>
     {props.children}
   </Text>
 )
@@ -67,10 +70,99 @@ class ProfileScreen extends React.Component {
   }
 
   render() {
-    console.log("Profile Screen 1");
+    console.log("Profile Screen 1", this.props);
     return (
-      <View style={Style.container}>
-        {this.props.userIsLoading ? (
+      <View>
+        <ul class="nav nav-tabs nav-fill bg-white profile-tab" id="ex1" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              id="ex2-tab-1"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-1"
+              role="tab"
+              aria-controls="ex2-tabs-1"
+              aria-selected="true"
+            >Profile Information</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="ex2-tab-2"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-2"
+              role="tab"
+              aria-controls="ex2-tabs-2"
+              aria-selected="false"
+            >Password</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="ex2-tab-3"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-3"
+              role="tab"
+              aria-controls="ex2-tabs-3"
+              aria-selected="false"
+            >Payment Info</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="ex2-tab-4"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-4"
+              role="tab"
+              aria-controls="ex2-tabs-3"
+              aria-selected="false"
+            >Notifications</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="ex2-tab-4"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-4"
+              role="tab"
+              aria-controls="ex2-tabs-3"
+              aria-selected="false"
+            >Settings</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="ex2-content">
+          <div
+            class="tab-pane fade show active"
+            id="ex2-tabs-1"
+            role="tabpanel"
+            aria-labelledby="ex2-tab-1"
+          >
+            <USerDetails data={this.props.user} />
+          </div>
+          <div
+            class="tab-pane fade"
+            id="ex2-tabs-2"
+            role="tabpanel"
+            aria-labelledby="ex2-tab-2"
+          >
+            Tab 2 content
+          </div>
+          <div
+            class="tab-pane fade"
+            id="ex2-tabs-3"
+            role="tabpanel"
+            aria-labelledby="ex2-tab-3"
+          >
+            Tab 3 content
+          </div>
+        </div>
+        
+        {/* {this.props.userIsLoading ? (
           <ActivityIndicator size="large" color="#9086A6" />
         ) : (
           <Fragment>
@@ -85,9 +177,7 @@ class ProfileScreen extends React.Component {
               >
                 <View style={Style.modalHeader}>
                   <ScrollView style={Style.margin50}>
-                    {/* <Text h4 h4Style={Style.modalText}> */}
                     <Text style={Style.margin50}>Terms and conditions</Text>
-                    {/* </Text> */}
                     <Text style={Style.margin50}>
                       These terms and conditions (&quot;Terms&quot;, &quot;Agreement&quot;) are an
                       agreement between Balance (&quot;Balance&quot;, &quot;us&quot;, &quot;we&quot;
@@ -484,7 +574,7 @@ class ProfileScreen extends React.Component {
               </View>
             </View>
           </Fragment>
-        )}
+        )} */}
       </View>
     )
   }
@@ -515,7 +605,7 @@ class ProfileScreen extends React.Component {
     }
   }
 
- async logout() {
+  async logout() {
     // console.log('LOGOUT')
     try {
       await AsyncStorage.removeItem('id_token')
@@ -526,7 +616,7 @@ class ProfileScreen extends React.Component {
     }
   }
 
- navToTerms() {
+  navToTerms() {
     this.setState({ modalVisible: true })
   }
 

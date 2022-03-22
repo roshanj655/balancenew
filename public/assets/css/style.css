@@ -15006,3 +15006,24 @@ margin-top: -6px;
   font-size: 19px;
   color: #0d3345;
 }
+.upload-btn{
+  padding: 15px;
+  border: 1px solid #d2866d;
+  font-size: 16px;
+  color: #d2866d;
+  width: 100%;
+}
+.profile label{
+  margin: 10px 0;
+}
+.profile-tab li .active{
+  color: #d2866d !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #d2866d;
+  border-color: #d2866d !important;
+}
+.profile-tab li a{
+  color:#000 !important;
+}

@@ -50,13 +50,13 @@ export default class Sidebar extends Component {
       </div>
     </li>
     <li className="nav-item">
-      <a className="nav-link" onClick={()=>this.props.navdata.showHideScreen(false) } href="#">
+      <a className="nav-link" onClick={()=>this.props.navdata.showHideScreen("med") } href="#">
         <span className="menu-title">Medition</span>
         <i className="mdi mdi-format-list-bulleted menu-icon"></i>
       </a>
     </li>
     <li className="nav-item">
-      <a className="nav-link" href="pages/icons/mdi.html">
+      <a className="nav-link"  onClick={()=>this.props.navdata.showHideScreen("profile") } href="#">
         <span className="menu-title">Profile</span>
         <i className="mdi mdi-contacts menu-icon"></i>
       </a>

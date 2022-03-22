@@ -62,49 +62,49 @@ class LoginScreen extends React.Component {
   onPress = async () => {
     try {
       // make sign in request and return a response object containing authentication data
-      const appleAuthRequestResponse = await appleAuth.performRequest({
-        requestedOperation: AppleAuthRequestOperation.LOGIN,
-        requestedScopes: [AppleAuthRequestScope.EMAIL, AppleAuthRequestScope.FULL_NAME],
-      })
+      // const appleAuthRequestResponse = await appleAuth.performRequest({
+      //   requestedOperation: AppleAuthRequestOperation.LOGIN,
+      //   requestedScopes: [AppleAuthRequestScope.EMAIL, AppleAuthRequestScope.FULL_NAME],
+      // })
 
       // retrieve identityToken from sign in request
-      const {
-        user: newUser,
-        // eslint-disable-next-line no-unused-vars
-        email,
-        // eslint-disable-next-line no-unused-vars
-        fullName,
-        // eslint-disable-next-line no-unused-vars
-        nonce,
-        identityToken,
-        // eslint-disable-next-line no-unused-vars
-        realUserStatus /* etc */,
-      } = appleAuthRequestResponse
+      // const {
+      //   user: newUser,
+      //   // eslint-disable-next-line no-unused-vars
+      //   email,
+      //   // eslint-disable-next-line no-unused-vars
+      //   fullName,
+      //   // eslint-disable-next-line no-unused-vars
+      //   nonce,
+      //   identityToken,
+      //   // eslint-disable-next-line no-unused-vars
+      //   realUserStatus /* etc */,
+      // } = appleAuthRequestResponse
 
-      user = newUser
+      // user = newUser
 
       // you may also want to send the device's ID to your server to link a device with the account
       // const deviceId = getUniqueId()
 
       // identityToken generated
-      if (identityToken) {
+      // if (identityToken) {
         this.props.loginUser({
-          email: email,
-          password: newUser,
-          firstName: fullName.givenName,
+          email: this.state.email,
+          password: this.state.password,
+          firstName: "MARK TEST",
         })
-      } else {
-        // no token, failed sign in
-        console.log('NO TOKEN, FAILED')
-      }
+      // } else {
+      //   // no token, failed sign in
+      //   console.log('NO TOKEN, FAILED')
+      // }
     } catch (error) {
-      if (error.code === AppleAuthError.CANCELED) {
-        // user cancelled Apple Sign-in
-        console.log('USER CANCELED', error)
-      } else {
+      // if (error.code === AppleAuthError.CANCELED) {
+      //   // user cancelled Apple Sign-in
+      //   console.log('USER CANCELED', error)
+      // } else {
         // other unknown error
         console.log('OTHER ERROR there', error)
-      }
+      // }
     }
   }
 
@@ -166,10 +166,10 @@ class LoginScreen extends React.Component {
                       value=""
                       id="form1Example3"
                     />
-                    <label className="form-check-label" for="form1Example3"> Remember password </label>
+                    {/* <label className="form-check-label" for="form1Example3"> Remember password </label> */}
                   </div>
 
-                  <button className="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                  <button className="btn btn-primary btn-lg btn-block" onClick={this.onPress} type="submit">Login</button>
 
                   <hr className="my-4" />
 
