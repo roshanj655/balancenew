@@ -86,7 +86,7 @@ class ProfileScreen extends React.Component {
             >Profile Information</a
             >
           </li>
-          <li class="nav-item" role="presentation">
+          {/* <li class="nav-item" role="presentation">
             <a
               class="nav-link"
               id="ex2-tab-2"
@@ -133,7 +133,7 @@ class ProfileScreen extends React.Component {
               aria-selected="false"
             >Settings</a
             >
-          </li>
+          </li> */}
         </ul>
         <div class="tab-content" id="ex2-content">
           <div
