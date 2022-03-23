@@ -4,9 +4,13 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 function Activity(props) {
     let activitiesArray = [];
+    useEffect(() => {
+        updateActivityArray("month");
+        setActivity("activityMonth");
+      }, []);
     const [activityArray, setActivityArray] = useState([]);
     const updateActivityArray = (check) => {
         var date = new Date(props.selectedDate);

@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 function Felt(props) {
     let moodsArray = [];
+    useEffect(() => {
+        updateMoodArray("month");
+        settabMood("moodMonth");
+      }, []);
     const [moodArray, setMoodArray] = useState([]);
     const updateMoodArray = (check) => {
         var date = new Date(props.selectedDate);

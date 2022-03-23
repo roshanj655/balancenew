@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 function Slept(props) {
     var sleepTimeVar=0;
+    useEffect(() => {
+        updatesleptArray("month");
+        settabslept("sleptMonth");
+      }, []);
     const [sleptArray, setsleptArray] = useState([]);
     const [sleeptime, sleeptimes] = useState(0);
     const updatesleptArray = (check) => {

@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 function Mindfull(props) {
     let mindsArray = [];
+    useEffect(() => {
+        updatemindArray("month");
+        settabmind("mindMonth");
+      }, []);
     const [mindArray, setMindArray] = useState([]);
     const updatemindArray = (check) => {
         var date = new Date(props.selectedDate);
