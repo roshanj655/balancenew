@@ -60,6 +60,7 @@ class Dashboard extends React.Component {
       isNew: false,
       isTrue: true,
       selectedDay: pullToday,
+      wish:"Good Morning",
       newSelectedDate:new Date(),
       selectedIndex: 0,
       date: null,
@@ -173,7 +174,21 @@ console.log("MS Token");
    localStorage.setItem('chartData',JSON.stringify(this.props.data));
    localStorage.setItem('moods',JSON.stringify(this.props.moods));
    localStorage.setItem('activities',JSON.stringify(this.props.activities));
-    console.log("ahfghgfgfhgfh",this.props)
+    this.setWish();
+  }
+
+  setWish(){
+    var day = new Date();
+        var hr = day.getHours();
+        if (hr >= 0 && hr < 12) {
+            this.setState({wish:"Good Morning"});
+        } else if (hr == 12) {
+          this.setState({wish:"Good Noon"});
+        } else if (hr >= 12 && hr <= 17) {
+          this.setState({wish:"Good Afternoon"});
+        } else {
+          this.setState({wish:"Good Evening"});
+        }
   }
 
   async logout() {
@@ -216,7 +231,6 @@ console.log("MS Token");
   }
 
   pullNewDay1(day) {
-    console.log("pullllllllllllllllllll")
     const formatDay = new Date()
     this._fetchAll(formatDay)
     console.log("pulll" + this.props.activities)
@@ -273,7 +287,7 @@ console.log("MS Token");
     return (
         <div className="row">
             <div className='col-md-12'>
-                <h2 className='wish-title'>Good Morning, {this.props.user.firstName}</h2>
+                <h2 className='wish-title'>{this.state.wish}, {this.props.user.firstName}</h2>
                 <p className='wish-sub-title'>You have <span class="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p>
             </div>
             <div className='col-md-12 cal'>

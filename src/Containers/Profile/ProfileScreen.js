@@ -65,15 +65,16 @@ class ProfileScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Profile Screen 100");
     this._fetchUser()
   }
 
   render() {
-    console.log("Profile Screen 1", this.props);
     return (
       <View>
-        <ul class="nav nav-tabs nav-fill bg-white profile-tab" id="ex1" role="tablist">
+        <div class="col-md-12">
+          <h2 class="wish-title">Profile</h2>
+          <p class="wish-sub-title">Edit profile name, password and other personal info</p></div>
+        <ul class="nav nav-tabs nav-fill bg-white profile-tab ml14" id="ex1" role="tablist">
           <li class="nav-item" role="presentation">
             <a
               class="nav-link active"
@@ -135,7 +136,7 @@ class ProfileScreen extends React.Component {
             >
           </li> */}
         </ul>
-        <div class="tab-content" id="ex2-content">
+        <div class="tab-content ml15" id="ex2-content">
           <div
             class="tab-pane fade show active"
             id="ex2-tabs-1"
