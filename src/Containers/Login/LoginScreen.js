@@ -126,11 +126,11 @@ class LoginScreen extends React.Component {
 
   checkForToken(token) {
     if (this.state.isLoaded && this.state.hasToken) {
-      this.props.loginUser({
-        email: token,
-        password: token,
-        firstName: 'null',
-      })
+      // this.props.loginUser({
+      //   email: token,
+      //   password: token,
+      //   firstName: 'null',
+      // })
       this.props.login.loginDone();
     } else {
       // no token, failed sign in

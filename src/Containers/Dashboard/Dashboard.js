@@ -120,9 +120,9 @@ class Dashboard extends React.Component {
   }
   onRegistered = (deviceToken) => {
 console.log("MS Token");
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU1NTY0OTYsImV4cCI6MTY0NTY0Mjg5NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiNDc4MDdkMTEtZmQ5NC00MDIyLWJmN2UtMGM1MjFiZDFkZTQ3In0.rxzyn-T7zPFpq3LzyYc0HNS4eowZLMPtFWRFpsNSYAw"
+    // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU1NTY0OTYsImV4cCI6MTY0NTY0Mjg5NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiNDc4MDdkMTEtZmQ5NC00MDIyLWJmN2UtMGM1MjFiZDFkZTQ3In0.rxzyn-T7zPFpq3LzyYc0HNS4eowZLMPtFWRFpsNSYAw"
 
-    this.props.updateToken(token)
+    // this.props.updateToken(token)
 
     // Alert.alert('Registered For Remote Push', `Device Token: ${deviceToken}`, [
     //   {
