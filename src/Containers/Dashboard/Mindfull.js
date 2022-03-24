@@ -4,7 +4,7 @@ function Mindfull(props) {
     useEffect(() => {
         updatemindArray("month");
         settabmind("mindMonth");
-      }, []);
+      }, [props.selectedDate]);
     const [mindArray, setMindArray] = useState([]);
     const updatemindArray = (check) => {
         var date = new Date(props.selectedDate);

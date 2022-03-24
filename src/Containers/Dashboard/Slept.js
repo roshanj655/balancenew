@@ -4,7 +4,7 @@ function Slept(props) {
     useEffect(() => {
         updatesleptArray("month");
         settabslept("sleptMonth");
-      }, []);
+      }, [props.selectedDate]);
     const [sleptArray, setsleptArray] = useState([]);
     const [sleeptime, sleeptimes] = useState(0);
     const updatesleptArray = (check) => {

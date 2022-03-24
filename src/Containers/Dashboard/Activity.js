@@ -10,7 +10,7 @@ function Activity(props) {
     useEffect(() => {
         updateActivityArray("month");
         setActivity("activityMonth");
-      }, []);
+      }, [props.selectedDate]);
     const [activityArray, setActivityArray] = useState([]);
     const updateActivityArray = (check) => {
         var date = new Date(props.selectedDate);

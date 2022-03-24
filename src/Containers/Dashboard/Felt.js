@@ -4,7 +4,7 @@ function Felt(props) {
     useEffect(() => {
         updateMoodArray("month");
         settabMood("moodMonth");
-      }, []);
+      }, [props.selectedDate]);
     const [moodArray, setMoodArray] = useState([]);
     const updateMoodArray = (check) => {
         var date = new Date(props.selectedDate);
