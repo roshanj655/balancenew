@@ -54,7 +54,9 @@ const Anchor = (props) => (
 )
 
 class LoginScreen extends React.Component {
+  
   constructor(props) {
+    console.log(props);
     super(props)
     this.state = { email: '', password: '', hasToken: false, isLoaded: false }
   }
@@ -93,6 +95,9 @@ class LoginScreen extends React.Component {
           password: this.state.password,
           firstName: "MARK TEST",
         })
+        setTimeout(() => {
+          this.props.login.loginDone();
+        }, 3000)
       // } else {
       //   // no token, failed sign in
       //   console.log('NO TOKEN, FAILED')
@@ -126,6 +131,7 @@ class LoginScreen extends React.Component {
         password: token,
         firstName: 'null',
       })
+      this.props.login.loginDone();
     } else {
       // no token, failed sign in
       console.log('NO TOKEN, FAILED')
@@ -159,15 +165,15 @@ class LoginScreen extends React.Component {
                     <input type="password" placeholder='Password' id="typePasswordX-2" onChange={this.onChangePassword} className="form-control form-control-lg" />
                   </div>
 
-                  <div className="form-check d-flex justify-content-start mb-4">
+                  {/* <div className="form-check d-flex justify-content-start mb-4">
                     <input
                       className="form-check-input"
                       type="checkbox"
                       value=""
                       id="form1Example3"
                     />
-                    {/* <label className="form-check-label" for="form1Example3"> Remember password </label> */}
-                  </div>
+                    <label className="form-check-label" for="form1Example3"> Remember password </label>
+                  </div> */}
 
                   <button className="btn btn-primary btn-lg btn-block" onClick={this.onPress} type="submit">Login</button>
 
