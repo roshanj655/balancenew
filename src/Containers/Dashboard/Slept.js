@@ -14,7 +14,7 @@ function Slept(props) {
         var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
         // var weekBeforeDay = week.getDate();
         // var monthBeforeDay = month.getDate();
-        props.sleep.forEach((element, index) => {
+        props.sleep.map((element, index) => {
             let day = new Date(element.day).getTime();
             let currentDate = date.getTime();
             if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {

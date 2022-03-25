@@ -19,7 +19,7 @@ function Activity(props) {
         var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
         // var weekBeforeDay = week.getDate();
         // var monthBeforeDay = month.getDate();
-        props.activity.forEach((element, index) => {
+        props.activity.map((element, index) => {
             let day = new Date(element.day).getTime();
             let currentDate = date.getTime();
             if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
@@ -39,7 +39,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>=0 && hours<3){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     let activity2 = activityArray.map((item, index) => {
@@ -47,7 +47,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>3 && hours<10){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     let activity3 = activityArray.map((item, index) => {
@@ -55,7 +55,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>10 && hours<12){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     let activity4 = activityArray.map((item, index) => {
@@ -63,7 +63,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>12 && hours<23){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type)+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     const [tabActivity, setActivity] = useState("activityDay");

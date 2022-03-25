@@ -8,6 +8,7 @@
     "@babel/runtime": "^7.17.2",
     "@callstack/async-storage": "^2.0.3",
     "@cantonjs/react-scroll-view": "^0.4.2",
+    "@magicbell/magicbell-react": "^9.1.0",
     "@react-native-community/datetimepicker": "^5.1.0",
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/core": "^6.1.1",
@@ -75,10 +76,10 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "web": "webpack serve --mode=development --config webpack.config.js"
+    "web": "webpack serve -d source-map --mode development --config \"./web/webpack.config.js\" --inline --color --hot",
+    "build:web": "webpack --mode production --config \"./webpack.config.js\" --hot"
   },
   "eslintConfig": {
     "extends": [

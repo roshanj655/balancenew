@@ -171,9 +171,10 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
+    console.log("kdsgfhjgdfhjsgdfjhsdg",Object.keys(this.props.moods).length);
    localStorage.setItem('chartData',JSON.stringify(this.props.data));
-   localStorage.setItem('moods',JSON.stringify(this.props.moods));
-   localStorage.setItem('activities',JSON.stringify(this.props.activities));
+   localStorage.setItem('moods',Object.keys(this.props.moods).length != 0?JSON.stringify(this.props.moods):"[]");
+   localStorage.setItem('activities',Object.keys(this.props.activities).length != 0?JSON.stringify(this.props.activities):"[]");
     this.setWish();
   }
 
