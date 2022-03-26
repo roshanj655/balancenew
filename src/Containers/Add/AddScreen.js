@@ -784,6 +784,7 @@ class AddScreen extends React.Component {
                         <li  className={this.state.onMood?"active":""}>
 
                           <TouchableOpacity
+                          style={Style.displayInline}
                             onPress={() =>
                               this.setState({
                                 improve:false,
@@ -807,6 +808,7 @@ class AddScreen extends React.Component {
                         </li>
                         <li  className={this.state.onSleep?"active":""}>
                         <TouchableOpacity
+                        style={Style.displayInline}
                             onPress={() =>
                               this.setState({
                                 improve:false,
@@ -828,6 +830,7 @@ class AddScreen extends React.Component {
                         </li>
                         <li className={this.state.onActivity?"active":""}>
                         <TouchableOpacity
+                        style={Style.displayInline}
                             onPress={() =>
                               this.setState({
                                 improve:false,
@@ -849,6 +852,7 @@ class AddScreen extends React.Component {
                         </li>
                         <li>
                         <TouchableOpacity
+                        style={Style.displayInline}
                             onPress={() =>
                               this.setState({
                                 improve:true,

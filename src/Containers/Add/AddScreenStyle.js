@@ -66,6 +66,9 @@ export default StyleSheet.create({
     padding: 30,
     width: 100,
   },
+  displayInline:{
+    display:'inline'
+  },
   circlesInactive: {
     alignItems: 'center',
     backgroundColor: Colors.$background,
@@ -177,7 +180,7 @@ export default StyleSheet.create({
     width: '100%',
   },
   modalHeader: {
-    backgroundColor: Colors.$lightGrey,
+    backgroundColor:'#ffffff',
     flex: 1,
     justifyContent: 'center',
     marginTop: 0,

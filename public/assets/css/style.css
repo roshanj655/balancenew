@@ -15043,3 +15043,6 @@ margin-top: -6px;
     margin-bottom: 23px;
     margin-top: -4px;
 }
+.modal-body > div{
+  background: #ffffff !important;
+}
