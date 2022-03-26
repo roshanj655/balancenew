@@ -31,12 +31,12 @@ export default class Sidebar extends Component {
             </TouchableOpacity>
 
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="nav-link" href="index.html">
               <span className="menu-title">Home</span>
               <i className="mdi mdi-home menu-icon"></i>
             </a>
-          </li>
+          </li> */}
           <li className="nav-item">
             <a className="nav-link" onClick={() => this.props.navdata.showHideScreen(true)} data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
               <span className="menu-title">Dashboard</span>

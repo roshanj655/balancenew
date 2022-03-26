@@ -87,7 +87,7 @@ class ProfileScreen extends React.Component {
             >Profile Information</a
             >
           </li>
-          {/* <li className="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
               className="nav-link"
               id="ex2-tab-2"
@@ -96,10 +96,10 @@ class ProfileScreen extends React.Component {
               role="tab"
               aria-controls="ex2-tabs-2"
               aria-selected="false"
-            >Password</a
+            ></a
             >
           </li>
-          <li className="nav-item" role="presentation">
+           <li className="nav-item" role="presentation">
             <a
               className="nav-link"
               id="ex2-tab-3"
@@ -108,7 +108,7 @@ class ProfileScreen extends React.Component {
               role="tab"
               aria-controls="ex2-tabs-3"
               aria-selected="false"
-            >Payment Info</a
+            ></a
             >
           </li>
           <li className="nav-item" role="presentation">
@@ -120,7 +120,7 @@ class ProfileScreen extends React.Component {
               role="tab"
               aria-controls="ex2-tabs-3"
               aria-selected="false"
-            >Notifications</a
+            ></a
             >
           </li>
           <li className="nav-item" role="presentation">
@@ -132,9 +132,9 @@ class ProfileScreen extends React.Component {
               role="tab"
               aria-controls="ex2-tabs-3"
               aria-selected="false"
-            >Settings</a
+            ></a
             >
-          </li> */}
+          </li>
         </ul>
         <div className="tab-content ml15" id="ex2-content">
           <div

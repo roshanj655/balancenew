@@ -15065,3 +15065,6 @@ margin-top: -6px;
 .react-datetime-picker__inputGroup{
   display: -webkit-inline-box !important;
 }
+.react-datetime-picker__inputGroup__amPm{
+  width:100px;
+}
