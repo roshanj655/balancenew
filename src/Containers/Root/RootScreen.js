@@ -35,7 +35,9 @@ import AddScreen from '../Add/AddScreen'
 import StartUp from '../StartUp/StartUp'
 
 class RootScreen extends Component {
-
+  constructor(props) {
+    super(props)
+  }
   state = {
     show: false,
     changeScreen: "login"
@@ -70,7 +72,7 @@ class RootScreen extends Component {
           <div>
             <div className="container-scroller">
             {(this.state.changeScreen != "login")?
-              <Header balanceScore={this.props.balanceScores[0]} />
+              <Header balanceScore={this.props.balanceScores[0]} userName={this.props.user.firstName} />
               :""}
               {/* <MainScreen />  */}
               <div className={(this.state.changeScreen != "login")?"container-fluid page-body-wrapper":""}>
@@ -121,16 +123,20 @@ RootScreen.propTypes = {
   startup: PropTypes.func,
   login: PropTypes.func,
   fetchBalanceScores: PropTypes.func,
+  user: PropTypes.object,
+  fetchUser: PropTypes.func,
   balanceScores: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 }
 
 const mapStateToProps = (state) => ({
   balanceScores: state.example.balanceScores,
+  user: state.example.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup()),
   loginUser: (user) => dispatch(ExampleActions.loginUser(user)),
+  fetchUser: () => dispatch(ExampleActions.fetchUser()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootScreen)

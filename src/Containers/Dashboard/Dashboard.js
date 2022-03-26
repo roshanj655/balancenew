@@ -50,7 +50,6 @@ import Mindful from '../Analytics/mindfulness-imgs/index'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-   console.log("dash prop",props);
   
     const today = new Date()
     var pullToday = {}
