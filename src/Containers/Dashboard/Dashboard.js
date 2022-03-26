@@ -324,6 +324,12 @@ console.log("MS Token");
             </div>
         </div>
               }
+
+          { !this.state.show &&
+             <div class="container-progress">
+             <div class="Loading"></div>
+           </div>
+           }   
       </>
     )
 }
