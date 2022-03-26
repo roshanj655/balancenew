@@ -6,26 +6,26 @@ function USerDetails(props) {
             <div className="row">
                 <div className="col-md-8 bg-white">
                     <div className="col-md-12">
-                        <label className="labels">Full Name</label><input type="text" className="form-control" placeholder="first name" value={props.data.firstName} />
+                        <label className="labels">Full Name</label><input type="text" className="form-control border-bottom" value={props.data.firstName} />
                     </div>
                     <div className="row mt-2 p0">
-                        <div className="col-md-6"><label className="labels">Weight</label><input type="text" className="form-control" placeholder="first name" value="" /></div>
-                        <div className="col-md-6"><label className="labels">Height</label><input type="text" className="form-control" value="" placeholder="surname" /></div>
+                        <div className="col-md-6"><label className="labels">Weight</label><input type="text" className="form-control border-bottom" value="" /></div>
+                        <div className="col-md-6"><label className="labels">Height</label><input type="text" className="form-control border-bottom" value=""  /></div>
                     </div>
                     <div className="col-md-12">
-                        <label className="labels">Birthday</label><input type="text" className="form-control" placeholder="Birthday" value={dob.getDay() + "-" + dob.getMonth() + "-" + dob.getFullYear()} />
+                        <label className="labels">Birthday</label><input type="text" className="form-control border-bottom" value={dob.getDay() + "-" + dob.getMonth() + "-" + dob.getFullYear()} />
                     </div>
                     <div className="col-md-12">
-                        <label className="labels">Location</label><input type="text" className="form-control" placeholder="first name" value="" />
+                        <label className="labels">Location</label><input type="text" className="form-control border-bottom" value="" />
                     </div>
                     <div className="col-md-12">
-                        <label className="labels">ZIP Code</label><input type="text" className="form-control" placeholder="first name" value="" />
+                        <label className="labels">ZIP Code</label><input type="text" className="form-control border-bottom" value="" />
                     </div>
                     <div className="col-md-12">
-                        <label className="labels">Bio</label><input type="text" className="form-control" placeholder="first name" value="" />
+                        <label className="labels">Bio</label><input type="text" className="form-control border-bottom" value="" />
                     </div>
                     <div className="col-md-12">
-                        <label className="labels">Phone number</label><input type="text" className="form-control" placeholder="first name" value="" />
+                        <label className="labels">Phone number</label><input type="text" className="form-control border-bottom" value="" />
                     </div>
                 </div>
                 <div className="col-md-4">

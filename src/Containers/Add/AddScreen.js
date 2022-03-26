@@ -799,7 +799,7 @@ class AddScreen extends React.Component {
                             </div>
                             <div className="float-left navtext">
                               <p>Mood</p>
-                              <p>This is for test</p>
+                              <p>Add how you feel now</p>
                             </div>
                             <div className="clear"></div>
                           </TouchableOpacity>
@@ -850,7 +850,7 @@ class AddScreen extends React.Component {
                             <div className="clear"></div>
                           </TouchableOpacity>
                         </li>
-                        <li>
+                        <li className={this.state.improve?"active":""}>
                         <TouchableOpacity
                         style={Style.displayInline}
                             onPress={() =>

@@ -151,7 +151,7 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   journalHeader: {
-    backgroundColor: Colors.$lightGrey,
+    backgroundColor: "#ffffff",
     flex: 1,
     // justifyContent: 'center',
     paddingTop: 100,
