@@ -87,6 +87,7 @@ function RenderType(props) {
     { "img": "soccer.png", "name": "Soccer", "param3": "soccer" }
 
   ];
+  const url="http://zavius.in/balance/assets/images/";
   if (props.onMood) {
     return (
       <div>
@@ -101,7 +102,7 @@ function RenderType(props) {
                   }}
                 >
                   <img
-                    src={"../../Assets/Images/Moods/" + prop.img}
+                    src={url+"Moods/" + prop.img}
                   />
                 </TouchableOpacity>
                 <span>{prop.name}</span>
@@ -128,7 +129,7 @@ function RenderType(props) {
                   }}
                 >
                   <img
-                    src={"../../Assets/Images/Activities/" + prop.img}
+                    src={url+"Activities/" + prop.img}
                   />
                 </TouchableOpacity>
                 <span>{prop.name}</span>
@@ -204,9 +205,8 @@ function RenderType(props) {
                         You Slept {sleep.hours} Hours Last Night {props.editSleep}
                       </Text>
                       <View style={Style.sleepImgHolder}>
-                        <Image
-                          style={Style.sleepImage}
-                          source={require('../../Assets/Images/sleep.png')}
+                        <img
+                          src='http://zavius.in/balance/assets/images/sleep.png'
                         />
                       </View>
                       <Button
@@ -794,7 +794,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='../../Assets/Images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Mood</p>
@@ -817,7 +817,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='../../Assets/Images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Sleep</p>
@@ -838,7 +838,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='../../Assets/Images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Activity</p>
@@ -859,7 +859,7 @@ class AddScreen extends React.Component {
                             }
                           >
                           <div className="float-left iconbox">
-                            <img src='../../Assets/Images/Moods/loved.png' />
+                            <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                           </div>
                           <div className="float-left navtext">
                             <p>Mindfulness</p>

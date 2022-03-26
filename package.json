@@ -78,7 +78,7 @@
     "start": "react-app-rewired start",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "web": "webpack serve -d source-map --mode development --config \"./web/webpack.config.js\" --inline --color --hot",
+    "web": "webpack serve --mode=development --config webpack.config.js",
     "build:web": "webpack --mode production --config \"./webpack.config.js\" --hot"
   },
   "eslintConfig": {

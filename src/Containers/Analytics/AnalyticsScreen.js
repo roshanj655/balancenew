@@ -41,7 +41,7 @@ function RenderType(props) {
     { "img": "stargaze.png", "name": "Stargaze", "param3": "stargaze", "number": 5 },
 
   ];
-
+  const url="http://zavius.in/balance/assets/images/";
   const activitySize = 70
   const meditationSize = 90
 
@@ -60,7 +60,7 @@ function RenderType(props) {
                     }}
                   >
                     <img
-                      src={"../../Assets/Images/Mindfulness/" + prop.img}
+                      src={url+"Mindfulness/" + prop.img}
                     />
                   </TouchableOpacity>
                   <span>{prop.name}</span>
@@ -99,7 +99,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/reduceAnxiety.png"
+                      src={url+"Meditation/reduceAnxiety.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -118,7 +118,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/enhanceCalm.png"
+                      src={url+"Meditation/enhanceCalm.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -138,7 +138,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/relax.png"
+                      src={url+"Meditation/relax.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -157,7 +157,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/buildFocus.png"
+                      src={url+"Meditation/buildFocus.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -176,7 +176,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/decreaseStress.png"
+                      src={url+"Meditation/decreaseStress.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -195,7 +195,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/soothingSounds.png"
+                      src={url+"Meditation/soothingSounds.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -214,7 +214,7 @@ function RenderType(props) {
                 >
                   <div className="float-left iconbox">
                     <img
-                      src="../../Assets/Images/Meditation/decreaseStress.png"
+                      src={url+"Meditation/decreaseStress.png"}
                     />
                   </div>
                   <div className="float-left navtext">
@@ -447,7 +447,7 @@ function RenderType(props) {
         {props.videoSource == "waterfall" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
           </Player>
@@ -455,7 +455,7 @@ function RenderType(props) {
         {props.videoSource == "lettinggo" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
           </Player>
@@ -497,7 +497,7 @@ function RenderType(props) {
         {props.videoSource == "fcalm" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/finding-calm.mp4" />
           </Player>
@@ -505,7 +505,7 @@ function RenderType(props) {
         {props.videoSource == "sunset" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+3.2.mp4" />
           </Player>
@@ -513,7 +513,7 @@ function RenderType(props) {
         {props.videoSource == "bmed" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
           </Player>
@@ -553,7 +553,7 @@ function RenderType(props) {
         {props.videoSource == "Stargaze" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
           </Player>
@@ -590,7 +590,7 @@ function RenderType(props) {
         {props.videoSource == "Unhooking from Thoughts" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Unhooking+from+Thoughts.+Focus.mp4" />
           </Player>
@@ -598,7 +598,7 @@ function RenderType(props) {
         {props.videoSource == "Mountains" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+Meditation.mp4" />
           </Player>
@@ -606,7 +606,7 @@ function RenderType(props) {
         {props.videoSource == "Focus & Gratitude" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Focus+and+Gratitude+meditation.mp4" />
           </Player>
@@ -614,7 +614,7 @@ function RenderType(props) {
         {props.videoSource == "Stargaze" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+2.2.mp4" />
           </Player>
@@ -655,7 +655,7 @@ function RenderType(props) {
         {props.videoSource == "Nature" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music+(1).mp4" />
           </Player>
@@ -663,7 +663,7 @@ function RenderType(props) {
         {props.videoSource == "Letting Go" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Letting+Go.+Mindfulness+to+reduce+Stress+and+Anxiety.mp4" />
           </Player>
@@ -671,7 +671,7 @@ function RenderType(props) {
         {props.videoSource == "Beach Meditation" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/beach-meditation.mp4" />
           </Player>
@@ -679,7 +679,7 @@ function RenderType(props) {
         {props.videoSource == "Waterfall" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Anxiety+Meditation.mp4" />
           </Player>
@@ -720,7 +720,7 @@ function RenderType(props) {
         {props.videoSource == "Rainy Day" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Sleep+Meditation.mp4" />
           </Player>
@@ -728,7 +728,7 @@ function RenderType(props) {
         {props.videoSource == "Stary Night" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Erincarrjordan.Script+1.2.mp4" />
           </Player>
@@ -767,7 +767,7 @@ function RenderType(props) {
         {props.videoSource == "Rainforest" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music.mp4" />
           </Player>
@@ -775,7 +775,7 @@ function RenderType(props) {
         {props.videoSource == "Forest" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Peaceful+music+for+stress+relief%2C+Calm+music%2C+soothing+relaxation%2C+Dream+music.+Nature+sounds+music3.mp4" />
           </Player>
@@ -783,7 +783,7 @@ function RenderType(props) {
         {props.videoSource == "Nature" ?
           <Player
             playsInline
-            poster="../../Assets/Images/poster.png"
+            poster={url+"poster.png"}
           >
             <source src="https://meditation-videos-naufel.s3.us-west-2.amazonaws.com/Mountain.mp4" />
           </Player>

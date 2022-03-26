@@ -15033,3 +15033,7 @@ margin-top: -6px;
 .ml15{
   margin-left: 15px;
 }
+
+.side-nav li div:first-child{
+  display: inline !important;
+}

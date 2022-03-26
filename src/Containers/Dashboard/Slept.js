@@ -12,8 +12,7 @@ function Slept(props) {
         var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
         var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
         var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
-        // var weekBeforeDay = week.getDate();
-        // var monthBeforeDay = month.getDate();
+
         props.sleep.map((element, index) => {
             let day = new Date(element.day).getTime();
             let currentDate = date.getTime();
@@ -96,7 +95,7 @@ function Slept(props) {
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
                     <h2 className="flex-item">{sleepsTime[0]}hr {sleepsTime[1]||0}min</h2>
-                    <p className="add btn">+  Add Sleep</p>
+                    {/* <p className="add btn">+  Add Sleep</p> */}
                 </div>
                 {/* <div className="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                     7hr 

@@ -50,7 +50,8 @@ import Mindful from '../Analytics/mindfulness-imgs/index'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-   
+   console.log("dash prop",props);
+  
     const today = new Date()
     var pullToday = {}
     var todaysDate = this.formatDate()
@@ -75,18 +76,12 @@ class Dashboard extends React.Component {
     }
     this.updateIndex = this.updateIndex.bind(this)
     
-    // PushNotificationIOS.addEventListener('register', this.onRegistered)
-    // PushNotificationIOS.addEventListener('registrationError', this.onRegistrationError)
-    // PushNotificationIOS.addEventListener('notification', this.onRemoteNotification)
-
-    // PushNotificationIOS.requestPermissions().then(
-    //   (data) => {
-    //     console.log('PushNotificationIOS.requestPermissions', data)
-    //   },
-    //   (data) => {
-    //     console.log('PushNotificationIOS.requestPermissions failed', data)
-    //   }
-    // )
+    setTimeout(() => {
+      this.setState({ show: true })
+      localStorage.setItem('chartData',JSON.stringify(this.props.data));
+      localStorage.setItem('moods',Object.keys(this.props.moods).length != 0?JSON.stringify(this.props.moods):"[]");
+      localStorage.setItem('activities',Object.keys(this.props.activities).length != 0?JSON.stringify(this.props.activities):"[]");
+    }, 500)
   }
 
   updateIndex(selectedIndex) {
@@ -118,6 +113,7 @@ class Dashboard extends React.Component {
       date,
     })
   }
+  
   onRegistered = (deviceToken) => {
 console.log("MS Token");
     // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU1NTY0OTYsImV4cCI6MTY0NTY0Mjg5NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiNDc4MDdkMTEtZmQ5NC00MDIyLWJmN2UtMGM1MjFiZDFkZTQ3In0.rxzyn-T7zPFpq3LzyYc0HNS4eowZLMPtFWRFpsNSYAw"
@@ -171,10 +167,7 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
-    console.log("kdsgfhjgdfhjsgdfjhsdg",Object.keys(this.props.moods).length);
-   localStorage.setItem('chartData',JSON.stringify(this.props.data));
-   localStorage.setItem('moods',Object.keys(this.props.moods).length != 0?JSON.stringify(this.props.moods):"[]");
-   localStorage.setItem('activities',Object.keys(this.props.activities).length != 0?JSON.stringify(this.props.activities):"[]");
+   
     this.setWish();
   }
 
@@ -286,6 +279,8 @@ console.log("MS Token");
     const { selectedIndex } = this.state
     
     return (
+    <>
+      { this.state.show &&
         <div className="row">
             <div className='col-md-12'>
                 <h2 className='wish-title'>{this.state.wish}, {this.props.user.firstName}</h2>
@@ -329,6 +324,8 @@ console.log("MS Token");
                 <Mindfull mindfulness={this.props.mindfullness} selectedDate={this.state.newSelectedDate}/>
             </div>
         </div>
+              }
+      </>
     )
 }
 
