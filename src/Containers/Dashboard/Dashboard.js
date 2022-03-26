@@ -80,7 +80,7 @@ class Dashboard extends React.Component {
       localStorage.setItem('chartData',JSON.stringify(this.props.data));
       localStorage.setItem('moods',Object.keys(this.props.moods).length != 0?JSON.stringify(this.props.moods):"[]");
       localStorage.setItem('activities',Object.keys(this.props.activities).length != 0?JSON.stringify(this.props.activities):"[]");
-    }, 500)
+    }, 1000)
   }
 
   updateIndex(selectedIndex) {

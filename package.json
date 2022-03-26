@@ -77,6 +77,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "test": "react-app-rewired test",
+    "build": "react-app-rewired build",
     "eject": "react-app-rewired eject",
     "web": "webpack serve --mode=development --config webpack.config.js",
     "build:web": "webpack --mode production --config \"./webpack.config.js\" --hot"

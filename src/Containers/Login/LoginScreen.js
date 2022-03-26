@@ -151,10 +151,11 @@ class LoginScreen extends React.Component {
       <section className="vh-100">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-10">
+            <div className="col-6">
+            
               <div className="card shadow-2-strong">
                 <div className="card-body p-5 text-center">
-
+                <img className="loginlogo" alt="" src="http://zavius.in/balance/assets/images/balanceTab.png" />
                   <h3 className="mb-5">Sign in</h3>
 
                   <div className="form-outline mb-4">
@@ -180,7 +181,6 @@ class LoginScreen extends React.Component {
                   <hr className="my-4" />
 
                   <button className="btn btn-lg btn-block btn-primary w70" type="submit"><i className="fa fa-google me-2"></i> Sign in with google</button>
-                  <button className="btn btn-lg btn-block btn-primary mb-2 w70 pt20" type="submit"><i className="fa fa-facebook-f me-2"></i>Sign in with facebook</button>
 
                 </div>
               </div>

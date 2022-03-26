@@ -6,6 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 function Activity(props) {
+    const url = "http://zavius.in/balance/assets/images/";
     let activitiesArray = [];
     useEffect(() => {
         updateActivityArray("month");
@@ -39,7 +40,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>=0 && hours<3){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     let activity2 = activityArray.map((item, index) => {
@@ -47,7 +48,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>3 && hours<10){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     let activity3 = activityArray.map((item, index) => {
@@ -55,7 +56,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>10 && hours<12){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     let activity4 = activityArray.map((item, index) => {
@@ -63,7 +64,7 @@ function Activity(props) {
         let hours=new Date(item.createdAt).getHours();
         // if(day==6){
             if(hours>12 && hours<23){
-            return <div className=" activity-icon text-center"><img src={"assets/images/Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Activities/"+(item.type=='Goofy'?'silly':item.type.toLowerCase())+".png"} alt="image" /></div>
         }
     })
     const [tabActivity, setActivity] = useState("activityDay");

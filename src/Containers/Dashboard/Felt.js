@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 function Felt(props) {
+    const url = "http://zavius.in/balance/assets/images/";
     let moodsArray = [];
     useEffect(() => {
         updateMoodArray("month");
@@ -35,7 +36,7 @@ function Felt(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours >= 0 && hours < 3) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
         // }
     })
@@ -44,7 +45,7 @@ function Felt(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours > 3 && hours < 10) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
     })
     let moods3 = moodsArray.map((item, index) => {
@@ -52,7 +53,7 @@ function Felt(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours > 10 && hours < 12) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
     })
     let moods4 = moodArray.map((item, index) => {
@@ -60,7 +61,7 @@ function Felt(props) {
         let hours = new Date(item.day).getHours();
         // if(day==6){
         if (hours > 12 && hours < 23) {
-            return <div className=" activity-icon text-center"><img src={"assets/images/Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
     })
     const [tabMood, settabMood] = useState("moodDay");

@@ -15037,3 +15037,9 @@ margin-top: -6px;
 .side-nav li div:first-child{
   display: inline !important;
 }
+.loginlogo {
+    width: 25%;
+    margin-left: 0;
+    margin-bottom: 23px;
+    margin-top: -4px;
+}

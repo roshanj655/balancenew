@@ -71,13 +71,13 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <View>
-        <div class="col-md-12">
-          <h2 class="wish-title">Profile</h2>
-          <p class="wish-sub-title">Edit profile name, password and other personal info</p></div>
-        <ul class="nav nav-tabs nav-fill bg-white profile-tab ml14" id="ex1" role="tablist">
-          <li class="nav-item" role="presentation">
+        <div className="col-md-12">
+          <h2 className="wish-title">Profile</h2>
+          <p className="wish-sub-title">Edit profile name, password and other personal info</p></div>
+        <ul className="nav nav-tabs nav-fill bg-white profile-tab ml14" id="ex1" role="tablist">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link active"
+              className="nav-link active"
               id="ex2-tab-1"
               data-mdb-toggle="tab"
               href="#ex2-tabs-1"
@@ -87,9 +87,9 @@ class ProfileScreen extends React.Component {
             >Profile Information</a
             >
           </li>
-          {/* <li class="nav-item" role="presentation">
+          {/* <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex2-tab-2"
               data-mdb-toggle="tab"
               href="#ex2-tabs-2"
@@ -99,9 +99,9 @@ class ProfileScreen extends React.Component {
             >Password</a
             >
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex2-tab-3"
               data-mdb-toggle="tab"
               href="#ex2-tabs-3"
@@ -111,9 +111,9 @@ class ProfileScreen extends React.Component {
             >Payment Info</a
             >
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex2-tab-4"
               data-mdb-toggle="tab"
               href="#ex2-tabs-4"
@@ -123,9 +123,9 @@ class ProfileScreen extends React.Component {
             >Notifications</a
             >
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex2-tab-4"
               data-mdb-toggle="tab"
               href="#ex2-tabs-4"
@@ -136,9 +136,9 @@ class ProfileScreen extends React.Component {
             >
           </li> */}
         </ul>
-        <div class="tab-content ml15" id="ex2-content">
+        <div className="tab-content ml15" id="ex2-content">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="ex2-tabs-1"
             role="tabpanel"
             aria-labelledby="ex2-tab-1"
@@ -146,7 +146,7 @@ class ProfileScreen extends React.Component {
             <USerDetails data={this.props.user} />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex2-tabs-2"
             role="tabpanel"
             aria-labelledby="ex2-tab-2"
@@ -154,7 +154,7 @@ class ProfileScreen extends React.Component {
             Tab 2 content
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex2-tabs-3"
             role="tabpanel"
             aria-labelledby="ex2-tab-3"
