@@ -51,54 +51,14 @@ function Header(props) {
               <a className="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                 <MagicBell
                 apiKey="8476498a6627f7e5c15a2507cbb299e54a170abc"
-                userEmail="mark.naufel@faraya.org"
+                userEmail={props.user.email}
                 theme={theme}
                 locale="en"
               >
                 {(props) => <FloatingNotificationInbox width={400} height={500} {...props} />}
               </MagicBell>
               </a>
-              {/* <div className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <h6 className="p-3 mb-0">Notifications</h6>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-thumbnail">
-                    <div className="preview-icon bg-success">
-                      <i className="mdi mdi-calendar"></i>
-                    </div>
-                  </div>
-                  <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 className="preview-subject font-weight-normal mb-1">Event today</h6>
-                    <p className="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                  </div>
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-thumbnail">
-                    <div className="preview-icon bg-warning">
-                      <i className="mdi mdi-settings"></i>
-                    </div>
-                  </div>
-                  <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 className="preview-subject font-weight-normal mb-1">Settings</h6>
-                    <p className="text-gray ellipsis mb-0"> Update dashboard </p>
-                  </div>
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item preview-item">
-                  <div className="preview-thumbnail">
-                    <div className="preview-icon bg-info">
-                      <i className="mdi mdi-link-variant"></i>
-                    </div>
-                  </div>
-                  <div className="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 className="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                    <p className="text-gray ellipsis mb-0"> New admin wow! </p>
-                  </div>
-                </a>
-                <div className="dropdown-divider"></div>
-                <h6 className="p-3 mb-0 text-center">See all notifications</h6>
-              </div> */}
+              
             </li>
             <li className="nav-item nav-profile dropdown">
               <a className="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,7 +67,7 @@ function Header(props) {
                   <span className="availability-status online"></span>
                 </div>
                 <div className="nav-profile-text">
-                  <p className="mb-1 text-black">{props.userName}</p>
+                  <p className="mb-1 text-black">{props.user.firstName}</p>
                 </div>
               </a>
               <div className="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">

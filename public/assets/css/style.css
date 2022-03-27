@@ -14594,6 +14594,7 @@ margin-top: -3px;
 }
 .journal{
   color: #1b1d21;
+  width: 424PX;
 }
 .journal-date{
  background-color: #fbf3f0;
@@ -14607,14 +14608,11 @@ margin-top: -3px;
 .journal .col-md-9{
  padding-left: 0;
 }
-.journal .col-md-3{
- padding-right: 0;
-}
 .journal .side-nav li{
  background-color: #f4f5f7;
    margin: 8px auto;
    border-radius: 10px;
-   padding: 5px 9px !important;
+   padding: 7px 9px !important;
 }
 .journal-scroll{
   height: 754px;
@@ -14970,7 +14968,7 @@ margin-top: -6px;
 
 }
 .cal div{
-  background: #fff;
+  background-color: #fff;
   padding-bottom: 4px;
 }
 .cal{

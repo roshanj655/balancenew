@@ -72,7 +72,7 @@ class RootScreen extends Component {
           <div>
             <div className="container-scroller">
             {(this.state.changeScreen != "login")?
-              <Header balanceScore={this.props.balanceScores[0]} userName={this.props.user.firstName} />
+              <Header balanceScore={this.props.balanceScores[0]} user={this.props.user} />
               :""}
               {/* <MainScreen />  */}
               <div className={(this.state.changeScreen != "login")?"container-fluid page-body-wrapper":""}>

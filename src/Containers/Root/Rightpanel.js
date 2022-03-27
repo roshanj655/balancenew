@@ -86,11 +86,11 @@ function Rightpanel() {
         <div className="row rightpanel-bottom">
             <div className="col-md-12">
                 <RadialBarChart width={400}
-                    height={450}
+                    height={350}
                     data={data}
                     cx={200} cy={150} innerRadius={20} outerRadius={140} barSize={20}>
                     <RadialBar  minAngle={30} label={{ position: 'insideStart', fill: '#fff' }} background clockWise dataKey="x" />
-                    <Legend iconSize={10} width={120} height={140} layout="horizontal" verticalAlign="bottom" wrapperStyle={style} />
+                    <Legend iconSize={10} width={120} height={56} layout="horizontal" verticalAlign="bottom" wrapperStyle={style} />
                 </RadialBarChart>
                 {/* <ProgressChart
                       data={data}

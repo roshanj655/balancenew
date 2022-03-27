@@ -9,6 +9,7 @@ import ExampleActions from '../../Stores/Example/Actions'
 import Style from './LoginScreenStyle'
 import { Images, Colors } from '../../Theme'
 import AppleSignin from 'react-apple-signin-auth';
+import FlashMessage from 'react-native-flash-message';
 
 // import appleAuth, {
 //   AppleButton,
@@ -56,9 +57,9 @@ const Anchor = (props) => (
 class LoginScreen extends React.Component {
   
   constructor(props) {
-    console.log(props);
+
     super(props)
-    this.state = { email: '', password: '', hasToken: false, isLoaded: false }
+    this.state = { email: '', password: '', hasToken: false, isLoaded: false, error:false, Loading:false }
   }
 
   onPress = async () => {
@@ -90,6 +91,9 @@ class LoginScreen extends React.Component {
 
       // identityToken generated
       // if (identityToken) {
+        this.setState({error:false, Loading:true});
+        if(this.state.email!="" && this.state.password!=''){
+          
         this.props.loginUser({
           email: this.state.email,
           password: this.state.password,
@@ -97,7 +101,13 @@ class LoginScreen extends React.Component {
         })
         setTimeout(() => {
           this.props.login.loginDone();
+          this.setState({error:false, Loading:false});
         }, 3000)
+      }
+      else{
+        this.setState({error:true, Loading:false});
+      }
+       
       // } else {
       //   // no token, failed sign in
       //   console.log('NO TOKEN, FAILED')
@@ -156,6 +166,11 @@ class LoginScreen extends React.Component {
               <div className="card shadow-2-strong">
                 <div className="card-body p-5 text-center">
                 <img className="loginlogo" alt="" src="http://zavius.in/balance/assets/images/balanceTab.png" />
+                {this.state.error?
+                <div class="alert alert-danger" role="alert">
+                Please check the details
+              </div>
+              :""}
                   <h3 className="mb-5">Sign in</h3>
 
                   <div className="form-outline mb-4">
@@ -175,8 +190,12 @@ class LoginScreen extends React.Component {
                     />
                     <label className="form-check-label" for="form1Example3"> Remember password </label>
                   </div> */}
-
+                  {
+                    !this.state.Loading?
                   <button className="btn btn-primary btn-lg btn-block" onClick={this.onPress} type="submit">Login</button>
+                  :
+                  <button className="btn btn-primary btn-lg btn-block" type="button">Please Wait...</button>
+                }
 
                   <hr className="my-4" />
 
