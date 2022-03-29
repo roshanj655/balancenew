@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 function Felt(props) {
     const url = "http://zavius.in/balance/assets/images/";
+    props.moods.sort((a,b)=> (a.score < b.score ? 1 : -1));
     let moodsArray = [];
     useEffect(() => {
         updateMoodArray("month");
