@@ -4,6 +4,7 @@ import Activity1 from './Activity';
 import Felt from './Felt';
 import Mindfull from './Mindfull';
 import Style from '../Main/MainScreenStyle'
+import { userService } from '../../Services/UserService';
 import { Text, Button, Card, ButtonGroup } from 'react-native-elements'
 import {
   View,
@@ -50,7 +51,7 @@ import Mindful from '../Analytics/mindfulness-imgs/index'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-  
+    
     const today = new Date()
     var pullToday = {}
     var todaysDate = this.formatDate()
@@ -77,6 +78,7 @@ class Dashboard extends React.Component {
     
     setTimeout(() => {
       this.setState({ show: true })
+      console.log("dashboard",props)
       localStorage.setItem('chartData',JSON.stringify(this.props.data));
       localStorage.setItem('moods',Object.keys(this.props.moods).length != 0?JSON.stringify(this.props.moods):"[]");
       localStorage.setItem('activities',Object.keys(this.props.activities).length != 0?JSON.stringify(this.props.activities):"[]");
@@ -550,13 +552,14 @@ _fetchUser() {
   this.props.fetchUser()
 }
 _fetchMoods(moodDate) {
-  console.log(' fetchMood date', moodDate)
+  console.log(' fetchMood dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.props.fetchMoods(userService.fetchMoods(moodDate)))
+  
   this.props.fetchMoods(moodDate)
 }
 _mindfullness(moodDate) {
   
   this.props.fetchMindfullness(moodDate)
-  console.log(' fetchMood dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.props.fetchMindfullness(moodDate))
+  console.log(' fetchMood ', this.props.fetchMindfullness(moodDate))
 }
 _fetchAll(moodDate) {
   this.props.fetchAll(moodDate)
@@ -591,6 +594,7 @@ moods: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]
 sleeps: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 activities: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 sleep: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
+sleepData: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
 fetchOverall: PropTypes.func,
 fetchSleepScores: PropTypes.func,
 fetchUser: PropTypes.func,
@@ -617,6 +621,7 @@ moodScores: state.example.moodScores,
 sleepScores: state.example.sleepScores,
 activityScores: state.example.activityScores,
 isFetching: state.example.isFetching,
+sleepData: state.example.sleepData,
 // isOnboarded: state.example.isOnboarded,
 userErrorMessage: state.example.userErrorMessage,
 overall: state.example.overall,
