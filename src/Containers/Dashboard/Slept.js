@@ -112,6 +112,14 @@ function Slept(props) {
                 </li>
             </ul>
             <div className="tab-content  h371" id="ex1-content">
+            <div
+                    className="flexbox tab-pane fade show active"
+                    id="ex1-tabs-1"
+                    role="tabpanel"
+                    aria-labelledby="ex1-tab-1">
+                    <h2 className="flex-item">{sleepsTime[0]}hr {sleepsTime[1]||0}min</h2>
+                    {/* <p className="add btn">+  Add Sleep</p> */}
+                </div>
                 {tabslept=="sleptWeek" || tabslept=="sleptMonth"?
             <LineChart
       width={385}
@@ -137,14 +145,7 @@ function Slept(props) {
       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
     </LineChart>
     :""}
-                <div
-                    className="flexbox tab-pane fade show active"
-                    id="ex1-tabs-1"
-                    role="tabpanel"
-                    aria-labelledby="ex1-tab-1">
-                    <h2 className="flex-item">{sleepsTime[0]}hr {sleepsTime[1]||0}min</h2>
-                    {/* <p className="add btn">+  Add Sleep</p> */}
-                </div>
+                
                 
                 {/* <div className="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                     7hr 
