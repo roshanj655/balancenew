@@ -328,7 +328,7 @@ class AddScreen extends React.Component {
       sleep: '6',
       duration: '30',
       localEmoji: 'grinning',
-      date: today,
+      date: this.props.newDate,
       mode: 'time',
     }
     // eslint-disable-next-line no-undef

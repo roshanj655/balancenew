@@ -40,7 +40,8 @@ class RootScreen extends Component {
   }
   state = {
     show: false,
-    changeScreen: "login"
+    changeScreen: "login",
+    newDate:new Date()
   }
 
   componentDidMount() {
@@ -63,6 +64,9 @@ class RootScreen extends Component {
   showHideScreen(data) {
     this.setState({ changeScreen: data })
   }
+  updateDate(data){
+    this.setState({newDate:data});
+  }
   render() {
     // console.log("Hello");
 
@@ -77,7 +81,7 @@ class RootScreen extends Component {
               {/* <MainScreen />  */}
               <div className={(this.state.changeScreen != "login")?"container-fluid page-body-wrapper":""}>
                 {(this.state.changeScreen != "login") ?
-                  <Sidebar navdata={{ showHideScreen: this.showHideScreen.bind(this) }} />
+                  <Sidebar navdata={{ showHideScreen: this.showHideScreen.bind(this) }}  newDate={this.state.newDate} />
                   : ""
                 }
                 <div className={(this.state.changeScreen != "login")?"main-panel":""}>
@@ -92,7 +96,7 @@ class RootScreen extends Component {
                           : (this.state.changeScreen == "login") ?
                             <LoginScreen  login={{ loginDone: this.autheticated.bind(this) }} />
                             :
-                            <Dashboard />
+                            <Dashboard newDate={{ passUpdatedDate: this.updateDate.bind(this) }} />
 
                       }
                     

@@ -66,7 +66,7 @@ export default class Sidebar extends Component {
         </ul>
         {this.state.ShowAdd ? (
           <div>
-            <AddScreen data={{ showHideAddScreen: this.showHideAddScreen.bind(this) }} />
+            <AddScreen data={{ showHideAddScreen: this.showHideAddScreen.bind(this) }} newDate={this.props.newDate}/>
           </div>
         ) : ("")}
 

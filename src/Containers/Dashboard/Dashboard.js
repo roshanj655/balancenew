@@ -93,6 +93,7 @@ class Dashboard extends React.Component {
     this.setState({ selectedDay: day._d, newSelectedDate:day._d }, () => {
       // this._fetchSleeps(this.state.selectedDay)
       this.setTime(this.state.newSelectedDate)
+      this.props.newDate.passUpdatedDate(this.state.newSelectedDate);
     })
   }
 
