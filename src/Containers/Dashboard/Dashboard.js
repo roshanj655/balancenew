@@ -285,7 +285,7 @@ console.log("MS Token");
         <div className="row">
             <div className='col-md-12'>
                 <h2 className='wish-title'>{this.state.wish}, {this.props.user.firstName}</h2>
-                <p className='wish-sub-title'>You have <span class="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p>
+                {/* <p className='wish-sub-title'>You have <span class="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p> */}
             </div>
             <div className='col-md-12 cal'>
             <CalendarStrip
