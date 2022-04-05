@@ -4,8 +4,8 @@ function Felt(props) {
     props.moods.sort((a,b)=> (a.score < b.score ? 1 : -1));
     let moodsArray = [];
     useEffect(() => {
-        updateMoodArray("month");
-        settabMood("moodMonth");
+        updateMoodArray("day");
+        settabMood("moodDay");
       }, [props.selectedDate]);
     const [moodArray, setMoodArray] = useState([]);
     const updateMoodArray = (check) => {
@@ -127,8 +127,16 @@ function Felt(props) {
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
-
+                        {!moodArray.length ?
+                            <div
+                                className="alert alert-danger"
+                            >
+                                No data found for this date
+                                {/* <p className="add btn">+  Add Sleep</p> */}
+                            </div>
+                            : ""}
                     <div className="row h341">
+                    
                         <div className="col-md-3 activity-icon text-center">
                             {moods1}
                         </div>
@@ -145,13 +153,14 @@ function Felt(props) {
 
 
                     </div>
-
+                    {moodArray.length ?
                     <div className="row">
                         <div className="col-md-3 text-center time-slider-text">2:25 am</div>
                         <div className="col-md-3 text-center time-slider-text">10:00 am</div>
                         <div className="col-md-3 text-center time-slider-text">12:00 am</div>
                         <div className="col-md-3 text-center time-slider-text">2:00 pm</div>
                     </div>
+                    :""}
                 </div>
 
             </div>

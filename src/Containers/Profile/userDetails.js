@@ -31,8 +31,8 @@ function USerDetails(props) {
                 <div className="col-md-4">
                     <div className="row">
                         <div className="col-md-12 border-right">
-                            <div className="d-flex flex-column align-items-center text-center p-3"><img className="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU" /></div>
-                            <button className="btn upload-btn">Upload New Picture</button>
+                            <div className="d-flex flex-column align-items-center text-center p-3 profile-img"><img className="" src="https://statinfer.com/wp-content/uploads/dummy-user.png" /></div>
+                            {/* <button className="btn upload-btn">Upload New Picture</button> */}
                         </div>
                     </div>
                 </div>

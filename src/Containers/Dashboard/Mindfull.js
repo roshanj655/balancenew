@@ -3,8 +3,8 @@ function Mindfull(props) {
     const url = "http://zavius.in/balance/assets/images/";
     let mindsArray = [];
     useEffect(() => {
-        updatemindArray("month");
-        settabmind("mindMonth");
+        updatemindArray("day");
+        settabmind("mindDay");
       }, [props.selectedDate]);
     const [mindArray, setMindArray] = useState([]);
     const updatemindArray = (check) => {
@@ -126,8 +126,16 @@ function Mindfull(props) {
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
-
+                        {!mindArray.length ?
+                            <div
+                                className="alert alert-danger"
+                            >
+                                No data found for this date
+                                {/* <p className="add btn">+  Add Sleep</p> */}
+                            </div>
+                            : ""}
                     <div className="row h341">
+                    
                         <div className="col-md-3 activity-icon text-center">
                             {minds1}
                         </div>
@@ -145,12 +153,14 @@ function Mindfull(props) {
 
                     </div>
 
+                    {mindArray.length ?
                     <div className="row">
                         <div className="col-md-3 text-center time-slider-text">2:25 am</div>
                         <div className="col-md-3 text-center time-slider-text">10:00 am</div>
                         <div className="col-md-3 text-center time-slider-text">12:00 am</div>
                         <div className="col-md-3 text-center time-slider-text">2:00 pm</div>
                     </div>
+                    :""}
                 </div>
 
             </div>
