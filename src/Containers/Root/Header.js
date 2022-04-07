@@ -16,7 +16,7 @@ function Header(props) {
             <li className="nav-item nav-profile dropdown">
               <a className="nav-link dropdown-toggle score-drop" id="" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div className="nav-profile-img">
-                  <img src="assets/images/faces/face1.jpg" alt="image" />
+                  <img src="assets/images/faces/user.jpeg" alt="image" />
                 </div>
                 <div className="nav-profile-text score-text">
                   <p className="mb-1 text-black">Your Balance Score</p>
@@ -39,12 +39,12 @@ function Header(props) {
             
             <li className="nav-item d-none d-lg-block full-screen-link">
               <a className="nav-link">
-                <i className="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                {/* <i className="mdi mdi-fullscreen" id="fullscreen-button"></i> */}
               </a>
             </li>
             <li className="nav-item nav-settings d-none d-lg-block">
               <a className="nav-link" href="#">
-                <i className="mdi mdi-format-line-spacing"></i>
+                {/* <i className="mdi mdi-format-line-spacing"></i> */}
               </a>
             </li>
             <li className="nav-item dropdown">
@@ -63,7 +63,7 @@ function Header(props) {
             <li className="nav-item nav-profile dropdown">
               <a className="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div className="nav-profile-img">
-                  <img src="assets/images/faces/face1.jpg" alt="image" />
+                  <img src="assets/images/faces/user.jpeg" alt="image" />
                   <span className="availability-status online"></span>
                 </div>
                 <div className="nav-profile-text">
@@ -71,8 +71,8 @@ function Header(props) {
                 </div>
               </a>
               <div className="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a className="dropdown-item" href="#">
-                  <i className="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                {/* <a className="dropdown-item" href="#">
+                  <i className="mdi mdi-cached me-2 text-success"></i> Activity Log </a> */}
                 <div className="dropdown-divider"></div>
                 <a className="dropdown-item" href="#">
                   <i className="mdi mdi-logout me-2 text-primary"></i> Signout </a>

@@ -73,7 +73,8 @@ class ProfileScreen extends React.Component {
       <View>
         <div className="col-md-12">
           <h2 className="wish-title">Profile</h2>
-          <p className="wish-sub-title">Edit profile name, password and other personal info</p></div>
+          {/* <p className="wish-sub-title">Edit profile name, password and other personal info</p> */}
+          </div>
         <ul className="nav nav-tabs nav-fill bg-white profile-tab ml14" id="ex1" role="tablist">
           <li className="nav-item" role="presentation">
             <a

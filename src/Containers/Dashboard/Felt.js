@@ -68,7 +68,7 @@ function Felt(props) {
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
-            <h4>Your Felt</h4>
+            <h4>You Felt</h4>
             <ul className=" justify-content-end nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a
