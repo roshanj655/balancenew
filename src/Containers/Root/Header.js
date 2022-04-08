@@ -3,6 +3,12 @@ import ReactDOM from "react-dom";
 import MagicBell, { FloatingNotificationInbox } from "@magicbell/magicbell-react";
 
 function Header(props) {
+
+  // signOut=()=> {
+  //   localStorage.clear();
+  //   location.reload();
+  // }
+
   const theme = {"icon":{"borderColor":"#a9a1a6","width":"20px","width":"20px"},"unseenBadge":{"backgroundColor":"#DF4759"},"header":{"backgroundColor":"#d2866d","textColor":"#ffffff","borderRadius":"16px"},"footer":{"backgroundColor":"#d2866d","textColor":"#ffffff","borderRadius":"16px"},"notification":{"default":{"textColor":"#15091F","borderRadius":"8px","backgroundColor":"#d2866d"},"unseen":{"backgroundColor":"#6113A3"},"unread":{"backgroundColor":"#6113A3"}}};
 
     return (
@@ -74,7 +80,10 @@ function Header(props) {
                 {/* <a className="dropdown-item" href="#">
                   <i className="mdi mdi-cached me-2 text-success"></i> Activity Log </a> */}
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="#" onClick={()=>{
+                  localStorage.clear();
+                  location.reload();
+                }}>
                   <i className="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
