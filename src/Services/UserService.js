@@ -56,6 +56,7 @@ function fetchUser() {
     .service('users')
     .find()
     .then((response) => {
+      console.log("Fetch User 1 "+response.data[0])
       return response.data[0]
     })
 }
@@ -93,6 +94,7 @@ function fetchAverage(overall) {
   }
   var average = Math.round(total / overall.length)
   const response = { average: average, commitsData: commitsData }
+  
   return response
 }
 
@@ -106,11 +108,12 @@ function fetchTriangle(moodScores, sleepScores, activityScores) {
       sleepScores.length === 1 ? sleepScores[0].score / 100 : 0,
     ],
   }
+  console.log("US fetchTRaingle " + response.data);
   return response
 }
 
 function fetchMoods(action) {
-  console.log("fetchMoods");
+  console.log("US fetchMoods");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -148,6 +151,7 @@ function fetchMoods(action) {
       },
     })
     .then((response) => {
+      console.log("Moods Dataaa" + response)
       return response.data
     })
 }
@@ -1286,8 +1290,6 @@ async function updateToken(token) {
 }
 
 async function saveItem(item, selectedValue) {
-  console.log("saveItem US 1" + item);
-  console.log("saveItem US 2" + selectedValue);
   try {
 
     await AsyncStorage.setItem(item, selectedValue)
@@ -1297,12 +1299,16 @@ async function saveItem(item, selectedValue) {
 }
 
 function loginUser(action) {
-  console.log("login 1 US");
+  console.log("login 1 US",action);
   const payload = {
     email: action.user.email,
     password: action.user.password,
-    firstName: action.user.firstName,
+    firstName:action.user.firstName,
     strategy: 'local',
+    // email: "test@test.com",//action.user.email,
+    // password: "TEST123!",//action.user.password,
+    // firstName:"MARK TEST",//action.user.firstName,
+    // strategy: 'local',
   }
 
   return authenticate(payload)
@@ -1366,24 +1372,28 @@ function authenticate(options) {
 }
 
 function _authenticate(payload) {
-  console.log("_auth US");
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU0MzczMTIsImV4cCI6MTY0NTUyMzcxMiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiZDBhZGI3MzctZTNlNC00NWMxLTlmZWYtZDQxYjliMzdjMDg2In0.Zl0Icbay_JNF_ffM9dfVWyB8vn7sTE6AJR1xRa9jb-w"
+  console.log("_auth US 1");
   return app
-    .authenticate(token)
+    .authenticate(payload)
     .then((response) => {
       const temp = app.passport.verifyJWT(response.accessToken)
-      console.log("Here" + temp)
+      saveItem('id_token', response.accessToken)
+      console.log("User Authenticated Success"+response.accessToken)
       return temp
     })
     .then((payload) => {
+      console.log("Auth 2 Ashu")  
       return app.service('users').get(payload.sub)
     })
     .then((user) => {
+      console.log("Auth 3 Ashu"+app.get('user'))
       app.set('user', user)
       return app.service('users').get(app.get('user'))
     })
     .catch((e) => {
+      console.log("ERRRRR " + e.message)
       if (e.message === 'Invalid login') {
+        console.log(e.message)
         return createUser(payload)
       }
     })

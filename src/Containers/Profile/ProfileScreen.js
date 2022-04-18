@@ -1,18 +1,21 @@
 import React, { Fragment } from 'react'
-import { Text, ListItem,
-  Button } from 'react-native-elements'
 import {
-  View, 
+  Text, ListItem,
+  Button
+} from 'react-native-elements'
+import {
+  View,
   ActivityIndicator,
   Modal,
   Alert,
   ScrollView,
-  Linking 
+  Linking
 } from 'react-native-web'
 import AsyncStorage from '@callstack/async-storage';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ExampleActions from '../../Stores/Example/Actions'
+import USerDetails from './userDetails';
 import Style from './ProfileScreenStyle'
 //import NavigationService from 'App/Services/NavigationService'
 //import { ScrollView } from 'react-native-gesture-handler'
@@ -47,7 +50,7 @@ const handlePress = (href) => {
 }
 
 const Anchor = (props) => (
-  <Text {...props} style={{color: '#1559b7'}} onPress={() => handlePress(props.href)}>
+  <Text {...props} style={{ color: '#1559b7' }} onPress={() => handlePress(props.href)}>
     {props.children}
   </Text>
 )
@@ -62,15 +65,106 @@ class ProfileScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Profile Screen 100");
     this._fetchUser()
   }
 
   render() {
-    console.log("Profile Screen 1");
     return (
-      <View style={Style.container}>
-        {this.props.userIsLoading ? (
+      <View>
+        <div className="col-md-12">
+          <h2 className="wish-title">Profile</h2>
+          {/* <p className="wish-sub-title">Edit profile name, password and other personal info</p> */}
+          </div>
+        <ul className="nav nav-tabs nav-fill bg-white profile-tab ml14" id="ex1" role="tablist">
+          <li className="nav-item" role="presentation">
+            <a
+              className="nav-link active"
+              id="ex2-tab-1"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-1"
+              role="tab"
+              aria-controls="ex2-tabs-1"
+              aria-selected="true"
+            >Profile Information</a
+            >
+          </li>
+          <li className="nav-item" role="presentation">
+            <a
+              className="nav-link"
+              id="ex2-tab-2"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-2"
+              role="tab"
+              aria-controls="ex2-tabs-2"
+              aria-selected="false"
+            ></a
+            >
+          </li>
+           <li className="nav-item" role="presentation">
+            <a
+              className="nav-link"
+              id="ex2-tab-3"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-3"
+              role="tab"
+              aria-controls="ex2-tabs-3"
+              aria-selected="false"
+            ></a
+            >
+          </li>
+          <li className="nav-item" role="presentation">
+            <a
+              className="nav-link"
+              id="ex2-tab-4"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-4"
+              role="tab"
+              aria-controls="ex2-tabs-3"
+              aria-selected="false"
+            ></a
+            >
+          </li>
+          <li className="nav-item" role="presentation">
+            <a
+              className="nav-link"
+              id="ex2-tab-4"
+              data-mdb-toggle="tab"
+              href="#ex2-tabs-4"
+              role="tab"
+              aria-controls="ex2-tabs-3"
+              aria-selected="false"
+            ></a
+            >
+          </li>
+        </ul>
+        <div className="tab-content ml15" id="ex2-content">
+          <div
+            className="tab-pane fade show active"
+            id="ex2-tabs-1"
+            role="tabpanel"
+            aria-labelledby="ex2-tab-1"
+          >
+            <USerDetails data={this.props.user} />
+          </div>
+          <div
+            className="tab-pane fade"
+            id="ex2-tabs-2"
+            role="tabpanel"
+            aria-labelledby="ex2-tab-2"
+          >
+            Tab 2 content
+          </div>
+          <div
+            className="tab-pane fade"
+            id="ex2-tabs-3"
+            role="tabpanel"
+            aria-labelledby="ex2-tab-3"
+          >
+            Tab 3 content
+          </div>
+        </div>
+        
+        {/* {this.props.userIsLoading ? (
           <ActivityIndicator size="large" color="#9086A6" />
         ) : (
           <Fragment>
@@ -85,9 +179,7 @@ class ProfileScreen extends React.Component {
               >
                 <View style={Style.modalHeader}>
                   <ScrollView style={Style.margin50}>
-                    {/* <Text h4 h4Style={Style.modalText}> */}
                     <Text style={Style.margin50}>Terms and conditions</Text>
-                    {/* </Text> */}
                     <Text style={Style.margin50}>
                       These terms and conditions (&quot;Terms&quot;, &quot;Agreement&quot;) are an
                       agreement between Balance (&quot;Balance&quot;, &quot;us&quot;, &quot;we&quot;
@@ -484,7 +576,7 @@ class ProfileScreen extends React.Component {
               </View>
             </View>
           </Fragment>
-        )}
+        )} */}
       </View>
     )
   }
@@ -515,7 +607,7 @@ class ProfileScreen extends React.Component {
     }
   }
 
- async logout() {
+  async logout() {
     // console.log('LOGOUT')
     try {
       await AsyncStorage.removeItem('id_token')
@@ -526,7 +618,7 @@ class ProfileScreen extends React.Component {
     }
   }
 
- navToTerms() {
+  navToTerms() {
     this.setState({ modalVisible: true })
   }
 

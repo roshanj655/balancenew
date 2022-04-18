@@ -101,7 +101,7 @@ export function* fetchActivityWeekGraph(action) {
 }
 
 export function* fetchMain(action) {
-  console.log("fetchMain saga");
+  console.log("fetchMain saga" + action);
   yield put(ExampleActions.fetchMainLoading())
   // Fetch user informations from an API
 
@@ -125,6 +125,7 @@ export function* fetchMain(action) {
     triangle &&
     averageResult
   ) {
+    console.log("ES FetchMain moodssss"+ moodScores)
     yield put(
       ExampleActions.fetchMainSuccess(
         moodScores,
@@ -237,6 +238,8 @@ export function* fetchAll(action) {
     sleepGraph &&
     activityGraph
   ) {
+
+    console.log("ES FetchAll moodssss"+ moods)
     yield put(
       ExampleActions.fetchAllSuccess(
         moods,

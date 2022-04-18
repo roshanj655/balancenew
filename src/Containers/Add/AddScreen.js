@@ -22,14 +22,16 @@ import { PropTypes } from 'prop-types'
 import ExampleActions from '../../Stores/Example/Actions'
 import Style from './AddScreenStyle'
 import CalendarStrip from 'react-native-calendar-strip'
-import DateTimePicker from '@react-native-community/datetimepicker'
+//import DateTimePicker from '@react-native-community/datetimepicker'
+import DateTimePicker from 'react-datetime-picker';
 import Activity from './imgs/index'
 import Mood from './mood-imgs/index'
+import AnalyticsScreen from '../Analytics/AnalyticsScreen'
 //import { ScrollView } from 'react-native-gesture-handler'
 
 function RenderType(props) {
   const activitySize = 50
-  console.log(props.todaySleep);
+  
   const moodArr = [
     { "img": "loved.png", "name": "Loved", "param3": "loved", "number": 10 },
     { "img": "happy.png", "name": "Happy", "param3": "happy", "number": 10 },
@@ -85,6 +87,7 @@ function RenderType(props) {
     { "img": "soccer.png", "name": "Soccer", "param3": "soccer" }
 
   ];
+  const url="http://zavius.in/balance/assets/images/";
   if (props.onMood) {
     return (
       <div>
@@ -99,7 +102,7 @@ function RenderType(props) {
                   }}
                 >
                   <img
-                    src={"../../Assets/Images/Moods/" + prop.img}
+                    src={url+"Moods/" + prop.img}
                   />
                 </TouchableOpacity>
                 <span>{prop.name}</span>
@@ -126,7 +129,7 @@ function RenderType(props) {
                   }}
                 >
                   <img
-                    src={"../../Assets/Images/Activities/" + prop.img}
+                    src={url+"Activities/" + prop.img}
                   />
                 </TouchableOpacity>
                 <span>{prop.name}</span>
@@ -154,7 +157,7 @@ function RenderType(props) {
                       <Text h3 h3Style={Style.emotionText}>
                         {props.sleep} Hours
                       </Text>
-                      <Picker selectedValue={props.sleep} onValueChange={this.updateSleep}>
+                      <Picker selectedValue={props.sleep} onValueChange={props.updateSleep}>
                         <Picker.Item label="1" value="1" />
                         <Picker.Item label="1.5" value="1.5" />
                         <Picker.Item label="2" value="2" />
@@ -187,7 +190,7 @@ function RenderType(props) {
                           style={Style.height50}
                           onPress={() => {
                             props.onSleepConfirm()
-                            this.editSleep(false)
+                            props.editSleeps(false)
                           }}
                           title="Confirm"
                           type="solid"
@@ -202,16 +205,15 @@ function RenderType(props) {
                         You Slept {sleep.hours} Hours Last Night {props.editSleep}
                       </Text>
                       <View style={Style.sleepImgHolder}>
-                        <Image
-                          style={Style.sleepImage}
-                          source={require('../../Assets/Images/sleep.png')}
+                        <img
+                          src='http://zavius.in/balance/assets/images/sleep.png'
                         />
                       </View>
                       <Button
                         buttonStyle={Style.lightBackground}
                         title="Edit Sleep"
                         onPress={() => {
-                          this.editSleep(true)
+                          props.editSleeps(true)
                         }}
                       ></Button>
                     </Fragment>
@@ -228,7 +230,7 @@ function RenderType(props) {
             <Text h3 h3Style={Style.emotionText}>
               {props.sleep} Hours
             </Text>
-            <Picker selectedValue={props.sleep} onValueChange={this.updateSleep}>
+            <Picker selectedValue={props.sleep} onValueChange={props.updateSleep}>
               <Picker.Item label="1" value="1" />
               <Picker.Item label="1.5" value="1.5" />
               <Picker.Item label="2" value="2" />
@@ -301,7 +303,6 @@ function RenderType(props) {
 
 class AddScreen extends React.Component {
   constructor(props) {
-    console.log('sdn',props)
     super(props)
     const today = new Date()
     this.state = {}
@@ -312,6 +313,7 @@ class AddScreen extends React.Component {
       selectedDay: today,
       onSleep: false,
       mainModalVisible: true,
+      improve:false,
       modalVisible: false,
       clockModalVisible: false,
       journalModalVisible: false,
@@ -326,22 +328,25 @@ class AddScreen extends React.Component {
       sleep: '6',
       duration: '30',
       localEmoji: 'grinning',
-      date: today,
+      date: this.props.newDate,
       mode: 'time',
     }
     // eslint-disable-next-line no-undef
-    var updateSleep = (sleep) => {
-      this.setState({ sleep: sleep })
-    }
-    // eslint-disable-next-line no-undef
-    var editSleep = (bool) => {
-      this.setState({ editSleep: bool })
-    }
+    
+  }
+
+  updateSleep(sleep) {
+    this.setState({ sleep: sleep })
+  }
+  // eslint-disable-next-line no-undef
+  editSleep(bool) {
+    this.setState({ editSleep: bool })
   }
 
   onSleepConfirm = () => {
     this._createSleep(this.state.sleep, this.state.selectedDay)
     this._fetchSleeps(this.state.selectedDay)
+    this.props.data.showHideAddScreen(false)
     Alert.alert(
       'Success',
       'Sleep Submitted',
@@ -415,6 +420,7 @@ class AddScreen extends React.Component {
                                 'grinning',
                                 this.state.moodScore
                               )
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -469,6 +475,7 @@ class AddScreen extends React.Component {
                             style={Style.height50}
                             onPress={() => {
                               this.setClockModalVisible(!this.state.clockModalVisible)
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -588,6 +595,7 @@ class AddScreen extends React.Component {
                             style={Style.height50}
                             onPress={() => {
                               this.setDurationModalVisible(!this.state.durationModalVisible)
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -640,6 +648,7 @@ class AddScreen extends React.Component {
                             style={Style.height50}
                             onPress={() => {
                               this.setActivityModalVisible(!this.state.activityModalVisible)
+                              this.props.data.showHideAddScreen(false);
                             }}
                             title="Cancel"
                             type="solid"
@@ -775,8 +784,10 @@ class AddScreen extends React.Component {
                         <li  className={this.state.onMood?"active":""}>
 
                           <TouchableOpacity
+                          style={Style.displayInline}
                             onPress={() =>
                               this.setState({
+                                improve:false,
                                 onActivity: false,
                                 onMood: true,
                                 onSleep: false,
@@ -784,11 +795,11 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='../../Assets/Images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Mood</p>
-                              <p>This is for test</p>
+                              <p>Add how you feel now</p>
                             </div>
                             <div className="clear"></div>
                           </TouchableOpacity>
@@ -797,8 +808,10 @@ class AddScreen extends React.Component {
                         </li>
                         <li  className={this.state.onSleep?"active":""}>
                         <TouchableOpacity
+                        style={Style.displayInline}
                             onPress={() =>
                               this.setState({
+                                improve:false,
                                 onActivity: false,
                                 onMood: false,
                                 onSleep: true,
@@ -806,7 +819,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='../../Assets/Images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Sleep</p>
@@ -817,8 +830,10 @@ class AddScreen extends React.Component {
                         </li>
                         <li className={this.state.onActivity?"active":""}>
                         <TouchableOpacity
+                        style={Style.displayInline}
                             onPress={() =>
                               this.setState({
+                                improve:false,
                                 onActivity: true,
                                 onMood: false,
                                 onSleep: false,
@@ -826,7 +841,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='../../Assets/Images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Activity</p>
@@ -835,15 +850,27 @@ class AddScreen extends React.Component {
                             <div className="clear"></div>
                           </TouchableOpacity>
                         </li>
-                        <li>
+                        <li className={this.state.improve?"active":""}>
+                        <TouchableOpacity
+                        style={Style.displayInline}
+                            onPress={() =>
+                              this.setState({
+                                improve:true,
+                                onActivity: false,
+                                onMood: false,
+                                onSleep: false,
+                              })
+                            }
+                          >
                           <div className="float-left iconbox">
-                            <img src='../../Assets/Images/Moods/loved.png' />
+                            <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
                           </div>
                           <div className="float-left navtext">
                             <p>Mindfulness</p>
                             <p>Add New Activity to Track</p>
                           </div>
                           <div className="clear"></div>
+                          </TouchableOpacity>
                         </li>
                       </ul>
                     </div>
@@ -851,15 +878,22 @@ class AddScreen extends React.Component {
                     <TouchableOpacity
                   onPress={() => {
                     this.setState({ mainModalVisible: false })
+                    this.props.data.showHideAddScreen(false); 
                   }}
                 >
         <button className="btn text-right">X</button>
       </TouchableOpacity>
+      {this.state.improve?
+                  (<AnalyticsScreen mindfullShow="true" data={{showAnaHideAddScreen:this.showAnaHideAddScreen.bind(this)}}/>)
+                  :(
+                    <div>
                       <h2>Select Your Mood Now</h2>
                       <RenderType
                         onSleepConfirm={this.onSleepConfirm.bind(this)}
                         todaySleep={this.props.sleeps}
                         onActivityModal={this.setActivityModalVisible.bind(this)}
+                        updateSleep={this.updateSleep.bind(this)}
+                        editSleeps={this.editSleep.bind(this)}
                         onModal={this.setModalVisible.bind(this)}
                         onMood={this.state.onMood}
                         sleep={this.state.sleep}
@@ -868,10 +902,14 @@ class AddScreen extends React.Component {
                         onSleep={this.state.onSleep}
                         editSleep={this.state.editSleep}
                       ></RenderType>
+                      </div>
+                      )}
                     </div>
                   </div>
+                  
                 </div>
               </div>
+              
             </div>
           </div>
         )
@@ -881,10 +919,14 @@ class AddScreen extends React.Component {
     )
   }
 
-  setTime = (event, date) => {
+  showAnaHideAddScreen(){
+    this.props.data.showHideAddScreen(false);
+  }
+
+  setTime = (date,event) => {
     date = date || this.state.date
 
-    var today = new Date(this.state.selectedDay)
+    var today = new Date(this.state.date)
 
     var year = today.getFullYear()
     var month = today.getMonth()
@@ -895,12 +937,12 @@ class AddScreen extends React.Component {
     date = new Date(year, month, day, hours, minutes, 0, 0)
 
     this.setState({
-      show: Platform.OS === 'ios',
+      show: true,
       date,
     })
   }
 
-  resetTime = (event, date) => {
+  resetTime = (date,event) => {
     date = date || this.state.date
 
     var now = new Date()
@@ -914,7 +956,7 @@ class AddScreen extends React.Component {
     date = new Date(year, month, day, hours, minutes, 0, 0)
 
     this.setState({
-      show: Platform.OS === 'ios',
+      show: true,
       date,
     })
   }
@@ -993,6 +1035,7 @@ class AddScreen extends React.Component {
   onActivityConfirm() {
     this._createActivity(this.state.localActivity, this.state.date, this.state.duration)
     this.setDurationModalVisible(!this.state.durationModalVisible, '', 'running')
+    this.props.data.showHideAddScreen(false);
   }
 
   confirmLogic() {
@@ -1002,6 +1045,7 @@ class AddScreen extends React.Component {
     if (this.state.onMood) {
       this.onConfirm()
     }
+    this.props.data.showHideAddScreen(false);
   }
 
   onConfirm() {
@@ -1019,7 +1063,7 @@ class AddScreen extends React.Component {
 
   _createSleep(sleepHours, targetDate) {
     this.props.createSleep(sleepHours, targetDate)
-    this.props.sleeps = ['1']
+    // this.props.sleeps = ['1']
     this._fetchSleeps(this.state.selectedDay)
     this.setState({ onActivity: false, onMood: true, onSleep: false })
   }

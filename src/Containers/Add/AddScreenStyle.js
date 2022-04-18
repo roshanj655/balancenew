@@ -66,6 +66,9 @@ export default StyleSheet.create({
     padding: 30,
     width: 100,
   },
+  displayInline:{
+    display:'inline'
+  },
   circlesInactive: {
     alignItems: 'center',
     backgroundColor: Colors.$background,
@@ -83,6 +86,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     textAlign: 'center',
     marginBottom: 30,
+    marginTop: 30,
     justifyContent: 'space-around',
   },
   container: {
@@ -94,6 +98,7 @@ export default StyleSheet.create({
     // shadowOffset: { height: 0, width: 0 },
     // shadowOpacity: 1,
     // shadowRadius: 0,
+  
   },
   durationText: {
     color: Colors.$lightHighlight,
@@ -146,7 +151,7 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   journalHeader: {
-    backgroundColor: Colors.$lightGrey,
+    backgroundColor: "#ffffff",
     flex: 1,
     // justifyContent: 'center',
     paddingTop: 100,
@@ -175,7 +180,7 @@ export default StyleSheet.create({
     width: '100%',
   },
   modalHeader: {
-    backgroundColor: Colors.$lightGrey,
+    backgroundColor:'#ffffff',
     flex: 1,
     justifyContent: 'center',
     marginTop: 0,

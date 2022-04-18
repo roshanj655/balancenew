@@ -42,7 +42,7 @@ export default function* root() {
    // takeLatest(ExampleTypes.FETCH_USER, fetchUser),
     //takeLatest(ExampleTypes.FETCH_NOTHING, fetchNothing),
     // Call `fetchMoods()` when a `FETCH_MOODS` action is triggered
-    //takeLatest(ExampleTypes.FETCH_MOODS, fetchMoods),
+    takeLatest(ExampleTypes.FETCH_MOODS, fetchMoods),
     //takeLatest(ExampleTypes.FETCH_MONTH, fetchMonth),
     // takeLatest(ExampleTypes.FETCH_MOOD_WEEK_GRAPH, fetchMoodWeekGraph),
     takeLatest(ExampleTypes.FETCH_MOOD_SCORES, fetchMoodScores),
