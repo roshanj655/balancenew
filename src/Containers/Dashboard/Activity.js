@@ -27,9 +27,11 @@ function Activity(props) {
                     setActivityArray(activity.activityWeekData);
                 })
             }
-            // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-            //     activitiesArray.push(element);
-            // }
+            else if (check == "month") {
+                userService.fetchActivityMonthData({'date':props.selectedDate}).then((activity)=>{
+                    setActivityArray(activity);
+                })
+            }
             // setActivityArray(activitiesArray);
         // });
     }

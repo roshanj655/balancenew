@@ -31,9 +31,12 @@ function Felt(props) {
                 setMoodArray(moods.moodWeekData);
             })
         }
-        // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-        //     moodsArray.push(element);
-        // }
+        else if (check == "month") {
+            userService.fetchMoodMonthData({'date':props.selectedDate}).then((moods)=>{
+                console.log("monthgraph",moods);
+                setMoodArray(moods);
+            })
+        }
 
         // });
     }

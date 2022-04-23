@@ -501,6 +501,88 @@ function getCalendarWeek(date) {
   }
 }
 
+function getCalendarMonth(date) {
+  var today = new Date(date)
+  if (today.getDay() === 0) {
+    var temp = moment(today)
+    today = temp.subtract(1, 'days').toDate()
+  }
+  const fromDate = moment(today).startOf('week')
+  fromDate.add(1, 'days')
+  const toDate = moment(today).endOf('week')
+  toDate.add(1, 'days')
+  return {
+    fromDate,
+    toDate,
+  }
+}
+
+function fetchMoodMonthData(action) {
+  // // Get previous day based on given day
+  const date = action.date
+  const rangeDate = getCalendarMonth(date)
+
+  // get data where day is greater than `endOfPreviousDay` and less than `startOfNextDay`
+  const dayQuery = {
+    $gt: +rangeDate.fromDate,
+    $lt: +rangeDate.toDate,
+  }
+  return app
+    .service('moods')
+    .find({
+      query: {
+        day: dayQuery,
+      },
+    })
+    .then((response) => {
+       return response.data;
+    })
+}
+
+function fetchActivityMonthData(action) {
+  // // Get previous day based on given day
+  const date = action.date
+  const rangeDate = getCalendarMonth(date)
+
+  // get data where day is greater than `endOfPreviousDay` and less than `startOfNextDay`
+  const dayQuery = {
+    $gt: +rangeDate.fromDate,
+    $lt: +rangeDate.toDate,
+  }
+  return app
+    .service('avtivities')
+    .find({
+      query: {
+        day: dayQuery,
+      },
+    })
+    .then((response) => {
+       return response.data;
+    })
+}
+
+function fetchMindfullMonthData(action) {
+  // // Get previous day based on given day
+  const date = action.date
+  const rangeDate = getCalendarMonth(date)
+
+  // get data where day is greater than `endOfPreviousDay` and less than `startOfNextDay`
+  const dayQuery = {
+    $gt: +rangeDate.fromDate,
+    $lt: +rangeDate.toDate,
+  }
+  return app
+    .service('mindfullness')
+    .find({
+      query: {
+        day: dayQuery,
+      },
+    })
+    .then((response) => {
+       return response.data;
+    })
+}
+
 function fetchMoodWeekGraph(action) {
   var moodWeekData = []
   var moodWeekHours = []
@@ -1700,4 +1782,7 @@ export const userService = {
   fetchMoodsAgenda,
   fetchSleepsAgenda,
   fetchActivitiesAgenda,
+  fetchMoodMonthData,
+  fetchActivityMonthData,
+  fetchMindfullMonthData,
 }

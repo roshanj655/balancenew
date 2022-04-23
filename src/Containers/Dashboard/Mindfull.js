@@ -21,11 +21,11 @@ function Mindfull(props) {
                     setMindArray(data.mindfulnessWeekData);
                 })
             }
-        //     else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-        //         mindsArray.push(element);
-        //     }
-        //     setMindArray(mindsArray);
-        // });
+            else if (check == "month") {
+                userService.fetchMindfullMonthData({'date':props.selectedDate}).then((data)=>{
+                    setMindArray(data);
+                })
+            }
     }
 
 
