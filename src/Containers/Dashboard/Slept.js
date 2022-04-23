@@ -8,6 +8,7 @@ import {
     Tooltip,
     Legend
 } from "recharts";
+import { userService } from '../../Services/UserService';
 function Slept(props) {
     var sleepTimeVar = 0;
     let data = [];
@@ -25,23 +26,26 @@ function Slept(props) {
         var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
         var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
         var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
-
-        props.sleep.map((element, index) => {
-            let day = new Date(element.day).getTime();
-            let currentDate = date.getTime();
-            if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
-                sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
+        
+        // props.sleep.map((element, index) => {
+        //     let day = new Date(element.day).getTime();
+        //     let currentDate = date.getTime();
+            if (check == "day") {
+                userService.fetchSleeps({'date':props.selectedDate}).then((sleep)=>{
+                    console.log("sleeeeep",sleep);
+                    sleeptimes(sleep[0].hours)
+                })
             }
-            else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
-                sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
-                chartData(element);
-            }
-            else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-                chartData(element); sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
-                chartData(element);
-            }
-        });
-        sleeptimes(sleepTimeVar);
+            // else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
+            //     sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
+            //     chartData(element);
+            // }
+            // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
+            //     chartData(element); sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
+            //     chartData(element);
+            // }
+        // });
+        // sleeptimes(sleepTimeVar);
     }
 
     function chartData(element) {

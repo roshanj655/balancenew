@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { userService } from '../../Services/UserService';
 function Felt(props) {
     const url = "http://zavius.in/balance/assets/images/";
-    props.moods.sort((a,b)=> (a.score < b.score ? 1 : -1));
+    props.moods.sort((a, b) => (a.score < b.score ? 1 : -1));
     let moodsArray = [];
     useEffect(() => {
         updateMoodArray("day");
         settabMood("moodDay");
-      }, [props.selectedDate]);
+    }, [props.selectedDate]);
     const [moodArray, setMoodArray] = useState([]);
     const updateMoodArray = (check) => {
         var date = new Date(props.selectedDate);
@@ -15,45 +16,53 @@ function Felt(props) {
         var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
         // var weekBeforeDay = week.getDate();
         // var monthBeforeDay = month.getDate();
-        props.moods.map((element, index) => {
-            let day = new Date(element.day).getTime();
-            let currentDate = date.getTime();
-            if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
-                moodsArray.push(element);
-            }
-            else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
-                moodsArray.push(element);
-            }
-            else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-                moodsArray.push(element);
-            }
-            setMoodArray(moodsArray);
-        });
+        // props.moods.map((element, index) => {
+        // let day = new Date(element.day).getTime();
+        // let currentDate = date.getTime();
+        if (check == "day") {
+            userService.fetchMoods({ 'date': props.selectedDate }).then((moods) => {
+                console.log("felt", moods)
+                setMoodArray(moods);
+            })
+
+        }
+        else if (check == "week") {
+            userService.fetchMoodWeekGraph({ 'date': props.selectedDate }).then((moods) => {
+                setMoodArray(moods.moodWeekData);
+            })
+        }
+        // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
+        //     moodsArray.push(element);
+        // }
+
+        // });
     }
 
-
+    console.log("felt", moodArray)
     let moods1 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
+        
+        
         // if(day==6){
         if (hours >= 0 && hours < 3) {
             return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
         // }
     })
-    let moods2 = moodsArray.map((item, index) => {
+    let moods2 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-        if (hours > 3 && hours < 10) {
+        if (hours >= 3 && hours < 10) {
             return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
     })
-    let moods3 = moodsArray.map((item, index) => {
+    let moods3 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-        if (hours > 10 && hours < 12) {
+        if (hours >= 10 && hours < 12) {
             return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
     })
@@ -61,10 +70,11 @@ function Felt(props) {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-        if (hours > 12 && hours < 23) {
+        if (hours >= 12 && hours <= 23) {
             return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
         }
     })
+
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
@@ -127,16 +137,16 @@ function Felt(props) {
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
-                        {!moodArray.length ?
-                            <div
-                                className="alert alert-danger"
-                            >
-                                No data found for this date
-                                {/* <p className="add btn">+  Add Sleep</p> */}
-                            </div>
-                            : ""}
+                    {!moodArray.length ?
+                        <div
+                            className="alert alert-danger"
+                        >
+                            No data found for this date
+                            {/* <p className="add btn">+  Add Sleep</p> */}
+                        </div>
+                        : ""}
                     <div className="row h341">
-                    
+
                         <div className="col-md-3 activity-icon text-center">
                             {moods1}
                         </div>
@@ -154,13 +164,13 @@ function Felt(props) {
 
                     </div>
                     {moodArray.length ?
-                    <div className="row">
-                        <div className="col-md-3 text-center time-slider-text">2:25 am</div>
-                        <div className="col-md-3 text-center time-slider-text">10:00 am</div>
-                        <div className="col-md-3 text-center time-slider-text">12:00 am</div>
-                        <div className="col-md-3 text-center time-slider-text">2:00 pm</div>
-                    </div>
-                    :""}
+                        <div className="row">
+                            <div className="col-md-3 text-center time-slider-text">2:25 am</div>
+                            <div className="col-md-3 text-center time-slider-text">10:00 am</div>
+                            <div className="col-md-3 text-center time-slider-text">12:00 am</div>
+                            <div className="col-md-3 text-center time-slider-text">2:00 pm</div>
+                        </div>
+                        : ""}
                 </div>
 
             </div>

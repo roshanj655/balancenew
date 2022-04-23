@@ -5,6 +5,7 @@
 
 
 import React, { useState, useEffect } from 'react';
+import { userService } from '../../Services/UserService';
 function Activity(props) {
     const url = "http://zavius.in/balance/assets/images/";
     let activitiesArray = [];
@@ -14,24 +15,23 @@ function Activity(props) {
     }, [props.selectedDate]);
     const [activityArray, setActivityArray] = useState([]);
     const updateActivityArray = (check) => {
-        var date = new Date(props.selectedDate);
-        var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
-        var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
-        var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
-        props.activity.map((element, index) => {
-            let day = new Date(element.day).getTime();
-            let currentDate = date.getTime();
-            if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
-                activitiesArray.push(element);
+        
+            if (check == "day") {
+                userService.fetchActivities({'date':props.selectedDate}).then((activity)=>{
+                    console.log("activity",activity);
+                    setActivityArray(activity);
+                })
             }
-            else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
-                activitiesArray.push(element);
+            else if (check == "week") {
+                userService.fetchActivityWeekGraph({'date':props.selectedDate}).then((activity)=>{
+                    setActivityArray(activity.activityWeekData);
+                })
             }
-            else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-                activitiesArray.push(element);
-            }
-            setActivityArray(activitiesArray);
-        });
+            // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
+            //     activitiesArray.push(element);
+            // }
+            // setActivityArray(activitiesArray);
+        // });
     }
     let activity1 = activityArray.map((item, index) => {
         let day = new Date(item.createdAt).getDate();
@@ -75,7 +75,6 @@ function Activity(props) {
                         className={"nav-link " + ((tabActivity == "activityDay") ? "active" : "")}
                         id="ex1-tab-1"
                         data-mdb-toggle="tab"
-                        href="#ex1-tabs-1"
                         role="tab"
                         aria-controls="ex1-tabs-1"
                         aria-selected="true"
@@ -105,7 +104,7 @@ function Activity(props) {
                         className={"nav-link " + ((tabActivity == "activityMonth") ? "active" : "")}
                         id="ex1-tab-3"
                         data-mdb-toggle="tab"
-                        href="#ex1-tabs-3"
+                        
                         role="tab"
                         aria-controls="ex1-tabs-3"
                         aria-selected="false"

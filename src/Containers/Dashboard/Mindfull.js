@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { userService } from '../../Services/UserService';
 function Mindfull(props) {
     const url = "http://zavius.in/balance/assets/images/";
     let mindsArray = [];
@@ -9,25 +10,22 @@ function Mindfull(props) {
     const [mindArray, setMindArray] = useState([]);
     const updatemindArray = (check) => {
         var date = new Date(props.selectedDate);
-        var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
-        var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
-        var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
-        // var weekBeforeDay = week.getDate();
-        // var monthBeforeDay = month.getDate();
-        props.mindfulness.map((element, index) => {
-            let day = new Date(element.day).getTime();
-            let currentDate = date.getTime();
-            if (check == "day" && (day >= oneBeforeDay && day <= currentDate)) {
-                mindsArray.push(element);
+        
+            if (check == "day") {
+               userService.fetchMindfulnesses({'date':props.selectedDate}).then((data)=>{
+                   setMindArray(data);
+               })
             }
-            else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
-                mindsArray.push(element);
+            else if (check == "week") {
+                userService.fetchMindfulnessWeekGraph({'date':props.selectedDate}).then((data)=>{
+                    setMindArray(data.mindfulnessWeekData);
+                })
             }
-            else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-                mindsArray.push(element);
-            }
-            setMindArray(mindsArray);
-        });
+        //     else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
+        //         mindsArray.push(element);
+        //     }
+        //     setMindArray(mindsArray);
+        // });
     }
 
 

@@ -11,21 +11,31 @@ import authentication from 'feathers-authentication-client'
 import NavigationService from './NavigationService'
 
 const app = feathers()
-
 const options = {
   transports: ['websocket'],
   forceNew: true,
   pingTimeout: 10000,
   pingInterval: 5000,
+  strategy: 'jwt',
+    authStrategies:'jwt' ,
+    extraHeaders: {
+      accessToken: localStorage.getItem('feathers-jwt'),
+      //Authorization: 'JhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NTA2ODMzOTIsImV4cCI6MTY1MDc2OTc5MiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwZTRkMjFhODUwZWQwMDFjOGNkOTJkIiwianRpIjoiNDQzMjZkNzAtMjc3OC00MGVkLTk1YTktMDlhZWUzMDI2OGMwIn0.V64szBzlMVI6jSoPQBNczopjjsxukzSQFe0QhDO8WH8'
+    }
 }
 const socket = io('https://api.findingbalance.io:3030', options);
-//const socket = io ('http://balancewebdev-env.eba-bxsarutr.us-west-2.elasticbeanstalk.com')
-socket.on('connect_error', (err) => {
-  console.log("COnnect US"+err);
+
+socket.on('connect', () => {
+  socket.emit('create', 'authentication', {
+    strategy: 'jwt',
+    accessToken: localStorage.getItem('feathers-jwt')
+  }, function(error, newAuthResult) {
+    console.log("newauthresult",newAuthResult); 
+  });
+
   setTimeout(function() {
-    NavigationService.navigate('NetworkErrorScreen')
-  }, 100)
-})
+       }, 100)
+});
 
 socket.on('disconnect', (err) => {
   console.log("DIsCOnnect US"+err);
@@ -33,13 +43,13 @@ socket.on('disconnect', (err) => {
     NavigationService.navigate('NetworkErrorScreen')
   }, 100)
 })
-
 app.configure(
   //console.log("cong US")
   socketio(socket, {
     timeout: 60000 * 60,
   })
 )
+
 app.configure(hooks())
 app.configure(
   
@@ -148,11 +158,15 @@ function fetchMoods(action) {
     .find({
       query: {
         day: dayQuery,
+        // accessToken: localStorage.getItem('token')
       },
     })
     .then((response) => {
-      console.log("Moods Dataaa" + response)
+      console.log("Moods Dataaa" + JSON.stringify(response))
       return response.data
+    }).catch((error) => {
+      console.log(error);
+      return Promise.reject(error)
     })
 }
 
@@ -1378,6 +1392,7 @@ function _authenticate(payload) {
     .then((response) => {
       const temp = app.passport.verifyJWT(response.accessToken)
       saveItem('id_token', response.accessToken)
+      saveItem('token', response.accessToken)
       console.log("User Authenticated Success"+response.accessToken)
       return temp
     })

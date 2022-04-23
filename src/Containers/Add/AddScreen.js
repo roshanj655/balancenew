@@ -27,6 +27,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Activity from './imgs/index'
 import Mood from './mood-imgs/index'
 import AnalyticsScreen from '../Analytics/AnalyticsScreen'
+import { userService } from '../../Services/UserService'
 //import { ScrollView } from 'react-native-gesture-handler'
 
 function RenderType(props) {
@@ -1054,7 +1055,8 @@ class AddScreen extends React.Component {
   }
 
   _createMood(moodType, targetDate, moodScore, entry) {
-    this.props.createMood(moodType, targetDate, moodScore, entry)
+    this.props.createMood(moodType, targetDate, moodScore, entry);
+    userService.fetchMoods({'date':targetDate});
   }
 
   _createActivity(activityType, targetDate, activityDuration) {
