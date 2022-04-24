@@ -1244,6 +1244,7 @@ function createActivity(action) {
     .service('activities')
     .create(data)
     .then((response) => {
+      console.log(JSON.stringify(response));
       return response
     })
 }

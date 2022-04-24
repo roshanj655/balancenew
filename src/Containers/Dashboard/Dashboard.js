@@ -51,7 +51,7 @@ import Mindful from '../Analytics/mindfulness-imgs/index'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-    
+
     const today = new Date()
     var pullToday = {}
     var todaysDate = this.formatDate()
@@ -72,7 +72,8 @@ class Dashboard extends React.Component {
       showConfirm: false,
       smonth: 1,
       syear:2020,
-      isBoxVisible:'hide'
+      isBoxVisible:'hide',
+      updatedData:0
     }
     this.updateIndex = this.updateIndex.bind(this)
     
@@ -171,6 +172,15 @@ console.log("MS Token");
     this.fetchAll()
    
     this.setWish();
+  }
+  componentWillReceiveProps(prevProps) {
+    if(prevProps.updatedData!=this.props.newChange){
+      this.setState({updatedData:this.props.newChange});
+    }
+    setTimeout(() => {
+      this.setState({updatedData:0});
+    }, 400);
+    // this.props.fetchMoods(this.state.selectedDate);
   }
 
   setWish(){
@@ -314,16 +324,16 @@ console.log("MS Token");
               />    
             </div>
             <div className='col-md-6 pr0'>
-                <Felt moods={this.props.moods} selectedDate={this.state.newSelectedDate}/>
+                <Felt moods={this.props.moods} selectedDate={this.state.newSelectedDate} newChange={this.props.newUpdate}  newChange={this.state.updatedData}/>
             </div>
             <div className='col-md-6'>
-                <Slept sleep={this.props.sleeps} selectedDate={this.state.newSelectedDate}/>
+                <Slept sleep={this.props.sleeps} selectedDate={this.state.newSelectedDate}  newChange={this.state.updatedData}/>
             </div>
             <div className='col-md-6 pr0'>
-                <Activity1  activity={this.props.activities} selectedDate={this.state.newSelectedDate}/>
+                <Activity1  activity={this.props.activities} selectedDate={this.state.newSelectedDate} newChange={this.state.updatedData}/>
             </div>
             <div className='col-md-6'>
-                <Mindfull mindfulness={this.props.mindfullness} selectedDate={this.state.newSelectedDate}/>
+                <Mindfull mindfulness={this.props.mindfullness} selectedDate={this.state.newSelectedDate}  newChange={this.state.updatedData}/>
             </div>
         </div>
               }

@@ -15,6 +15,10 @@ function Slept(props) {
     useEffect(() => {
         updatesleptArray("day");
         settabslept("sleptDay");
+    }, [props.newChange]);
+    useEffect(() => {
+        updatesleptArray("day");
+        settabslept("sleptDay");
     }, [props.selectedDate]);
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const [sleptArray, setsleptArray] = useState([]);
@@ -32,14 +36,15 @@ function Slept(props) {
         //     let currentDate = date.getTime();
             if (check == "day") {
                 userService.fetchSleeps({'date':props.selectedDate}).then((sleep)=>{
-                    console.log("sleeeeep",sleep);
                     sleeptimes(sleep[0].hours)
                 })
             }
-            // else if (check == "week" && (day >= weekBeforeDay && day <= currentDate)) {
-            //     sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
-            //     chartData(element);
-            // }
+            else if (check == "week") {
+                userService.fetchSleepWeek({'date':props.selectedDate}).then((sleep)=>{
+                    console.log("sleeeeep",sleep);
+                    // sleeptimes(sleep[0].hours)
+                })
+            }
             // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
             //     chartData(element); sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
             //     chartData(element);

@@ -147,9 +147,9 @@ function RenderType(props) {
       <View style={Style.sleepColumn}>
         {props.todaySleep.length !== 0 ? (
           <Fragment>
-            {Object.entries(props.todaySleep).map(function (sleep, index) {
-              return (
-                <Fragment key={index}>
+            {/* {Object.entries(props.todaySleep).map(function (sleep, index) { */}
+              {/* return ( */}
+                <Fragment>
                   {props.editSleep ? (
                     <Fragment>
                       <Text h4 h4Style={Style.emotionText}>
@@ -202,9 +202,9 @@ function RenderType(props) {
                     </Fragment>
                   ) : (
                     <Fragment key={index}>
-                      <Text h4 h4Style={Style.emotionText}>
+                      {/* <Text h4 h4Style={Style.emotionText}>
                         You Slept {sleep.hours} Hours Last Night {props.editSleep}
-                      </Text>
+                      </Text> */}
                       <View style={Style.sleepImgHolder}>
                         <img
                           src='http://zavius.in/balance/assets/images/sleep.png'
@@ -220,8 +220,8 @@ function RenderType(props) {
                     </Fragment>
                   )}
                 </Fragment>
-              )
-            })}
+              {/* )
+            })} */}
           </Fragment>
         ) : (
           <Fragment>
@@ -1044,7 +1044,8 @@ class AddScreen extends React.Component {
       this.setDurationModalVisible(true)
     }
     if (this.state.onMood) {
-      this.onConfirm()
+     this.onConfirm()
+     
     }
     this.props.data.showHideAddScreen(false);
   }
@@ -1056,7 +1057,6 @@ class AddScreen extends React.Component {
 
   _createMood(moodType, targetDate, moodScore, entry) {
     this.props.createMood(moodType, targetDate, moodScore, entry);
-    userService.fetchMoods({'date':targetDate});
   }
 
   _createActivity(activityType, targetDate, activityDuration) {

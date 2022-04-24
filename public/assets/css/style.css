@@ -15155,3 +15155,12 @@ margin-top: -6px;
 }
 /* *************** */
 
+.mood-wraper, .day-div{
+  width:100px;
+}
+.icon-box {
+  width: 100%;
+}
+.h341 table tr td{
+  width:55px;
+}

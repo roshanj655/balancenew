@@ -13,6 +13,7 @@ export default class Sidebar extends Component {
     }
   }
   showHideAddScreen(data) {
+    this.props.navdata.showHideScreen("dashboard")
     this.setState({ ShowAdd: data })
   }
   render() {

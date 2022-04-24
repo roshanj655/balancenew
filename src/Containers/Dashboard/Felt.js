@@ -7,22 +7,20 @@ function Felt(props) {
     useEffect(() => {
         updateMoodArray("day");
         settabMood("moodDay");
+    }, [props.newChange]);
+    useEffect(() => {
+        updateMoodArray("day");
+        settabMood("moodDay");
     }, [props.selectedDate]);
     const [moodArray, setMoodArray] = useState([]);
+    const getDayOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let moodTime = [];
     const updateMoodArray = (check) => {
         var date = new Date(props.selectedDate);
-        var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
-        var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
-        var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
-        // var weekBeforeDay = week.getDate();
-        // var monthBeforeDay = month.getDate();
-        // props.moods.map((element, index) => {
-        // let day = new Date(element.day).getTime();
-        // let currentDate = date.getTime();
         if (check == "day") {
             userService.fetchMoods({ 'date': props.selectedDate }).then((moods) => {
-                console.log("felt", moods)
                 setMoodArray(moods);
+               
             })
 
         }
@@ -32,52 +30,37 @@ function Felt(props) {
             })
         }
         else if (check == "month") {
-            userService.fetchMoodMonthData({'date':props.selectedDate}).then((moods)=>{
-                console.log("monthgraph",moods);
+            userService.fetchMoodMonthData({ 'date': props.selectedDate }).then((moods) => {
+                console.log(props.selectedDate);
+                console.log("monthgraph", moods);
                 setMoodArray(moods);
             })
         }
 
-        // });
     }
 
-    console.log("felt", moodArray)
-    let moods1 = moodArray.map((item, index) => {
-        let day = new Date(item.day).getDate();
-        let hours = new Date(item.day).getHours();
-        
-        
-        // if(day==6){
-        if (hours >= 0 && hours < 3) {
-            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
-        }
-        // }
+
+    let moods7 = getDayOfWeek.map((item, index) => {
+
+        return <td>{item}</td>
+
     })
     let moods2 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-        if (hours >= 3 && hours < 10) {
-            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
-        }
+            return <td valign='top'><div className=" activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+        
     })
     let moods3 = moodArray.map((item, index) => {
-        let day = new Date(item.day).getDate();
-        let hours = new Date(item.day).getHours();
-        // if(day==6){
-        if (hours >= 10 && hours < 12) {
-            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
-        }
-    })
-    let moods4 = moodArray.map((item, index) => {
-        let day = new Date(item.day).getDate();
-        let hours = new Date(item.day).getHours();
-        // if(day==6){
-        if (hours >= 12 && hours <= 23) {
-            return <div className=" activity-icon text-center"><img src={url+"Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
-        }
-    })
+            let day = new Date(item.day).getDate();
+            let hours = new Date(item.day).getHours();
+            var minutes = new Date(item.day).getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
 
+            return <td>{hours + ":" + minutes + " " + ampm}</td>
+
+    })
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
@@ -148,30 +131,124 @@ function Felt(props) {
                             {/* <p className="add btn">+  Add Sleep</p> */}
                         </div>
                         : ""}
-                    <div className="row h341">
-
-                        <div className="col-md-3 activity-icon text-center">
-                            {moods1}
+                    {tabMood == 'moodDay' ?
+                    <div className="row h341 table-responsive">
+                        <table className='table text-center'>
+                            <tr>
+                            {
+                                moods2
+                            }
+                            </tr>
+                            <tr>
+                            { moods3}
+                        </tr>
+                        </table>
+                        
                         </div>
-                        <div className="col-md-3 activity-icon text-center">
-                            {moods2}
+                       
+                        : ""}
+                    {tabMood == 'moodWeek' ?
+                        <div className="row h341 table-responsive">
+                            <table>
+                                <tr>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+
+                                            if (getDayOfWeek[day] === 'Sun') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+
+                                            if (getDayOfWeek[day] === 'Mon') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+
+                                            if (getDayOfWeek[day] === 'Tue') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+
+                                            if (getDayOfWeek[day] === 'Wed') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+                                            { { getDayOfWeek[day] } }
+                                            if (getDayOfWeek[day] === 'Thu') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+
+                                            if (getDayOfWeek[day] === 'Fri') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                    <td>
+                                        {moodArray.map((item, index) => {
+                                            let day = new Date(item.day).getDay();
+
+                                            if (getDayOfWeek[day] === 'Sat') {
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                            }
+
+
+                                        })}
+                                    </td>
+                                </tr>
+                            </table>
 
                         </div>
-                        <div className="col-md-3">
-                            {moods3}
-                        </div>
-                        <div className="col-md-3">
-                            {moods4}
-                        </div>
+                        : ""}
 
 
-                    </div>
                     {moodArray.length ?
-                        <div className="row">
-                            <div className="col-md-3 text-center time-slider-text">2:25 am</div>
-                            <div className="col-md-3 text-center time-slider-text">10:00 am</div>
+                        <div className=" table-responsive">
+                            
+                            {tabMood == 'moodWeek' ?
+                                <table className='table'>
+                                    <tr>
+                                        {moods7}
+                                    </tr>
+                                </table>
+                                : ""}
+
+                            {/* <div className="col-md-3 text-center time-slider-text">10:00 am</div>
                             <div className="col-md-3 text-center time-slider-text">12:00 am</div>
-                            <div className="col-md-3 text-center time-slider-text">2:00 pm</div>
+                            <div className="col-md-3 text-center time-slider-text">2:00 pm</div> */}
                         </div>
                         : ""}
                 </div>

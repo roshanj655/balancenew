@@ -33,6 +33,7 @@ import ExampleActions from '../../Stores/Example/Actions'
 import SubscriptionScreen from '../Subscription/SubscriptionScreen'
 import AddScreen from '../Add/AddScreen'
 import StartUp from '../StartUp/StartUp'
+import { userService } from '../../Services/UserService'
 
 class RootScreen extends Component {
   constructor(props) {
@@ -41,7 +42,8 @@ class RootScreen extends Component {
   state = {
     show: false,
     changeScreen: "login",
-    newDate:new Date()
+    newDate:new Date(),
+    rerender:false
   }
 
   componentDidMount() {
@@ -63,6 +65,11 @@ class RootScreen extends Component {
   }
   showHideScreen(data) {
     this.setState({ changeScreen: data })
+    // userService.fetchActivities({'date':this.state.newDate}).then((data)=>{
+    //   console.log(data.length);
+      this.setState({ rerender: 1 })
+    // })
+    
   }
   updateDate(data){
     this.setState({newDate:data});
@@ -96,7 +103,7 @@ class RootScreen extends Component {
                           : (this.state.changeScreen == "login") ?
                             <LoginScreen  login={{ loginDone: this.autheticated.bind(this) }} />
                             :
-                            <Dashboard newDate={{ passUpdatedDate: this.updateDate.bind(this) }} />
+                            <Dashboard newDate={{ passUpdatedDate: this.updateDate.bind(this) }} newChange={this.state.rerender}/>
 
                       }
                     
