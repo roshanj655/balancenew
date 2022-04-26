@@ -13,6 +13,7 @@ function Activity(props) {
         settabMood("moodDay");
     }, [props.selectedDate]);
     const [moodArray, setMoodArray] = useState([]);
+    const [moodData, setMoodData] = useState([]);
     const getDayOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let moodTime = [];
     const updateMoodArray = (check) => {
@@ -30,10 +31,10 @@ function Activity(props) {
             })
         }
         else if (check == "month") {
-            userService.fetchMoodMonthData({ 'date': props.selectedDate }).then((moods) => {
-                console.log(props.selectedDate);
-                console.log("monthgraph", moods);
-                setMoodArray(moods);
+            setMoodData(1);
+            userService.fetchMonth({ 'date': props.selectedDate }).then((moods) => {
+                setMoodArray(moods.activityMonthStats);
+                setMoodData(0);
             })
         }
 
@@ -49,7 +50,7 @@ function Activity(props) {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-            return <td><div className=" activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+            return <td><div className=" activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.duration} mins</p><p className='m0'>{item.type}</p></div></td>
         
     })
     let moods3 = moodArray.map((item, index) => {
@@ -58,13 +59,19 @@ function Activity(props) {
             var minutes = new Date(item.day).getMinutes();
             var ampm = hours >= 12 ? 'pm' : 'am';
 
-            return <td>{hours + ":" + minutes + " " + ampm}</td>
+            return <td>{hours + ":" + (minutes<10?0:'')+minutes + " " + ampm}</td>
 
+    })
+    let moods4 = moodArray.map((item, index) => {
+        if(index<4){
+            return <td valign='top'><div className=" activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div><div>{item.type}</div></td>
+        }
+        
     })
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
-            <h4>Your Activity</h4>
+            <h4>Your Activities</h4>
             <ul className=" justify-content-end nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a
@@ -150,7 +157,7 @@ function Activity(props) {
                     {tabMood == 'moodWeek' ?
                         <div className="row h341 table-responsive">
                             <table>
-                                <tr>
+                                <tr class="table-align-bottom">
                                     <td>
                                         {moodArray.map((item, index) => {
                                             let day = new Date(item.day).getDay();
@@ -233,7 +240,29 @@ function Activity(props) {
 
                         </div>
                         : ""}
-
+                    {tabMood == 'moodMonth' ?
+                            <div className="row h341 table-responsive">
+                            <table className='table text-center'>
+                                
+                                {moodData?
+                                <tr><td colSpan="99">Hang tight, we are grabbing the data</td></tr>
+                                
+                                
+                                :
+                                <span>
+                                    <tr> <td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Top Activities Last 30 Days</h2></div></td></tr>
+                                    
+                                <tr>
+                                {
+                                    moods4
+                                }
+                                </tr>
+                                </span>
+                                }
+                            </table>
+                            
+                            </div>
+                        :""}
 
                     {moodArray.length ?
                         <div className=" table-responsive">

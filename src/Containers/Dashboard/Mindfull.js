@@ -49,7 +49,7 @@ function Mindfull(props) {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-            return <td><div className=" activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+            return <td><div className=" activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.type}</p><p className='m0'>+5</p></div></td>
         
     })
     let moods3 = moodArray.map((item, index) => {
@@ -58,13 +58,13 @@ function Mindfull(props) {
             var minutes = new Date(item.day).getMinutes();
             var ampm = hours >= 12 ? 'pm' : 'am';
 
-            return <td>{hours + ":" + minutes + " " + ampm}</td>
+            return <td>{hours + ":" + (minutes<10?0:'')+minutes + " " + ampm}</td>
 
     })
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
-            <h4>You Felt</h4>
+            <h4>You Mindfull Bonues</h4>
             <ul className=" justify-content-end nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a
@@ -150,7 +150,7 @@ function Mindfull(props) {
                     {tabMood == 'moodWeek' ?
                         <div className="row h341 table-responsive">
                             <table>
-                                <tr>
+                                <tr class="table-align-bottom">
                                     <td>
                                         {moodArray.map((item, index) => {
                                             let day = new Date(item.day).getDay();

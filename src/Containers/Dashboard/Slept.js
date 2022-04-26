@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { userService } from '../../Services/UserService';
 function Slept(props) {
+    const url = "http://zavius.in/balance/assets/images/";
     var sleepTimeVar = 0;
     let data = [];
     useEffect(() => {
@@ -24,42 +25,46 @@ function Slept(props) {
     const [sleptArray, setsleptArray] = useState([]);
     const [sleeptime, sleeptimes] = useState(0);
     const [sleepData, setSleepData] = useState([]);
+    const [saleepMonthData, setSleepMonthData] = useState(0);
     const updatesleptArray = (check) => {
         setSleepData([]);
         var date = new Date(props.selectedDate);
-        var oneBeforeDay = date.getTime() - (1 * 24 * 60 * 60 * 1000);
-        var weekBeforeDay = date.getTime() - (7 * 24 * 60 * 60 * 1000);
-        var monthBeforeDay = date.getTime() - (30 * 24 * 60 * 60 * 1000);
-        
+
         // props.sleep.map((element, index) => {
         //     let day = new Date(element.day).getTime();
         //     let currentDate = date.getTime();
-            if (check == "day") {
-                userService.fetchSleeps({'date':props.selectedDate}).then((sleep)=>{
-                    sleeptimes(sleep[0].hours)
-                })
-            }
-            else if (check == "week") {
-                userService.fetchSleepWeek({'date':props.selectedDate}).then((sleep)=>{
-                    console.log("sleeeeep",sleep);
-                    // sleeptimes(sleep[0].hours)
-                })
-            }
-            // else if (check == "month" && (day >= monthBeforeDay && day <= currentDate)) {
-            //     chartData(element); sleepTimeVar = parseFloat(sleepTimeVar) + parseFloat(element.hours);
-            //     chartData(element);
-            // }
+        if (check == "day") {
+            userService.fetchSleeps({ 'date': props.selectedDate }).then((sleep) => {
+                sleeptimes(sleep[0].hours)
+            })
+        }
+        else if (check == "week") {
+            userService.fetchSleepWeek({ 'date': props.selectedDate }).then((sleep) => {
+                console.log("sleeeeep", sleep);
+                chartData(sleep)
+            })
+        }
+        else if (check == "month") {
+            setSleepMonthData(0);
+            userService.fetchMonth({ 'date': props.selectedDate }).then((data) => {
+                console.log(data)
+                setSleepMonthData(data.sleepMonthStats);
+                // setMoodData(0);
+            })
+        }
         // });
         // sleeptimes(sleepTimeVar);
     }
 
-    function chartData(element) {
-        let day = new Date(element.day);
-        let obj = {
-            name: day.getDate() + " " + month[day.getUTCMonth()],
-            time: element.hours
-        }
-        data.push(obj);
+    function chartData(sleep) {
+        sleep.map((element, index) => {
+            let day = new Date(element.day);
+            let obj = {
+                name: day.getDate() + " " + month[day.getUTCMonth()],
+                time: element.hours
+            }
+            data.push(obj);
+        });
         setSleepData(data);
         console.log("slept", data);
     }
@@ -121,7 +126,7 @@ function Slept(props) {
                 </li>
             </ul>
             <div className="tab-content  h371" id="ex1-content">
-                {sleeptime<=0 ?
+                {sleeptime <= 0 ?
                     <div
                         className="alert alert-danger"
                     >
@@ -129,16 +134,23 @@ function Slept(props) {
                         {/* <p className="add btn">+  Add Sleep</p> */}
                     </div>
                     :
-                    <div
-                        className="flexbox tab-pane fade show active"
-                        id="ex1-tabs-1"
-                        role="tabpanel"
-                        aria-labelledby="ex1-tab-1">
-                        <h2 className="flex-item">{sleepsTime[0]}hr {sleepsTime[1] || 0}min</h2>
-                        {/* <p className="add btn">+  Add Sleep</p> */}
-                    </div>
+                    (tabslept == "sleptDay") ?
+                        <table className='table'>
+                            <tr>
+                                <td className='h371'>
+                                    <div
+                                        className="flexbox tab-pane fade show active">
+                                        <h2 className="flex-item f40">{sleepsTime[0]} hours {sleepsTime[1] || 0}min
+                                            <img src={url + "sleep.png"} className="sleep-icon" alt="image" />
+                                        </h2>
+                                        {/* <p className="add btn">+  Add Sleep</p> */}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        : ""
                 }
-                {(tabslept == "sleptWeek" || tabslept == "sleptMonth") && sleeptime<=0 ?
+                {(tabslept == "sleptWeek") ?
                     <LineChart
                         width={385}
                         height={296}
@@ -160,10 +172,32 @@ function Slept(props) {
                             stroke="#8884d8"
                             activeDot={{ r: 8 }}
                         />
-                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                        <Line type="monotone" dataKey="Date" stroke="#82ca9d" />
                     </LineChart>
                     : ""}
+                {tabslept == 'sleptMonth' ?
+                    <div className="row h341 table-responsive">
+                                <table className='table text-center'>
+                            {!saleepMonthData ?
+                                 <tr><td colSpan="4">Hang tight, we are grabbing the data</td></tr>
+                                :
+                                <span>
+                                        <td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Average Sleep Last 30 Days</h2></div></td>
+                                    
+                                    <tr>
+                                    <div
+                                    className="flexbox tab-pane fade show active">
+                                    <h2 className="flex-item f37">{saleepMonthData} hours per night
+                                        <img src={url + "sleep.png"} className="sleep-icon" alt="image" /></h2>
+                                    {/* <p className="add btn">+  Add Sleep</p> */}
+                                </div>
+                                    </tr>
+                                    </span>
+                            }
+                        </table>
 
+                    </div>
+                    : ""}
 
                 {/* <div className="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
                     7hr 

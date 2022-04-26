@@ -89,7 +89,7 @@ function Rightpanel() {
                     height={350}
                     data={data}
                     cx={200} cy={150} innerRadius={20} outerRadius={140} barSize={20}>
-                    <RadialBar  minAngle={30} label={{ position: 'insideStart', fill: '#fff' }} background clockWise dataKey="x" />
+                    <RadialBar  minAngle={30} background clockWise dataKey="x" />
                     <Legend iconSize={10} width={120} height={56} layout="horizontal" verticalAlign="bottom" wrapperStyle={style} />
                 </RadialBarChart>
                 {/* <ProgressChart

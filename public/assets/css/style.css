@@ -14642,7 +14642,8 @@ hr{
  margin-top: 20px;
 }
 .activity-icon img{
- width:80%;
+  width: 56px !important;
+  height: 56px !important;
 }
 .rightpanel-bottom .iconbox img{
  width:100%;
@@ -15163,4 +15164,61 @@ margin-top: -6px;
 }
 .h341 table tr td{
   width:55px;
+}
+.table-align-top td{
+  vertical-align: top;
+}
+.table-align-bottom td{
+  vertical-align: bottom;
+}
+.margin-top-153{ margin:153px auto auto auto; }
+.margin-top-136{ margin:136px auto auto auto; }
+.margin-top-119{ margin:119px auto auto auto; }
+.margin-top-102{ margin:102px auto auto auto; }
+.margin-top-85{ margin:85px auto auto auto; }
+.margin-top-68{ margin:68px auto auto auto; }
+.margin-top-51{ margin:51px auto auto auto; }
+.margin-top-34{ margin:34px auto auto auto; }
+.margin-top-17{ margin:17px auto auto auto; }
+.margin-top-0{ margin:0px auto auto auto; }
+
+
+.width70{
+  width:66px;
+}
+.margin-auto{
+  margin: auto;
+}
+.type-color{
+  color: #d2866d;
+}
+.sleep-icon{
+  width: 70px !important;
+  margin-left: 12px;
+  height: unset !important;
+  border-radius: unset !important;
+}
+.activity-icon img{
+  border-radius: unset !important;
+}
+.w427{
+  width:100%;
+}
+.f40
+{
+  font-size:40px;
+}
+.f37
+{
+  font-size:37px;
+}
+.m0{
+  margin:0 !important;
+}
+.activity-icon p{
+  font-size: 18px;
+  margin-top: -4px;
+}
+span tr{
+  border-style: none !important;
 }

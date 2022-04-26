@@ -147,8 +147,8 @@ function RenderType(props) {
       <View style={Style.sleepColumn}>
         {props.todaySleep.length !== 0 ? (
           <Fragment>
-            {/* {Object.entries(props.todaySleep).map(function (sleep, index) { */}
-              {/* return ( */}
+            {Object.entries(props.todaySleep).map(function (sleep, index) {
+            return ( 
                 <Fragment>
                   {props.editSleep ? (
                     <Fragment>
@@ -202,9 +202,9 @@ function RenderType(props) {
                     </Fragment>
                   ) : (
                     <Fragment key={index}>
-                      {/* <Text h4 h4Style={Style.emotionText}>
+                      <Text h4 h4Style={Style.emotionText}>
                         You Slept {sleep.hours} Hours Last Night {props.editSleep}
-                      </Text> */}
+                      </Text>
                       <View style={Style.sleepImgHolder}>
                         <img
                           src='http://zavius.in/balance/assets/images/sleep.png'
@@ -220,8 +220,8 @@ function RenderType(props) {
                     </Fragment>
                   )}
                 </Fragment>
-              {/* )
-            })} */}
+              )
+            })} 
           </Fragment>
         ) : (
           <Fragment>
@@ -305,7 +305,7 @@ function RenderType(props) {
 class AddScreen extends React.Component {
   constructor(props) {
     super(props)
-    const today = new Date()
+    const today = props.newDate?props.newDate:new Date()
     this.state = {}
     this.state = {
       editSleep: false,

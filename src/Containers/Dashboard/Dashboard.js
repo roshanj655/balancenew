@@ -313,8 +313,9 @@ console.log("MS Token");
                 // calendarColor={'#7743CE'}
                 dateNumberStyle={Style.titleText}
                 dateNameStyle={Style.titleText}
-                highlightDateNumberStyle={Style.lightHighlight}
-                highlightDateNameStyle={Style.lightHighlight}
+                selectedDate={{color:'#d2866d', fontWeight:900}}
+                highlightDateNumberStyle={{color:'#d2866d', fontWeight:900}}
+                highlightDateNameStyle={{color:'#d2866d', fontWeight:900}}
                 disabledDateNameStyle={Style.titleText}
                 disabledDateNumberStyle={Style.titleText}
                 iconLeft={require('../../Assets/Images/leftArrow.png')}
@@ -324,7 +325,7 @@ console.log("MS Token");
               />    
             </div>
             <div className='col-md-6 pr0'>
-                <Felt moods={this.props.moods} selectedDate={this.state.newSelectedDate} newChange={this.props.newUpdate}  newChange={this.state.updatedData}/>
+                <Felt moods={this.props} selectedDate={this.state.newSelectedDate} newChange={this.props.newUpdate}  newChange={this.state.updatedData}/>
             </div>
             <div className='col-md-6'>
                 <Slept sleep={this.props.sleeps} selectedDate={this.state.newSelectedDate}  newChange={this.state.updatedData}/>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { userService } from '../../Services/UserService';
 function Felt(props) {
     const url = "http://zavius.in/balance/assets/images/";
-    props.moods.sort((a, b) => (a.score < b.score ? 1 : -1));
+    // props.moods.sort((a, b) => (a.score < b.score ? 1 : -1));
     let moodsArray = [];
     useEffect(() => {
         updateMoodArray("day");
@@ -13,6 +13,7 @@ function Felt(props) {
         settabMood("moodDay");
     }, [props.selectedDate]);
     const [moodArray, setMoodArray] = useState([]);
+    const [moodData, setMoodData] = useState(0);
     const getDayOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let moodTime = [];
     const updateMoodArray = (check) => {
@@ -20,7 +21,7 @@ function Felt(props) {
         if (check == "day") {
             userService.fetchMoods({ 'date': props.selectedDate }).then((moods) => {
                 setMoodArray(moods);
-               
+
             })
 
         }
@@ -30,10 +31,10 @@ function Felt(props) {
             })
         }
         else if (check == "month") {
-            userService.fetchMoodMonthData({ 'date': props.selectedDate }).then((moods) => {
-                console.log(props.selectedDate);
-                console.log("monthgraph", moods);
-                setMoodArray(moods);
+            setMoodData(1);
+            userService.fetchMonth({ 'date': props.selectedDate }).then((moods) => {
+                setMoodArray(moods.moodMonthStats);
+                setMoodData(0);
             })
         }
 
@@ -48,18 +49,24 @@ function Felt(props) {
     let moods2 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
+        let margin = (10 - item.score) * 17;
         // if(day==6){
-            return <td valign='top'><div className=" activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
-        
+        return <td><div className={"width70 activity-icon text-center margin-top-" + margin}><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+
     })
     let moods3 = moodArray.map((item, index) => {
-            let day = new Date(item.day).getDate();
-            let hours = new Date(item.day).getHours();
-            var minutes = new Date(item.day).getMinutes();
-            var ampm = hours >= 12 ? 'pm' : 'am';
+        let day = new Date(item.day).getDate();
+        let hours = new Date(item.day).getHours();
+        var minutes = new Date(item.day).getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
 
-            return <td>{hours + ":" + minutes + " " + ampm}</td>
+        return <td>{hours + ":" + (minutes<10?0:'')+minutes + " " + ampm}</td>
 
+    })
+    let moods4 = moodArray.map((item, index) => {
+        if (index < 4) {
+            return <td><div className='type-color'>{item.type}</div><div className="width70 activity-icon text-center margin-auto"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+        }
     })
     const [tabMood, settabMood] = useState("moodDay");
     return (
@@ -132,31 +139,31 @@ function Felt(props) {
                         </div>
                         : ""}
                     {tabMood == 'moodDay' ?
-                    <div className="row h341 table-responsive">
-                        <table className='table text-center'>
-                            <tr>
-                            {
-                                moods2
-                            }
-                            </tr>
-                            <tr>
-                            { moods3}
-                        </tr>
-                        </table>
-                        
+                        <div className="row h371 table-responsive w427">
+                            <table className='table text-center'>
+                                <tr className=' table-align-top'>
+                                    {
+                                        moods2
+                                    }
+                                </tr>
+                                <tr className=' table-align-bottom'>
+                                    {moods3}
+                                </tr>
+                            </table>
+
                         </div>
-                       
+
                         : ""}
                     {tabMood == 'moodWeek' ?
                         <div className="row h341 table-responsive">
                             <table>
-                                <tr>
+                                <tr className='table-align-bottom'>
                                     <td>
                                         {moodArray.map((item, index) => {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sun') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -167,7 +174,7 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Mon') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -178,7 +185,7 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Tue') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -189,7 +196,7 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Wed') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -200,7 +207,7 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
                                             { { getDayOfWeek[day] } }
                                             if (getDayOfWeek[day] === 'Thu') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -211,7 +218,7 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Fri') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -222,7 +229,7 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sat') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
                                             }
 
 
@@ -233,11 +240,34 @@ function Felt(props) {
 
                         </div>
                         : ""}
+                    {tabMood == 'moodMonth' ?
+                        <div className="row h341 table-responsive">
+                            <table className='table text-center'>
 
+                                {moodData ?
+                                    <tr><td colSpan="4">Hang tight, we are grabbing the data</td></tr>
+
+
+                                    :
+                                    <span>
+                                        <td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Top Moods Last 30 Days</h2></div></td>
+                                    
+                                    <tr>
+                                        
+                                        {
+                                            moods4
+                                        }
+                                    </tr>
+                                    </span>
+                                }
+                            </table>
+
+                        </div>
+                        : ""}
 
                     {moodArray.length ?
                         <div className=" table-responsive">
-                            
+
                             {tabMood == 'moodWeek' ?
                                 <table className='table'>
                                     <tr>
