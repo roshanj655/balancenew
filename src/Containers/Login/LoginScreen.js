@@ -43,7 +43,6 @@ const handlePress = (href) => {
     if (supported) {
       Linking.openURL(href);
     } else {
-      console.log("Don't know how to open URI: " + href);
     }
   });
 }
@@ -110,15 +109,12 @@ class LoginScreen extends React.Component {
        
       // } else {
       //   // no token, failed sign in
-      //   console.log('NO TOKEN, FAILED')
       // }
     } catch (error) {
       // if (error.code === AppleAuthError.CANCELED) {
       //   // user cancelled Apple Sign-in
-      //   console.log('USER CANCELED', error)
       // } else {
         // other unknown error
-        console.log('OTHER ERROR there', error)
       // }
     }
   }
@@ -130,7 +126,6 @@ class LoginScreen extends React.Component {
         this.checkForToken(token)
       })
     } catch (e) {
-      console.log(e)
     }
   }
 
@@ -144,7 +139,6 @@ class LoginScreen extends React.Component {
       this.props.login.loginDone();
     } else {
       // no token, failed sign in
-      console.log('NO TOKEN, FAILED')
     }
   }
 

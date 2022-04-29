@@ -14,7 +14,6 @@ const { store, persistor } = createStore()
 
 export default class App extends Component {
   render() {
-    console.log("World");
     return (
       /**
        * @see https://github.com/reduxjs/react-redux/blob/master/docs/api/Provider.md

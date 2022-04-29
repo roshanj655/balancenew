@@ -30,7 +30,6 @@ socket.on('connect', () => {
     strategy: 'jwt',
     accessToken: localStorage.getItem('feathers-jwt')
   }, function(error, newAuthResult) {
-    console.log("newauthresult",newAuthResult); 
   });
 
   setTimeout(function() {
@@ -38,13 +37,11 @@ socket.on('connect', () => {
 });
 
 socket.on('disconnect', (err) => {
-  console.log("DIsCOnnect US"+err);
   setTimeout(function() {
     NavigationService.navigate('NetworkErrorScreen')
   }, 100)
 })
 app.configure(
-  //console.log("cong US")
   socketio(socket, {
     timeout: 60000 * 60,
   })
@@ -61,18 +58,15 @@ app.configure(
 )
 
 function fetchUser() {
-  console.log("Fetch User Hello");
   return app
     .service('users')
     .find()
     .then((response) => {
-      console.log("Fetch User 1 "+response.data[0])
       return response.data[0]
     })
 }
 
 async function addBirthdate(action) {
-  console.log("addBirthdate");
   const data = {
     dob: action.user.dob,
   }
@@ -94,7 +88,6 @@ async function addBirthdate(action) {
 }
 
 function fetchAverage(overall) {
-  console.log("fetchAverage");
   var total = 0
   var commitsData = []
   for (var i = 0; i < overall.length; i++) {
@@ -109,7 +102,6 @@ function fetchAverage(overall) {
 }
 
 function fetchTriangle(moodScores, sleepScores, activityScores) {
-  console.log("fetchTriangle");
   const response = {
     labels: ['Activity', 'Mood', 'Sleep'],
     data: [
@@ -118,12 +110,10 @@ function fetchTriangle(moodScores, sleepScores, activityScores) {
       sleepScores.length === 1 ? sleepScores[0].score / 100 : 0,
     ],
   }
-  console.log("US fetchTRaingle " + response.data);
   return response
 }
 
 function fetchMoods(action) {
-  console.log("US fetchMoods");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -162,16 +152,13 @@ function fetchMoods(action) {
       },
     })
     .then((response) => {
-      console.log("Moods Dataaa" + JSON.stringify(response))
       return response.data
     }).catch((error) => {
-      console.log(error);
       return Promise.reject(error)
     })
 }
 
 function fetchMoodsAgenda(action) {
-  console.log("fetchMoodsAgenda");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -685,7 +672,6 @@ function fetchMoodWeekGraph(action) {
 }
 
 async function fetchMonth(action) {
-  console.log("fetchMonth US");
   try {
     var moodTypes = [
       'Scared',
@@ -873,7 +859,6 @@ async function fetchMonth(action) {
 }
 
 function fetchActivityWeekGraph(action) {
-  console.log("fetchAWG US");
   var activityWeekData = []
   var activityWeekHours = []
   var activityWeekDays = []
@@ -1025,7 +1010,6 @@ function fetchActivityGraph(activities) {
 }
 
 function fetchActivities(action) {
-  console.log("fetchAc US");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -1068,7 +1052,6 @@ function fetchActivities(action) {
 }
 
 function fetchMindfulnesses(action) {
-  console.log("fetchMinde US");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -1111,7 +1094,6 @@ function fetchMindfulnesses(action) {
 }
 
 function fetchSleeps(action) {
-  console.log("fetchSleep US");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -1153,7 +1135,6 @@ function fetchSleeps(action) {
 }
 
 function fetchSleepWeek(action) {
-  console.log("fetchSleepW US");
   // // Get previous day based on given day
   const date = action.date
   const rangeDate = getCalendarWeek(date)
@@ -1176,7 +1157,6 @@ function fetchSleepWeek(action) {
 }
 
 function createMood(action) {
-  console.log("CM US");
   const m = moment(action.date)
   const offset = m.utcOffset()
   const data = {
@@ -1195,7 +1175,6 @@ function createMood(action) {
 }
 
 function createMindfulness(action) {
-  console.log("CMF US");
   const m = moment(action.date)
   const offset = m.utcOffset()
   const data = {
@@ -1213,7 +1192,6 @@ function createMindfulness(action) {
 }
 
 function createVideo(action) {
-  console.log("CV US");
   const m = moment(action.date)
   const offset = m.utcOffset()
   const data = {
@@ -1231,7 +1209,6 @@ function createVideo(action) {
 }
 
 function createActivity(action) {
-  console.log("CAc US");
   const m = moment(action.date)
   const offset = m.utcOffset()
   const data = {
@@ -1244,13 +1221,11 @@ function createActivity(action) {
     .service('activities')
     .create(data)
     .then((response) => {
-      console.log(JSON.stringify(response));
       return response
     })
 }
 
 async function createSleep(action) {
-  console.log("CSleep US");
   const m = moment(action.date)
   const offset = m.utcOffset()
   const data = {
@@ -1319,7 +1294,6 @@ async function createSleep(action) {
 }
 
 async function createUser(action) {
-  console.log("CUser US");
   const user = {
     trueEmail: action.email,
     email: action.password,
@@ -1341,7 +1315,6 @@ async function createUser(action) {
 }
 
 async function createTrialUser(action) {
-  console.log("uuuu US");
   var create = new Date()
   const user = {
     trueEmail: action.email,
@@ -1366,7 +1339,6 @@ async function createTrialUser(action) {
 }
 
 async function updateToken(token) {
-  console.log("updateToken US");
   const sendToken = {
     deviceToken: token.token,
   }
@@ -1396,7 +1368,6 @@ async function saveItem(item, selectedValue) {
 }
 
 function loginUser(action) {
-  console.log("login 1 US",action);
   const payload = {
     email: action.user.email,
     password: action.user.password,
@@ -1412,7 +1383,6 @@ function loginUser(action) {
 }
 
 function loginTrialUser(action) {
-  console.log("logintrail US");
   const payload = {
     email: action.user.email,
     password: action.user.password,
@@ -1424,7 +1394,6 @@ function loginTrialUser(action) {
 }
 
 function trialAuthenticate(options) {
-  console.log("trail auth 2 US");
   return _trialAuthenticate(options)
     .then((user) => {
       saveItem('id_token', options.password)
@@ -1436,7 +1405,6 @@ function trialAuthenticate(options) {
 }
 
 function _trialAuthenticate(payload) {
-  console.log("trail auth US");
   return app
     .authenticate(payload)
     .then((response) => {
@@ -1457,7 +1425,6 @@ function _trialAuthenticate(payload) {
 }
 
 function authenticate(options) {
-  console.log("auth 2 US");
   return _authenticate(options)
     .then((user) => {
       saveItem('id_token', options.password)
@@ -1469,36 +1436,29 @@ function authenticate(options) {
 }
 
 function _authenticate(payload) {
-  console.log("_auth US 1");
   return app
     .authenticate(payload)
     .then((response) => {
       const temp = app.passport.verifyJWT(response.accessToken)
       saveItem('id_token', response.accessToken)
       saveItem('token', response.accessToken)
-      console.log("User Authenticated Success"+response.accessToken)
       return temp
     })
-    .then((payload) => {
-      console.log("Auth 2 Ashu")  
+    .then((payload) => { 
       return app.service('users').get(payload.sub)
     })
     .then((user) => {
-      console.log("Auth 3 Ashu"+app.get('user'))
       app.set('user', user)
       return app.service('users').get(app.get('user'))
     })
     .catch((e) => {
-      console.log("ERRRRR " + e.message)
       if (e.message === 'Invalid login') {
-        console.log(e.message)
         return createUser(payload)
       }
     })
 }
 
 function fetchMoodScores(action) {
-  console.log("fetchMoodsScore US");
   // // Get previous day based on given day
   const today = new Date()
   var previousDay = today.setDate(today.getDate() - 1)
@@ -1514,7 +1474,6 @@ function fetchMoodScores(action) {
     0
   )
 
-  console.log("fetchMoodsScore startOfNextDay" + startOfNextDay);
   var endOfPreviousDay = new Date(
     previousDay.getFullYear(),
     previousDay.getMonth(),
@@ -1524,14 +1483,12 @@ function fetchMoodScores(action) {
     59
   )
 
-  console.log("fetchMoodsScore endOfPreviousDay" + endOfPreviousDay);
   // get data where day is greater than `endOfPreviousDay` and less than `startOfNextDay`
   const dayQuery = {
     $gt: +endOfPreviousDay,
     $lt: +startOfNextDay,
   }
 
-  console.log("fetchMoodsScore en dayQuerydOfPreviousDay" + dayQuery.$gt);
   return app
     .service('scores')
     .find({
@@ -1545,17 +1502,12 @@ function fetchMoodScores(action) {
       },
     })
     .then((response) => {
-      console.log(response)
-      console.log(response.data)
-      console.log("Ashuuuuuuuuuu")
       return response.data
     })
 
-    console.log("Returned :(")
 }
 
 function fetchActivityScores(action) {
-  console.log("fetchActivityScore US");
   // // Get previous day based on given day
   const today = new Date()
   var previousDay = today.setDate(today.getDate() - 1)
@@ -1602,7 +1554,6 @@ function fetchActivityScores(action) {
 }
 
 function fetchSleepScores(action) {
-  console.log("fetchSleepScores US");
   // // Get previous day based on given day
   const today = new Date()
   var previousDay = today.setDate(today.getDate() - 1)
@@ -1649,7 +1600,6 @@ function fetchSleepScores(action) {
 }
 
 function fetchBalanceScores(action) {
-  console.log("fetchBalanceScore US");
   // // Get previous day based on given day
   const date = action.date
   const today = new Date(date)
@@ -1697,7 +1647,6 @@ function fetchBalanceScores(action) {
 }
 
 function fetchOverall() {
-  console.log("fetcOverall US")
   // // Get previous day based on given day
   // const date = action.date
   const today = new Date()
@@ -1740,7 +1689,6 @@ function fetchOverall() {
       },
     })
     .then((response) => {
-      console.log(response)
       return response.data
     })
 }

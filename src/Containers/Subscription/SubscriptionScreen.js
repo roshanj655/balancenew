@@ -72,19 +72,16 @@ class SubscriptionScreen extends React.Component {
     // const userStub = originalTransactionIdentifierIOS + '-' + userId;
     const userStub = '' + userId
 
-    console.log(userStub);
     return this.loginUser(userStub)
   }
 
  loginUser = async (stub) => {
     AsyncStorage.setItem(purchasedKey, stub)
-    console.log("Ashu")
     this.props.loginUser({
       email: stub,
       password: stub,
       firstName: 'sub',
     })
-    console.log(stub)
     
   }
 
@@ -95,7 +92,6 @@ class SubscriptionScreen extends React.Component {
       return this.loginUserFromPurchase()
       
     } catch (err) {
-      console.log(err)
       Alert.alert('Something has gone wrong. Please close the app and re-open it.')
     } finally {
       this.setState({ isFetching: false })

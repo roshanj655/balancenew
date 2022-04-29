@@ -280,22 +280,22 @@ function RenderType(props) {
       <View>
         <View style={Style.rowOne}>
           <View
-            onPress={() => console.log('Works!')}
+            
             // activeOpacity={0.7}
             style={Style.borderLine}
           />
 
           <View
-            onPress={() => console.log('Works!')}
+            
             // activeOpacity={0.7}
             style={Style.selectorBox}
           />
         </View>
 
         <View style={Style.rowTwo}>
-          <View onPress={() => console.log('Works!')} style={Style.selectorBox} />
+          <View  style={Style.selectorBox} />
 
-          <View onPress={() => console.log('Works!')} style={Style.selectorBox} />
+          <View style={Style.selectorBox} />
         </View>
       </View>
     )

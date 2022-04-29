@@ -44,7 +44,6 @@ const handlePress = (href) => {
     if (supported) {
       Linking.openURL(href);
     } else {
-      console.log("Don't know how to open URI: " + href);
     }
   });
 }
@@ -582,7 +581,6 @@ class ProfileScreen extends React.Component {
   }
 
   _fetchUser() {
-    console.log("Profile Screen 3");
     this.props.fetchUser()
   }
 
@@ -595,7 +593,6 @@ class ProfileScreen extends React.Component {
   }
 
   logicHandler(item) {
-    // console.log('ITEM', item)
     if (item === 'Logout') {
       this.logout()
     }
@@ -608,13 +605,11 @@ class ProfileScreen extends React.Component {
   }
 
   async logout() {
-    // console.log('LOGOUT')
     try {
       await AsyncStorage.removeItem('id_token')
       await AsyncStorage.removeItem('subscription_purchase_stub')
       //here NavigationService.navigate('SubscriptionScreen')
     } catch (exception) {
-      // console.log(exception)
     }
   }
 

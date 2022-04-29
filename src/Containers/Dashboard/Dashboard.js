@@ -79,10 +79,7 @@ class Dashboard extends React.Component {
     
     setTimeout(() => {
       this.setState({ show: true })
-      console.log("dashboard",props)
       localStorage.setItem('chartData',JSON.stringify(this.props.data));
-      localStorage.setItem('moods',Object.keys(this.props.moods).length != 0?JSON.stringify(this.props.moods):"[]");
-      localStorage.setItem('activities',Object.keys(this.props.activities).length != 0?JSON.stringify(this.props.activities):"[]");
     }, 1000)
   }
 
@@ -117,22 +114,7 @@ class Dashboard extends React.Component {
     })
   }
   
-  onRegistered = (deviceToken) => {
-console.log("MS Token");
-    // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU1NTY0OTYsImV4cCI6MTY0NTY0Mjg5NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiNDc4MDdkMTEtZmQ5NC00MDIyLWJmN2UtMGM1MjFiZDFkZTQ3In0.rxzyn-T7zPFpq3LzyYc0HNS4eowZLMPtFWRFpsNSYAw"
-
-    // this.props.updateToken(token)
-
-    // Alert.alert('Registered For Remote Push', `Device Token: ${deviceToken}`, [
-    //   {
-    //     text: 'Dismiss',
-    //     onPress: null,
-    //   },
-    // ])
-  }
-
- 
-
+  
   setModalOff() {
     this.setState({
       isNew: false,
@@ -198,13 +180,11 @@ console.log("MS Token");
   }
 
   async logout() {
-    // console.log('LOGOUT')
     try {
       await AsyncStorage.removeItem('id_token')
       await AsyncStorage.removeItem('subscription_purchase_stub')
      // NavigationService.navigate('SubscriptionScreen')
     } catch (exception) {
-      // console.log(exception)
     }
   }
 
@@ -239,10 +219,8 @@ console.log("MS Token");
   pullNewDay1(day) {
     const formatDay = new Date()
     this._fetchAll(formatDay)
-    console.log("pulll" + this.props.activities)
     let finalObj = {}
     for (var a in this.props.activities) {
-      console.log("pulll activities" + a)
       if (this.props.activities.hasOwnProperty(a)) {
         const date = this.props.activities[a].day.split('T')[0]
         if (finalObj[date]) {
@@ -253,7 +231,6 @@ console.log("MS Token");
       }
     }
     for (var b in this.props.moods) {
-      console.log("pulll moods" + b)
       if (this.props.moods.hasOwnProperty(b)) {
         const date = this.props.moods[b].day.split('T')[0]
         if (finalObj[date]) {
@@ -264,7 +241,6 @@ console.log("MS Token");
       }
     }
     for (var c in this.props.sleeps) {
-      console.log("pulll Sleeps" + c)
       if (this.props.moods.hasOwnProperty(c)) {
         const date = this.props.sleeps[c].day.split('T')[0]
         if (finalObj[date]) {
@@ -274,12 +250,9 @@ console.log("MS Token");
         }
       }
     }
-    console.log(finalObj)
     this.setState({
       items: finalObj,
     })
-    console.log("Pulll "+this.props.moods[0])
-    console.log("Pulll ends")
   }
   toggleBox() {
       this.setState({isBoxVisible:isBoxVisible=="hide"?"show":"hide"});
@@ -382,7 +355,6 @@ pullNewDay(day) {
       }
     }
   }
-  console.log(finalObj)
   this.setState({
     items: finalObj,
   })
@@ -420,7 +392,6 @@ testLoad(day) {
       }
     }
   }
-  console.log(finalObj)
   this.setState({
     items: finalObj,
   })
@@ -505,7 +476,6 @@ timeToString(time) {
 
 setDate = (event, date) => {
 
-console.log("MS event "+event+"date = "+date);
   var monthNames = [
     'JAN',
     'FEB',
@@ -564,22 +534,18 @@ _fetchUser() {
   this.props.fetchUser()
 }
 _fetchMoods(moodDate) {
-  console.log(' fetchMood dateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.props.fetchMoods(userService.fetchMoods(moodDate)))
   
   this.props.fetchMoods(moodDate)
 }
 _mindfullness(moodDate) {
   
   this.props.fetchMindfullness(moodDate)
-  console.log(' fetchMood ', this.props.fetchMindfullness(moodDate))
 }
 _fetchAll(moodDate) {
   this.props.fetchAll(moodDate)
-  console.log(' fetchAll Mooddate', moodDate)
 }
 _fetchAgenda(moodDate) {
   this.props.fetchAgenda(moodDate)
-  console.log('MOODDATE', this.props.fetchAgenda(moodDate))
 }
 }
 

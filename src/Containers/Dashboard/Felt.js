@@ -60,12 +60,12 @@ function Felt(props) {
         var minutes = new Date(item.day).getMinutes();
         var ampm = hours >= 12 ? 'pm' : 'am';
 
-        return <td>{hours + ":" + (minutes<10?0:'')+minutes + " " + ampm}</td>
+        return <td>{hours + ":" + (minutes < 10 ? 0 : '') + minutes + " " + ampm}</td>
 
     })
     let moods4 = moodArray.map((item, index) => {
         if (index < 4) {
-            return <td><div className='type-color'>{item.type}</div><div className="width70 activity-icon text-center margin-auto"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+            return <td><div>{item.type}</div><div className="width70 activity-icon text-center margin-auto"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
         }
     })
     const [tabMood, settabMood] = useState("moodDay");
@@ -126,7 +126,7 @@ function Felt(props) {
             <div className="tab-content" id="ex1-content">
 
                 <div
-                    className="tab-pane fade show active"
+                    className="tab-pane fade h413 show active"
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
@@ -155,7 +155,7 @@ function Felt(props) {
 
                         : ""}
                     {tabMood == 'moodWeek' ?
-                        <div className="row h341 table-responsive">
+                        <div className="row h371 table-responsive">
                             <table>
                                 <tr className='table-align-bottom'>
                                     <td>
@@ -241,7 +241,7 @@ function Felt(props) {
                         </div>
                         : ""}
                     {tabMood == 'moodMonth' ?
-                        <div className="row h341 table-responsive">
+                        <div className="row h371 table-responsive">
                             <table className='table text-center'>
 
                                 {moodData ?
@@ -250,14 +250,14 @@ function Felt(props) {
 
                                     :
                                     <span>
-                                        <td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Top Moods Last 30 Days</h2></div></td>
-                                    
-                                    <tr>
-                                        
-                                        {
-                                            moods4
-                                        }
-                                    </tr>
+                                        <tr><td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Top Moods Last 30 Days</h2></div></td></tr>
+
+                                        <tr>
+
+                                            {
+                                                moods4
+                                            }
+                                        </tr>
                                     </span>
                                 }
                             </table>

@@ -35,19 +35,17 @@ function Slept(props) {
         //     let currentDate = date.getTime();
         if (check == "day") {
             userService.fetchSleeps({ 'date': props.selectedDate }).then((sleep) => {
-                sleeptimes(sleep[0].hours)
+                sleeptimes(sleep.length ? sleep[0].hours : 0)
             })
         }
         else if (check == "week") {
             userService.fetchSleepWeek({ 'date': props.selectedDate }).then((sleep) => {
-                console.log("sleeeeep", sleep);
                 chartData(sleep)
             })
         }
         else if (check == "month") {
             setSleepMonthData(0);
             userService.fetchMonth({ 'date': props.selectedDate }).then((data) => {
-                console.log(data)
                 setSleepMonthData(data.sleepMonthStats);
                 // setMoodData(0);
             })
@@ -66,7 +64,6 @@ function Slept(props) {
             data.push(obj);
         });
         setSleepData(data);
-        console.log("slept", data);
     }
 
     const [tabslept, settabslept] = useState("sleptDay");
@@ -125,7 +122,7 @@ function Slept(props) {
                     >Month</a>
                 </li>
             </ul>
-            <div className="tab-content  h371" id="ex1-content">
+            <div className="tab-content  h413" id="ex1-content">
                 {sleeptime <= 0 ?
                     <div
                         className="alert alert-danger"
@@ -177,22 +174,22 @@ function Slept(props) {
                     : ""}
                 {tabslept == 'sleptMonth' ?
                     <div className="row h341 table-responsive">
-                                <table className='table text-center'>
+                        <table className='table text-center'>
                             {!saleepMonthData ?
-                                 <tr><td colSpan="4">Hang tight, we are grabbing the data</td></tr>
+                                <tr><td colSpan="4">Hang tight, we are grabbing the data</td></tr>
                                 :
                                 <span>
-                                        <td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Average Sleep Last 30 Days</h2></div></td>
-                                    
+                                    <td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Average Sleep Last 30 Days</h2></div></td>
+
                                     <tr>
-                                    <div
-                                    className="flexbox tab-pane fade show active">
-                                    <h2 className="flex-item f37">{saleepMonthData} hours per night
-                                        <img src={url + "sleep.png"} className="sleep-icon" alt="image" /></h2>
-                                    {/* <p className="add btn">+  Add Sleep</p> */}
-                                </div>
+                                        <div
+                                            className="flexbox tab-pane fade show active">
+                                            <h2 className="flex-item f37">{saleepMonthData} hours per night
+                                                <img src={url + "sleep.png"} className="sleep-icon" alt="image" /></h2>
+                                            {/* <p className="add btn">+  Add Sleep</p> */}
+                                        </div>
                                     </tr>
-                                    </span>
+                                </span>
                             }
                         </table>
 

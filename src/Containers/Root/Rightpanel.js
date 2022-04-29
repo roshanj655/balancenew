@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import ProgressChart from '../../mark/progress-chart'
 import {
     View,
@@ -8,33 +9,44 @@ import {
     Image,
 } from 'react-native-web'
 import { RadialBarChart, RadialBar,Legend } from 'recharts';
+import { userService } from '../../Services/UserService';
 function Rightpanel() {
     // const data = {
     //     labels: ["Swim", "Bike", "Run"], // optional
     //     data: [0.4, 0.6, 0.8]
     //   };
     let data = [];
+    let journalData = [];
     // const myTimeout = setTimeout(function () {
-    let journal = [];
-    let activity = JSON.parse(localStorage.getItem("activities")) ?? [];
-    let moods = JSON.parse(localStorage.getItem("moods")) ?? [];
-    activity.map((item, index) => {
-        item['title'] = "Activity";
-        item['description'] = "You play " + item.type + " for " + item.duration + " min"
-        journal.push(item);
-    });
-    moods.map((item, index) => {
-        item['title'] = "Mood";
-        item['description'] = "You felt " + item.type
-        journal.push(item);
-    });
+    const [journal, setJournal] = useState([]);
+
+    userService.fetchMoodWeekGraph({ 'date': new Date() }).then((data) => {
+        let moods = data.moodWeekData;
+        moods.map((item, index) => {
+            item['title'] = "Mood";
+            item['description'] = "You felt " + item.type
+            journalData.push(item);
+        });
+        userService.fetchActivityWeekGraph({ 'date': new Date() }).then((data) => {
+            let activity = data.activityWeekData;
+            activity.map((item, index) => {
+                item['title'] = "Activity";
+                item['description'] = "You play " + item.type + " for " + item.duration + " min"
+                journalData.push(item);
+            });
+            
+        })
+        setJournal(journalData);
+    })
+    
+    
+    
     let journalArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
         item['time'] = dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         journalArray[dateTime.getDate()].push(item);
     });
-    console.log("journal", journalArray);
     let journals = journalArray.map((item, index) => {
         if (item.length) {
             return (

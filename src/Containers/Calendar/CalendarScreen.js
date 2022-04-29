@@ -22,7 +22,6 @@ class CalendarScreen extends React.Component {
     super(props)
     var today = {}
     var todaysDate = this.formatDate()
-    console.log(todaysDate);
     today[todaysDate] = { selected: true }
     this.state = {
       selectedDay: today,

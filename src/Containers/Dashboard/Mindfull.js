@@ -20,7 +20,7 @@ function Mindfull(props) {
         if (check == "day") {
             userService.fetchMindfulnesses({ 'date': props.selectedDate }).then((moods) => {
                 setMoodArray(moods);
-               
+
             })
 
         }
@@ -31,8 +31,6 @@ function Mindfull(props) {
         }
         else if (check == "month") {
             userService.fetchMoodMonthData({ 'date': props.selectedDate }).then((moods) => {
-                console.log(props.selectedDate);
-                console.log("monthgraph", moods);
                 setMoodArray(moods);
             })
         }
@@ -49,16 +47,16 @@ function Mindfull(props) {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-            return <td><div className=" activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.type}</p><p className='m0'>+5</p></div></td>
-        
+        return <td><div className=" activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.type}</p><p className='m0'>+5</p></div></td>
+
     })
     let moods3 = moodArray.map((item, index) => {
-            let day = new Date(item.day).getDate();
-            let hours = new Date(item.day).getHours();
-            var minutes = new Date(item.day).getMinutes();
-            var ampm = hours >= 12 ? 'pm' : 'am';
+        let day = new Date(item.day).getDate();
+        let hours = new Date(item.day).getHours();
+        var minutes = new Date(item.day).getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
 
-            return <td>{hours + ":" + (minutes<10?0:'')+minutes + " " + ampm}</td>
+        return <td>{hours + ":" + (minutes < 10 ? 0 : '') + minutes + " " + ampm}</td>
 
     })
     const [tabMood, settabMood] = useState("moodDay");
@@ -119,7 +117,7 @@ function Mindfull(props) {
             <div className="tab-content" id="ex1-content">
 
                 <div
-                    className="tab-pane fade show active"
+                    className="tab-pane fade h413 show active"
                     id="ex1-tabs-1"
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1">
@@ -132,23 +130,23 @@ function Mindfull(props) {
                         </div>
                         : ""}
                     {tabMood == 'moodDay' ?
-                    <div className="row h341 table-responsive">
-                        <table className='table text-center'>
-                            <tr>
-                            {
-                                moods2
-                            }
-                            </tr>
-                            <tr>
-                            { moods3}
-                        </tr>
-                        </table>
-                        
+                        <div className="row h371 table-responsive">
+                            <table className='table text-center'>
+                                <tr>
+                                    {
+                                        moods2
+                                    }
+                                </tr>
+                                <tr>
+                                    {moods3}
+                                </tr>
+                            </table>
+
                         </div>
-                       
+
                         : ""}
                     {tabMood == 'moodWeek' ?
-                        <div className="row h341 table-responsive">
+                        <div className="row h371 table-responsive">
                             <table>
                                 <tr class="table-align-bottom">
                                     <td>
@@ -237,7 +235,7 @@ function Mindfull(props) {
 
                     {moodArray.length ?
                         <div className=" table-responsive">
-                            
+
                             {tabMood == 'moodWeek' ?
                                 <table className='table'>
                                     <tr>

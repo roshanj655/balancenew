@@ -75,10 +75,8 @@ class MainScreen extends React.Component {
 
     // PushNotificationIOS.requestPermissions().then(
     //   (data) => {
-    //     console.log('PushNotificationIOS.requestPermissions', data)
     //   },
     //   (data) => {
-    //     console.log('PushNotificationIOS.requestPermissions failed', data)
     //   }
     // )
   }
@@ -88,7 +86,6 @@ class MainScreen extends React.Component {
   }
 
   onRegistered = (deviceToken) => {
-console.log("MS Token");
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NDU1NTY0OTYsImV4cCI6MTY0NTY0Mjg5NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwYTQ1ZjUzNWIzZDYwMDFjZDc2NWFkIiwianRpIjoiNDc4MDdkMTEtZmQ5NC00MDIyLWJmN2UtMGM1MjFiZDFkZTQ3In0.rxzyn-T7zPFpq3LzyYc0HNS4eowZLMPtFWRFpsNSYAw"
 
     this.props.updateToken(token)
@@ -140,21 +137,17 @@ console.log("MS Token");
 
   componentDidMount() {
     this.fetchAll()
-    console.log("ahfghgfgfhgfh",this.props.moods)
-    this.props.moods.forEach(element => {
-      console.log("element",element);      
+    this.props.moods.forEach(element => {    
     });
     //this.pullNewDay1()
   }
 
   async logout() {
-    // console.log('LOGOUT')
     try {
       await AsyncStorage.removeItem('id_token')
       await AsyncStorage.removeItem('subscription_purchase_stub')
      // NavigationService.navigate('SubscriptionScreen')
     } catch (exception) {
-      // console.log(exception)
     }
   }
 
@@ -186,13 +179,10 @@ console.log("MS Token");
   }
 
   pullNewDay1(day) {
-    console.log("pullllllllllllllllllll")
     const formatDay = new Date()
     this._fetchAll(formatDay)
-    console.log("pulll" + this.props.activities)
     let finalObj = {}
     for (var a in this.props.activities) {
-      console.log("pulll activities" + a)
       if (this.props.activities.hasOwnProperty(a)) {
         const date = this.props.activities[a].day.split('T')[0]
         if (finalObj[date]) {
@@ -203,7 +193,6 @@ console.log("MS Token");
       }
     }
     for (var b in this.props.moods) {
-      console.log("pulll moods" + b)
       if (this.props.moods.hasOwnProperty(b)) {
         const date = this.props.moods[b].day.split('T')[0]
         if (finalObj[date]) {
@@ -214,7 +203,6 @@ console.log("MS Token");
       }
     }
     for (var c in this.props.sleeps) {
-      console.log("pulll Sleeps" + c)
       if (this.props.moods.hasOwnProperty(c)) {
         const date = this.props.sleeps[c].day.split('T')[0]
         if (finalObj[date]) {
@@ -224,12 +212,9 @@ console.log("MS Token");
         }
       }
     }
-    console.log(finalObj)
     this.setState({
       items: finalObj,
     })
-    console.log("Pulll "+this.props.moods[0])
-    console.log("Pulll ends")
   }
 
   render() {
@@ -546,7 +531,6 @@ console.log("MS Token");
         }
       }
     }
-    console.log(finalObj)
     this.setState({
       items: finalObj,
     })
@@ -584,7 +568,6 @@ console.log("MS Token");
         }
       }
     }
-    console.log(finalObj)
     this.setState({
       items: finalObj,
     })
@@ -669,7 +652,6 @@ console.log("MS Token");
 
 setDate = (event, date) => {
 
-console.log("MS event "+event+"date = "+date);
     var monthNames = [
       'JAN',
       'FEB',
@@ -728,16 +710,13 @@ console.log("MS event "+event+"date = "+date);
     this.props.fetchUser()
   }
   _fetchMoods(moodDate) {
-    console.log(' fetchMood date', moodDate)
     this.props.fetchMoods(moodDate)
   }
   _fetchAll(moodDate) {
     this.props.fetchAll(moodDate)
-    console.log(' fetchAll Mooddate', moodDate)
   }
   _fetchAgenda(moodDate) {
     this.props.fetchAgenda(moodDate)
-    console.log('MOODDATE', moodDate)
   }
 }
 

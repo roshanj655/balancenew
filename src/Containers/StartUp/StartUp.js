@@ -1,6 +1,5 @@
 function StartUp(){
 
-    console.log("Inside StartUp");
 
     function checkIfLoggedInAlready(){
       

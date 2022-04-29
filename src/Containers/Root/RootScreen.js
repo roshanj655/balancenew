@@ -65,17 +65,13 @@ class RootScreen extends Component {
   }
   showHideScreen(data) {
     this.setState({ changeScreen: data })
-    // userService.fetchActivities({'date':this.state.newDate}).then((data)=>{
-    //   console.log(data.length);
       this.setState({ rerender: 1 })
-    // })
-    
+   
   }
   updateDate(data){
     this.setState({newDate:data});
   }
   render() {
-    // console.log("Hello");
 
     return (
       <>

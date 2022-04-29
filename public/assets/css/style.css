@@ -15183,9 +15183,6 @@ margin-top: -6px;
 .margin-top-0{ margin:0px auto auto auto; }
 
 
-.width70{
-  width:66px;
-}
 .margin-auto{
   margin: auto;
 }
@@ -15221,4 +15218,19 @@ margin-top: -6px;
 }
 span tr{
   border-style: none !important;
+}
+.table-align-bottom td{
+  width: 57px;
+}
+.h394{
+  height:394px;
+}
+.h434{
+  height:434px;
+}
+.h413{
+  height:413px;
+}
+.h436{
+  height:436px;
 }

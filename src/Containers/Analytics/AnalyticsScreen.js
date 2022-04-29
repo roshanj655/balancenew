@@ -846,7 +846,6 @@ class AnalyticsScreen extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log("ana", props);
     const today = new Date()
     this.state = {}
     this.state = {
@@ -905,7 +904,6 @@ class AnalyticsScreen extends React.Component {
   }
 
   onLayout(e) {
-    console.log('on layout called')
     this.resizeVideoPlayer()
   }
 
@@ -1231,7 +1229,6 @@ class AnalyticsScreen extends React.Component {
   }
 
   onVideoEnd(video, type) {
-    console.log('Video has ended')
     this._createVideo(type, this.state.date, 4)
     video.dismissFullscreenPlayer()
   }
@@ -1272,7 +1269,6 @@ class AnalyticsScreen extends React.Component {
   }
 
   onConfirm() {
-    console.log("mind", this.state.localMood, this.state.date, this.state.moodScore);
     this._createMindfulness(this.state.localMood, this.state.date, this.state.moodScore)
     // this.setClockModalVisible(!this.state.clockModalVisible, '', 'grinning', this.state.moodScore)
   }

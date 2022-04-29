@@ -5,7 +5,6 @@ import { userService } from '../Services/UserService'
 import "@babel/polyfill";
 // TEMP to AVOID STARTUP ERROR. Point is to fail...
 export function* fetchNothing() {
-  console.log("fetchNothing saga");
   yield put(ExampleActions.fetchUserLoading())
   // Fetch user informations from an API
   const user = null
@@ -19,12 +18,10 @@ export function* fetchNothing() {
 }
 
 export function* fetchUser() {
-  console.log("From Saga fetchUser 1")
   yield put(ExampleActions.fetchUserLoading())
   // Fetch user informations from an API
   const user = yield call(userService.fetchUser)
   
-  console.log(user);
   
   if (user) {
     yield put(ExampleActions.fetchUserSuccess(user))
@@ -36,7 +33,6 @@ export function* fetchUser() {
 }
 
 export function* fetchMoods(action) {
-  console.log("fetchMoods saga");
   yield put(ExampleActions.fetchMoodsLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchMoods, action)
@@ -48,7 +44,6 @@ export function* fetchMoods(action) {
 }
 
 export function* fetchMoodsAgenda(action) {
-  console.log("fetchMoodsAgenda saga");
   yield put(ExampleActions.fetchMoodsLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchMoods, action)
@@ -61,7 +56,6 @@ export function* fetchMoodsAgenda(action) {
 
 
 export function* fetchMoodWeekGraph(action) {
-  console.log("fetchMoodsGraph saga");
   yield put(ExampleActions.fetchMoodsLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchMoodWeekGraph, action)
@@ -73,7 +67,6 @@ export function* fetchMoodWeekGraph(action) {
 }
 
 export function* fetchMindfulnessWeekGraph(action) {
-  console.log("fetchMindful saga");
   yield put(ExampleActions.fetchMindfulnessesLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchMindfulnessWeekGraph, action)
@@ -87,7 +80,6 @@ export function* fetchMindfulnessWeekGraph(action) {
 }
 
 export function* fetchActivityWeekGraph(action) {
-  console.log("fetchActivityWeek saga");
   yield put(ExampleActions.fetchActivitiesLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchActivityWeekGraph, action)
@@ -101,7 +93,6 @@ export function* fetchActivityWeekGraph(action) {
 }
 
 export function* fetchMain(action) {
-  console.log("fetchMain saga" + action);
   yield put(ExampleActions.fetchMainLoading())
   // Fetch user informations from an API
 
@@ -125,7 +116,6 @@ export function* fetchMain(action) {
     triangle &&
     averageResult
   ) {
-    console.log("ES FetchMain moodssss"+ moodScores)
     yield put(
       ExampleActions.fetchMainSuccess(
         moodScores,
@@ -143,7 +133,6 @@ export function* fetchMain(action) {
 }
 
 export function* fetchMonth(action) {
-  console.log("fetchMonth saga");
   yield put(ExampleActions.fetchMonthLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchMonth, action)
@@ -155,7 +144,6 @@ export function* fetchMonth(action) {
 }
 
 export function* fetchMoodScores(action) {
-  console.log("fetchMoodScores saga");
   yield put(ExampleActions.fetchMoodScoresLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchMoodScores, action)
@@ -169,7 +157,6 @@ export function* fetchMoodScores(action) {
 }
 
 export function* fetchAgenda(action) {
-  console.log("fetchAgenda saga");
   yield put(ExampleActions.fetchAgendaLoading())
   // Fetch user informations from an API
   const [
@@ -192,7 +179,6 @@ export function* fetchAgenda(action) {
 }
 
 export function* fetchAll(action) {
-  console.log("fetchAll saga");
   yield put(ExampleActions.fetchAllLoading())
   // Fetch user informations from an API
   const [
@@ -239,7 +225,6 @@ export function* fetchAll(action) {
     activityGraph
   ) {
 
-    console.log("ES FetchAll moodssss"+ moods)
     yield put(
       ExampleActions.fetchAllSuccess(
         moods,
@@ -263,7 +248,6 @@ export function* fetchAll(action) {
 }
 
 export function* fetchActivityScores(action) {
-  console.log("fetchActivityScores saga");
   yield put(ExampleActions.fetchActivityScoresLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchActivityScores, action)
@@ -279,7 +263,6 @@ export function* fetchActivityScores(action) {
 }
 
 export function* fetchSleepScores(action) {
-  console.log("fetchSleepScores saga");
   yield put(ExampleActions.fetchSleepScoresLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchSleepScores, action)
@@ -293,7 +276,6 @@ export function* fetchSleepScores(action) {
 }
 
 export function* fetchBalanceScores(action) {
-  console.log("fetchBalanceScores saga");
   yield put(ExampleActions.fetchBalanceScoresLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchBalanceScores, action)
@@ -309,7 +291,6 @@ export function* fetchBalanceScores(action) {
 }
 
 export function* fetchActivities(action) {
-  console.log("fetchActivities saga");
   yield put(ExampleActions.fetchActivitiesLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchActivities, action)
@@ -323,7 +304,6 @@ export function* fetchActivities(action) {
 }
 
 export function* fetchActivitiesAgenda(action) {
-  console.log("fetchActivitiesAgenda saga");
   yield put(ExampleActions.fetchActivitiesLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchActivities, action)
@@ -367,7 +347,6 @@ export function* fetchMindfulnessesAgenda(action) {
 }
 
 export function* updateToken(action) {
-  console.log("updateToken saga");
   // Dispatch a redux action using `put()`
   // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
   yield put(ExampleActions.updateTokenLoading())
@@ -418,7 +397,6 @@ export function* fetchSleepWeek(action) {
 }
 
 export function* createMood(action) {
-  console.log("createMood saga");
   // Dispatch a redux action using `put()`
   // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
   yield put(ExampleActions.createMoodRequest())
@@ -491,7 +469,6 @@ export function* createUser(action) {
   // Dispatch a redux action using `put()`
   // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
 
-console.log("in Saga createUser");
 
   yield put(ExampleActions.createUserRequest())
   // Fetch user informations from an API
@@ -519,7 +496,6 @@ export function* addBirthdate(action) {
 
 export function* loginUser(action) {
 
-  console.log("loginUser saga");
 
   yield put(ExampleActions.loginUserRequest())
   const response = yield call(userService.loginUser, action)
@@ -533,7 +509,6 @@ export function* loginUser(action) {
 }
 
 export function* loginTrialUser(action) {
-  console.log("loginTrialUser saga");
   yield put(ExampleActions.loginUserRequest())
   const response = yield call(userService.loginTrialUser, action)
   // const response2 = yield call(userService.processBalance, action);
@@ -546,7 +521,6 @@ export function* loginTrialUser(action) {
 }
 
 export function* fetchOverall() {
-  console.log("fetchOverall saga");
   yield put(ExampleActions.fetchOverallLoading())
   // Fetch user informations from an API
   const response = yield call(userService.fetchOverall)
