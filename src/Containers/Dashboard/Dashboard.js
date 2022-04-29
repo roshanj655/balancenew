@@ -26,24 +26,10 @@ const iconFontStyles = `@font-face {
 }`;
 
 import AsyncStorage from '@callstack/async-storage';
-//import { AgendaCalender } from 'react-agenda-calendar'
-import { Agenda } from 'react-native-calendars'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import ExampleActions from '../../Stores/Example/Actions'
-// import Style from './MainScreenStyle'
-// import { ProgressChart, ContributionGraph } from '@marknauf/react-native-chart-kit'
-//import { ProgressChart } from '@marknauf/react-native-chart-kit'
-import ContributionGraph  from '../../mark/contribution-graph'
-import ProgressChart from '../../mark/progress-chart'
-//import PushNotificationIOS from '@react-native-community/push-notification-ios'
-//import { ScrollView, TouchableOpacity } from 'react-gesture-handler'
-import {ScrollView,TouchableOpacity } from 'react-native-web'
-//import MonthPicker from 'react-month-year-picker'
-//import MonthPicker from 'react-native-month-year-picker'
-import MonthYearPicker from "react-month-year-picker";
 import CalendarStrip from 'react-native-calendar-strip'
-//import NavigationService from '../../Services/NavigationService'
 import Mood from '../Add/mood-imgs/index'
 import Activity from '../Add/imgs/index'
 import Mindful from '../Analytics/mindfulness-imgs/index'
@@ -79,7 +65,6 @@ class Dashboard extends React.Component {
     
     setTimeout(() => {
       this.setState({ show: true })
-      localStorage.setItem('chartData',JSON.stringify(this.props.data));
     }, 1000)
   }
 

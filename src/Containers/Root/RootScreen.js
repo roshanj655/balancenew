@@ -1,39 +1,18 @@
 import React, { Component } from 'react'
-//import NavigationService from '../Services/NavigationService'
-//import NavigationService from '../../Services/NavigationService'
-import AppNavigator from '../../Navigators/AppNavigator'
-//import AppNavigator from '../Navigators/AppNavigator'
-// eslint-disable-next-line no-unused-vars
-import { View, StatusBar } from 'react-native-web'
-import styles from './RootScreenStyle'
 import { connect } from 'react-redux'
 //import StartupActions from '../../Stores/Startup/Actions'
 import StartupActions from '../../Stores/Startup/Actions'
-import AnalyticsScreen from '../Analytics/AnalyticsScreen'
 import { PropTypes } from 'prop-types'
-import SplashScreen from '../SplashScreen/SplashScreen'
-import SignupScreen from '../Signup/SignupScreen'
 import LoginScreen from '../Login/LoginScreen'
-import CalendarScreen from '../Calendar/CalendarScreen'
-import MainScreen from '../Main/MainScreen'
 import Meditaion from '../Meditation/Medition'
 import Dashboard from '../Dashboard/Dashboard'
 import ProfileScreen from '../Profile/ProfileScreen'
-import USerDetails from '../Profile/userDetails'
-import { BrowserRouter, Switch, Route, Redirect, BackButton, DeepLinking } from "react-native-web-router";
-// import Header from '../Header/Header'
-// import Sidebar from '../Header/Sidebar'
-// import Footer from '../Header/Footer'
 import Header from './Header';
 import Rightpanel from './Rightpanel';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 // import '../../../App.css';
 import ExampleActions from '../../Stores/Example/Actions'
-import SubscriptionScreen from '../Subscription/SubscriptionScreen'
-import AddScreen from '../Add/AddScreen'
-import StartUp from '../StartUp/StartUp'
-import { userService } from '../../Services/UserService'
 
 class RootScreen extends Component {
   constructor(props) {
@@ -107,7 +86,7 @@ class RootScreen extends Component {
                     {(this.state.changeScreen != "login") ?
                     <div className='col-md-4'>
                       
-                        <Rightpanel />
+                        <Rightpanel newDate={this.state.newDate} />
                         
                     </div>
                     : ""}

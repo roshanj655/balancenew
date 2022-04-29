@@ -8,39 +8,51 @@ import {
     Modal,
     Image,
 } from 'react-native-web'
-import { RadialBarChart, RadialBar,Legend } from 'recharts';
+import { RadialBarChart, RadialBar, Legend } from 'recharts';
 import { userService } from '../../Services/UserService';
-function Rightpanel() {
+function Rightpanel(props) {
     // const data = {
     //     labels: ["Swim", "Bike", "Run"], // optional
     //     data: [0.4, 0.6, 0.8]
     //   };
     let data = [];
     let journalData = [];
+    let cDatas = [];
     // const myTimeout = setTimeout(function () {
     const [journal, setJournal] = useState([]);
-
-    userService.fetchMoodWeekGraph({ 'date': new Date() }).then((data) => {
-        let moods = data.moodWeekData;
-        moods.map((item, index) => {
-            item['title'] = "Mood";
-            item['description'] = "You felt " + item.type
-            journalData.push(item);
-        });
-        userService.fetchActivityWeekGraph({ 'date': new Date() }).then((data) => {
-            let activity = data.activityWeekData;
-            activity.map((item, index) => {
-                item['title'] = "Activity";
-                item['description'] = "You play " + item.type + " for " + item.duration + " min"
+    const [chartData, setChartData] = useState(JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}'));
+    useEffect(() => {
+        userService.fetchMoodWeekGraph({ 'date': props.newDate }).then((data) => {
+            let moods = data.moodWeekData;
+            moods.map((item, index) => {
+                item['title'] = "Mood";
+                item['description'] = "You felt " + item.type
                 journalData.push(item);
             });
-            
+            userService.fetchActivityWeekGraph({ 'date': props.newDate }).then((data) => {
+                let activity = data.activityWeekData;
+                activity.map((item, index) => {
+                    item['title'] = "Activity";
+                    item['description'] = "You play " + item.type + " for " + item.duration + " min"
+                    journalData.push(item);
+                });
+                setJournal(journalData);
+            })
         })
-        setJournal(journalData);
-    })
-    
-    
-    
+
+        userService.fetchMoodScores({ 'date': props.newDate }).then((data) => {
+            cDatas[0] = data;
+            userService.fetchSleepScores({ 'date': props.newDate }).then((data) => {
+                cDatas[1] = data;
+                userService.fetchActivityScores({ 'date': props.newDate }).then((data) => {
+                    cDatas[2] = data;
+                    setChartData(userService.fetchTriangle(cDatas[0], cDatas[1], cDatas[2]));
+                })
+            })
+
+        })
+    }, [props.newDate]);
+
     let journalArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
@@ -81,8 +93,8 @@ function Rightpanel() {
     })
     let cData = localStorage.getItem("chartData") != null ? JSON.parse(localStorage.getItem("chartData")) : JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}');
     let color = ["#ff6622", "#00bbb6", "#41b9f8"];
-    let legend = ["Activity","Mood","Sleep"];
-    let graph = cData.data.map((item, index) => {
+    let legend = ["Activity", "Mood", "Sleep"];
+    let graph = chartData.data.map((item, index) => {
         data.push({
             name: legend[index],
             x: item,
@@ -91,8 +103,8 @@ function Rightpanel() {
     })
     const style = {
         lineHeight: '24px',
-        left:"10px",
-        width:'100%'
+        left: "10px",
+        width: '100%'
     };
     return (
         <div className="row rightpanel-bottom">
@@ -101,7 +113,7 @@ function Rightpanel() {
                     height={350}
                     data={data}
                     cx={200} cy={150} innerRadius={20} outerRadius={140} barSize={20}>
-                    <RadialBar  minAngle={30} background clockWise dataKey="x" />
+                    <RadialBar minAngle={30} background clockWise dataKey="x" />
                     <Legend iconSize={10} width={120} height={56} layout="horizontal" verticalAlign="bottom" wrapperStyle={style} />
                 </RadialBarChart>
                 {/* <ProgressChart
@@ -128,18 +140,6 @@ function Rightpanel() {
                     <div className="col-md-6 journal">
                         <h3>Journal</h3>
                     </div>
-                    {/* <div className="col-md-6">
-                        <div class="dropdown">
-                            <div class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                18 December 2021
-                            </div>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
                 <div className='journal-scroll'>
                     {journals}
