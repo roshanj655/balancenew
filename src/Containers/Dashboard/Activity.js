@@ -156,7 +156,7 @@ function Activity(props) {
                         : ""}
                     {tabMood == 'moodWeek' ?
                         <div className="row h394 table-responsive">
-                            <table>
+                            <table className='text-center'>
                                 <tr class="table-align-bottom">
                                     <td>
                                         {moodArray.map((item, index) => {
@@ -236,6 +236,9 @@ function Activity(props) {
                                         })}
                                     </td>
                                 </tr>
+                                <tr className='sticlytr'>
+                                    {moods7}
+                                </tr>
                             </table>
 
                         </div>
@@ -264,22 +267,6 @@ function Activity(props) {
                         </div>
                         : ""}
 
-                    {moodArray.length ?
-                        <div className=" table-responsive">
-
-                            {tabMood == 'moodWeek' ?
-                                <table className='table'>
-                                    <tr>
-                                        {moods7}
-                                    </tr>
-                                </table>
-                                : ""}
-
-                            {/* <div className="col-md-3 text-center time-slider-text">10:00 am</div>
-                            <div className="col-md-3 text-center time-slider-text">12:00 am</div>
-                            <div className="col-md-3 text-center time-slider-text">2:00 pm</div> */}
-                        </div>
-                        : ""}
                 </div>
 
             </div>
