@@ -15234,3 +15234,8 @@ span tr{
 .h436{
   height:436px;
 }
+.sticlytr{
+  position: sticky;
+    bottom: 0;
+    background: #fff;
+}

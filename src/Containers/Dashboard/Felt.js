@@ -156,7 +156,7 @@ function Felt(props) {
                         : ""}
                     {tabMood == 'moodWeek' ?
                         <div className="row h371 table-responsive">
-                            <table>
+                            <table className='text-center'>
                                 <tr className='table-align-bottom'>
                                     <td>
                                         {moodArray.map((item, index) => {
@@ -236,6 +236,9 @@ function Felt(props) {
                                         })}
                                     </td>
                                 </tr>
+                                <tr className='sticlytr'>
+                                        {moods7}
+                                    </tr>
                             </table>
 
                         </div>
@@ -268,13 +271,13 @@ function Felt(props) {
                     {moodArray.length ?
                         <div className=" table-responsive">
 
-                            {tabMood == 'moodWeek' ?
-                                <table className='table'>
-                                    <tr>
-                                        {moods7}
-                                    </tr>
-                                </table>
-                                : ""}
+                            {/* {tabMood == 'moodWeek' ? */}
+                                {/* // <table className='table'>
+                                //     <tr>
+                                //         {moods7}
+                                //     </tr>
+                                // </table>
+                                // : ""} */}
 
                             {/* <div className="col-md-3 text-center time-slider-text">10:00 am</div>
                             <div className="col-md-3 text-center time-slider-text">12:00 am</div>
