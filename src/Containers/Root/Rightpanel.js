@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ProgressChart from '../../mark/progress-chart'
-import {
-    View,
-    ActivityIndicator,
-    Dimensions,
-    Alert,
-    Modal,
-    Image,
-} from 'react-native-web'
 import { RadialBarChart, RadialBar, Legend } from 'recharts';
 import { userService } from '../../Services/UserService';
 function Rightpanel(props) {
-    // const data = {
-    //     labels: ["Swim", "Bike", "Run"], // optional
-    //     data: [0.4, 0.6, 0.8]
-    //   };
+    const url = "http://zavius.in/balance/assets/images/";
     let data = [];
     let journalData = [];
     let cDatas = [];
+    let journalArray = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
     // const myTimeout = setTimeout(function () {
     const [journal, setJournal] = useState([]);
     const [chartData, setChartData] = useState(JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}'));
@@ -26,18 +15,21 @@ function Rightpanel(props) {
             let moods = data.moodWeekData;
             moods.map((item, index) => {
                 item['title'] = "Mood";
-                item['description'] = "You felt " + item.type
+                item['description'] = "You felt " + item.type;
+                item['imagepath'] = url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png";
                 journalData.push(item);
             });
             userService.fetchActivityWeekGraph({ 'date': props.newDate }).then((data) => {
                 let activity = data.activityWeekData;
                 activity.map((item, index) => {
                     item['title'] = "Activity";
-                    item['description'] = "You play " + item.type + " for " + item.duration + " min"
+                    item['description'] = "You play " + item.type + " for " + item.duration + " min";
+                    item['imagepath'] = url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png";
                     journalData.push(item);
                 });
+                
                 setJournal(journalData);
-            })
+             })
         })
 
         userService.fetchMoodScores({ 'date': props.newDate }).then((data) => {
@@ -53,12 +45,13 @@ function Rightpanel(props) {
         })
     }, [props.newDate]);
 
-    let journalArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
+        console.log("time",dateTime.getDate());  
         item['time'] = dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         journalArray[dateTime.getDate()].push(item);
     });
+
     let journals = journalArray.map((item, index) => {
         if (item.length) {
             return (
@@ -73,7 +66,7 @@ function Rightpanel(props) {
                                     return (
                                         <li class="">
                                             <div class="float-left iconbox">
-                                                <img src="assets/images/Activities/swimming.png" alt="image" />
+                                                <img src={item1.imagepath} alt="image" />
                                             </div>
                                             <div class="float-left navtext">
                                                 <p>{item1.title} <span>{item1.time}</span></p>
