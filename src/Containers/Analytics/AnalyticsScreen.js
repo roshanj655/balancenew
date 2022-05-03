@@ -28,7 +28,7 @@ function RenderType(props) {
   const mindArr = [
     { "img": "cook.png", "name": "Cook/Bake", "param3": "cook", "number": 5 },
     { "img": "playwithanimals.png", "name": "Pet Time", "param3": "pettime", "number": 5 },
-    { "img": "listentomusic.png", "name": "Journal", "Listen To Music": "music", "number": 5 },
+    { "img": "listentomusic.png", "name": "Listen To Music", "param3": "music", "number": 5 },
     { "img": "journal.png", "name": "Journal", "param3": "journal", "number": 5 },
     { "img": "color.png", "name": "Color", "param3": "color", "number": 5 },
     { "img": "park.png", "name": "Go to Park", "param3": "gotopark", "number": 5 },

@@ -43,11 +43,26 @@ function Mindfull(props) {
         return <td>{item}</td>
 
     })
+    const mindImageRef={
+        "Cook/Bake":"cook",
+        "Pet Time":"playwithanimals",
+        "Listen To Music":"listentomusic",
+        "Journal":"journal",
+        "Color":"color",
+        "Go to Park":"park",
+        "Garden":"garden",
+        "Arts & Crafts":"artsandcrafts",
+        "Listening Walk":"listeningwalk",
+        "Play a Game":"playagame",
+        "Stretch":"stretch",
+        "Family Time":"family",
+        "Stargaze":"stargaze"
+        };
     let moods2 = moodArray.map((item, index) => {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-        return <td><div className=" activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.type}</p><p className='m0'>+5</p></div></td>
+        return <td><div className=" activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /><p className='m0'>{item.type}</p><p className='m0'>+5</p></div></td>
 
     })
     let moods3 = moodArray.map((item, index) => {
