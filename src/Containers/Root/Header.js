@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
 import MagicBell, { FloatingNotificationInbox } from "@magicbell/magicbell-react";
+import { userService } from "../../Services/UserService";
 
 function Header(props) {
-
-  // signOut=()=> {
-  //   localStorage.clear();
-  //   location.reload();
-  // }
+  const [balanceScore, setBalanceScore] = useState(0);
+  useEffect(() => {
+    userService.fetchBalanceScores({'date':props.selectedDate}).then((data)=>{
+      setBalanceScore(data[0].score);
+    })
+}, [props.newChange,props.selectedDate]);
+ 
 
   const theme = {"icon":{"borderColor":"#a9a1a6","width":"20px","width":"20px"},"unseenBadge":{"backgroundColor":"#DF4759"},"header":{"backgroundColor":"#d2866d","textColor":"#ffffff","borderRadius":"16px"},"footer":{"backgroundColor":"#d2866d","textColor":"#ffffff","borderRadius":"16px"},"notification":{"default":{"textColor":"#15091F","borderRadius":"8px","backgroundColor":"#d2866d"},"unseen":{"backgroundColor":"#6113A3"},"unread":{"backgroundColor":"#6113A3"}}};
 
@@ -26,7 +29,7 @@ function Header(props) {
                 </div>
                 <div className="nav-profile-text score-text">
                   <p className="mb-1 text-black">Your Balance Score</p>
-                  <h4>{props.balanceScore?props.balanceScore.score:0}</h4>
+                  <h4>{balanceScore}</h4>
                 </div>
               </a>
             </li>

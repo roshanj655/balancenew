@@ -47,7 +47,6 @@ function Rightpanel(props) {
 
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
-        console.log("time",dateTime.getDate());  
         item['time'] = dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
         journalArray[dateTime.getDate()].push(item);
     });

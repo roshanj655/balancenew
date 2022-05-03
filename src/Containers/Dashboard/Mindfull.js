@@ -169,7 +169,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sun') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
@@ -180,7 +180,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Mon') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
@@ -191,7 +191,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Tue') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
@@ -202,7 +202,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Wed') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
@@ -213,7 +213,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
                                             { { getDayOfWeek[day] } }
                                             if (getDayOfWeek[day] === 'Thu') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
@@ -224,7 +224,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Fri') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
@@ -235,7 +235,7 @@ function Mindfull(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sat') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + (item.type == 'Cook/Bake' ? 'cook' : item.type == 'Pet Time' ? "playwithanimals" : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <div className="icon-box activity-icon text-center"><img src={url + "Mindfulness/" + mindImageRef[item.type] + ".png"} alt="image" /></div>
                                             }
 
 
