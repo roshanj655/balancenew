@@ -5,10 +5,17 @@ import { userService } from "../../Services/UserService";
 
 function Header(props) {
   const [balanceScore, setBalanceScore] = useState(0);
+  const [loading, setLoading] = useState(0);
   useEffect(() => {
-    userService.fetchBalanceScores({'date':props.selectedDate}).then((data)=>{
-      setBalanceScore(data.length?data[0].score:0);
-    })
+    setLoading(0);
+    setTimeout(() => {
+      userService.fetchBalanceScores({'date':props.selectedDate}).then((data)=>{
+        console.log(data);
+        setLoading(1);
+        setBalanceScore(data.length?data[0].score:0);
+      })
+    }, 2000);
+    
 }, [props.newChange,props.selectedDate]);
  
 
@@ -29,7 +36,8 @@ function Header(props) {
                 </div>
                 <div className="nav-profile-text score-text">
                   <p className="mb-1 text-black">Your Balance Score</p>
-                  <h4>{balanceScore}</h4>
+                  <h4>{
+                  (loading==0)?"Fetching...":balanceScore}</h4>
                 </div>
               </a>
             </li>
