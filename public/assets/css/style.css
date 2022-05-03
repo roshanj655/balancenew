@@ -14713,7 +14713,8 @@ margin-top: -3px;
 margin-top: 20px;
 }
 .mood-icon img{
-  width: 74%;
+  width: 60%;
+  /* width: 74%; */
   margin: 10px auto;
 }
 .mood-icon{
@@ -15238,4 +15239,8 @@ span tr{
   position: sticky;
     bottom: 0;
     background: #fff;
+}
+.row.r0{
+  margin-right: 27px;
+  margin-left: 0;
 }

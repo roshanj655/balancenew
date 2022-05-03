@@ -49,7 +49,7 @@ function RenderType(props) {
     return (
       <View style={Style.mainContain}>
         <div>
-          <div className="row">
+          <div className="row r0">
             {mindArr.map((prop, key) => {
               return (
                 <div className="col-md-2 mood-icon"

@@ -92,7 +92,7 @@ function RenderType(props) {
   if (props.onMood) {
     return (
       <div>
-        <div className="row">
+        <div className="row r0">
           {moodArr.map((prop, key) => {
             return (
               <div className="col-md-2 mood-icon"
@@ -119,7 +119,7 @@ function RenderType(props) {
   if (props.onActivity) {
     return (
       <div>
-        <div className="row">
+        <div className="row r0">
           {activeArr.map((prop, key) => {
             return (
               <div className="col-md-2 mood-icon"
