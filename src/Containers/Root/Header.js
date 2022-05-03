@@ -7,7 +7,7 @@ function Header(props) {
   const [balanceScore, setBalanceScore] = useState(0);
   useEffect(() => {
     userService.fetchBalanceScores({'date':props.selectedDate}).then((data)=>{
-      setBalanceScore(data[0].score);
+      setBalanceScore(data.length?data[0].score:0);
     })
 }, [props.newChange,props.selectedDate]);
  
