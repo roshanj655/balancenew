@@ -86,7 +86,7 @@ class RootScreen extends Component {
                     {(this.state.changeScreen != "login") ?
                     <div className='col-md-4'>
                       
-                        <Rightpanel newDate={this.state.newDate} />
+                        <Rightpanel selectedDate={this.state.newDate}  newChange={this.state.rerender} />
                         
                     </div>
                     : ""}

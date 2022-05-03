@@ -11,7 +11,7 @@ function Rightpanel(props) {
     const [journal, setJournal] = useState([]);
     const [chartData, setChartData] = useState(JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}'));
     useEffect(() => {
-        userService.fetchMoodWeekGraph({ 'date': props.newDate }).then((data) => {
+        userService.fetchMoodWeekGraph({ 'date': props.selectedDate }).then((data) => {
             let moods = data.moodWeekData;
             moods.map((item, index) => {
                 item['title'] = "Mood";
@@ -19,7 +19,7 @@ function Rightpanel(props) {
                 item['imagepath'] = url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png";
                 journalData.push(item);
             });
-            userService.fetchActivityWeekGraph({ 'date': props.newDate }).then((data) => {
+            userService.fetchActivityWeekGraph({ 'date': props.selectedDate }).then((data) => {
                 let activity = data.activityWeekData;
                 activity.map((item, index) => {
                     item['title'] = "Activity";
@@ -32,18 +32,18 @@ function Rightpanel(props) {
              })
         })
 
-        userService.fetchMoodScores({ 'date': props.newDate }).then((data) => {
+        userService.fetchMoodScores({ 'date': props.selectedDate }).then((data) => {
             cDatas[0] = data;
-            userService.fetchSleepScores({ 'date': props.newDate }).then((data) => {
+            userService.fetchSleepScores({ 'date': props.selectedDate }).then((data) => {
                 cDatas[1] = data;
-                userService.fetchActivityScores({ 'date': props.newDate }).then((data) => {
+                userService.fetchActivityScores({ 'date': props.selectedDate }).then((data) => {
                     cDatas[2] = data;
                     setChartData(userService.fetchTriangle(cDatas[0], cDatas[1], cDatas[2]));
                 })
             })
 
         })
-    }, [props.newDate]);
+    }, [props.newChange,props.selectedDate]);
 
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
