@@ -132,10 +132,9 @@ function Felt(props) {
                     aria-labelledby="ex1-tab-1">
                     {!moodArray.length ?
                         <div
-                            className="alert alert-danger"
+                            
                         >
-                            No data found for this date
-                            {/* <p className="add btn">+  Add Sleep</p> */}
+                           <img src={url+"notfound.jpeg"} className="not-found-image"/>
                         </div>
                         : ""}
                     {tabMood == 'moodDay' ?

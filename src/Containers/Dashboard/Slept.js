@@ -125,10 +125,9 @@ function Slept(props) {
             <div className="tab-content  h413" id="ex1-content">
                 {sleeptime <= 0 ?
                     <div
-                        className="alert alert-danger"
+                            
                     >
-                        No data found for this date
-                        {/* <p className="add btn">+  Add Sleep</p> */}
+                       <img src={url+"notfound.jpeg"} className="not-found-image"/>
                     </div>
                     :
                     (tabslept == "sleptDay") ?
