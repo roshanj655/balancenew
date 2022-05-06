@@ -9,12 +9,16 @@ export default class Sidebar extends Component {
     const today = new Date()
     this.state = {}
     this.state = {
-      ShowAdd: false
+      ShowAdd: false,
+      selectedMenu: "dashboard"
     }
   }
   showHideAddScreen(data) {
     this.props.navdata.showHideScreen("dashboard")
     this.setState({ ShowAdd: data })
+  }
+  setMenu(data) {
+    this.setState({ selectedMenu: data })
   }
   render() {
     const url = "http://zavius.in/balance/assets/images/";
@@ -38,21 +42,23 @@ export default class Sidebar extends Component {
               <i className="mdi mdi-home menu-icon"></i>
             </a>
           </li> */}
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => this.props.navdata.showHideScreen(true)} data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
+          <li className={this.state.selectedMenu=="dashboard" ? "nav-item  activemenu" : "nav-item"}>
+            <a className="nav-link" onClick={() => {
+              this.props.navdata.showHideScreen(true)
+              this.setMenu("dashboard")
+            }
+            }
+              data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
               <span className="menu-title">Dashboard</span>
-              <i className="menu-arrow"></i>
               <i className="mdi mdi-crosshairs-gps menu-icon"></i>
             </a>
-            <div className="collapse" id="ui-basic">
-              <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-              </ul>
-            </div>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" onClick={() => this.props.navdata.showHideScreen("med")} href="#">
+          <li className={this.state.selectedMenu == "med" ? "nav-item activemenu" : "nav-item"}>
+            <a className="nav-link" onClick={() => {
+              this.props.navdata.showHideScreen("med")
+              this.setMenu("med")
+            }
+              }>
               <span className="menu-title">Medition</span>
               <i className="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
@@ -67,7 +73,7 @@ export default class Sidebar extends Component {
         </ul>
         {this.state.ShowAdd ? (
           <div>
-            <AddScreen data={{ showHideAddScreen: this.showHideAddScreen.bind(this) }} newDate={this.props.newDate}/>
+            <AddScreen data={{ showHideAddScreen: this.showHideAddScreen.bind(this) }} newDate={this.props.newDate} />
           </div>
         ) : ("")}
 

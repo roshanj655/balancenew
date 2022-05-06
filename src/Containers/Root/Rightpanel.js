@@ -7,7 +7,7 @@ function Rightpanel(props) {
     let data = [];
     let journalData = [];
     let cDatas = [];
-    let journalArray = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+    let journalArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
     // const myTimeout = setTimeout(function () {
     const [journal, setJournal] = useState([]);
     const [chartData, setChartData] = useState(JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}'));
@@ -29,24 +29,29 @@ function Rightpanel(props) {
                     item['imagepath'] = url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png";
                     journalData.push(item);
                 });
-                
+
                 setJournal(journalData);
-             })
+            })
         })
 
         userService.fetchMoodScores({ 'date': props.selectedDate }).then((data) => {
             cDatas[0] = data;
             userService.fetchSleepScores({ 'date': props.selectedDate }).then((data) => {
                 cDatas[1] = data;
+
                 userService.fetchActivityScores({ 'date': props.selectedDate }).then((data) => {
                     cDatas[2] = data;
                     setChartData(userService.fetchTriangle(cDatas[0], cDatas[1], cDatas[2]));
-                    setLegends(["Activity - "+cDatas[2][0].score+"%","Mood - "+cDatas[0][0].score+"%","Sleep - "+cDatas[1][0].score+"%"]);
+                    console.log("dds", cDatas[1].length);
+                    let sleepScore=cDatas[1].length ? cDatas[1][0].score : 0;
+                    let moodScore=cDatas[0].length ? cDatas[0][0].score : 0;
+                    let activityScore=cDatas[2].length ? cDatas[2][0].score : 0;
+                    setLegends(["Activity - " + activityScore + "%", "Mood - " + moodScore + "%", "Sleep - " + sleepScore + "%"]);
                 })
             })
 
         })
-    }, [props.newChange,props.selectedDate]);
+    }, [props.newChange, props.selectedDate]);
 
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
