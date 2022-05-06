@@ -77,7 +77,7 @@ function Mindfull(props) {
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
-            <h4>You Mindfull Bonues</h4>
+            <h4>You Mindful Bonues</h4>
             <ul className=" justify-content-end nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a

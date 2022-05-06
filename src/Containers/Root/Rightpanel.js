@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { RadialBarChart, RadialBar, Legend } from 'recharts';
 import { userService } from '../../Services/UserService';
 function Rightpanel(props) {
+    console.log(props.selectedDate);
     const url = "http://zavius.in/balance/assets/images/";
     let data = [];
     let journalData = [];
@@ -10,6 +11,7 @@ function Rightpanel(props) {
     // const myTimeout = setTimeout(function () {
     const [journal, setJournal] = useState([]);
     const [chartData, setChartData] = useState(JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}'));
+    const [legends, setLegends] = useState([]);
     useEffect(() => {
         userService.fetchMoodWeekGraph({ 'date': props.selectedDate }).then((data) => {
             let moods = data.moodWeekData;
@@ -39,6 +41,7 @@ function Rightpanel(props) {
                 userService.fetchActivityScores({ 'date': props.selectedDate }).then((data) => {
                     cDatas[2] = data;
                     setChartData(userService.fetchTriangle(cDatas[0], cDatas[1], cDatas[2]));
+                    setLegends(["Activity - "+cDatas[2][0].score+"%","Mood - "+cDatas[0][0].score+"%","Sleep - "+cDatas[1][0].score+"%"]);
                 })
             })
 
@@ -83,12 +86,11 @@ function Rightpanel(props) {
             )
         }
     })
-    let cData = localStorage.getItem("chartData") != null ? JSON.parse(localStorage.getItem("chartData")) : JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}');
     let color = ["#ff6622", "#00bbb6", "#41b9f8"];
-    let legend = ["Activity", "Mood", "Sleep"];
+    // let legend = ["Activity"+cDatas[2], "Mood"+cDatas[0], "Sleep"+cDatas[1]];
     let graph = chartData.data.map((item, index) => {
         data.push({
-            name: legend[index],
+            name: legends[index],
             x: item,
             fill: color[index],
         });

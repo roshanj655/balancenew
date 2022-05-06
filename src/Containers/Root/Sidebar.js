@@ -57,12 +57,12 @@ export default class Sidebar extends Component {
               <i className="mdi mdi-format-list-bulleted menu-icon"></i>
             </a>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="nav-link" onClick={() => this.props.navdata.showHideScreen("profile")} href="#">
               <span className="menu-title">Profile</span>
               <i className="mdi mdi-contacts menu-icon"></i>
             </a>
-          </li>
+          </li> */}
 
         </ul>
         {this.state.ShowAdd ? (

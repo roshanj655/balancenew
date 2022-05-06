@@ -10,7 +10,6 @@ function Header(props) {
     setLoading(0);
     setTimeout(() => {
       userService.fetchBalanceScores({'date':props.selectedDate}).then((data)=>{
-        console.log(data);
         setLoading(1);
         setBalanceScore(data.length?data[0].score:0);
       })
@@ -32,7 +31,7 @@ function Header(props) {
             <li className="nav-item nav-profile dropdown">
               <a className="nav-link dropdown-toggle score-drop" id="" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div className="nav-profile-img">
-                  <img src="assets/images/faces/user.jpeg" alt="image" />
+                  <img src="assets/images/balanceTab.png" alt="image" />
                 </div>
                 <div className="nav-profile-text score-text">
                   <p className="mb-1 text-black">Your Balance Score</p>
@@ -80,7 +79,7 @@ function Header(props) {
             <li className="nav-item nav-profile dropdown">
               <a className="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div className="nav-profile-img">
-                  <img src="assets/images/faces/user.jpeg" alt="image" />
+                  <img src="assets/images/balanceTab.png" alt="image" />
                   <span className="availability-status online"></span>
                 </div>
                 <div className="nav-profile-text">

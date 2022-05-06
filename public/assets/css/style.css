@@ -14566,7 +14566,7 @@ font-weight: 500;
 font-size: 27px;
 }
 .side-nav li{
-margin:20px auto;
+margin:7px auto;
 }
 .side-nav li.active{
 background: #d2866d;
@@ -14801,15 +14801,14 @@ color: #d2866d;
 {
   color: #0d3345;
   font-weight: 500;
-  font-size: 28px;
-  margin-top: 12px;
+  font-size: 22px;
+  margin-top: 4px;
 }
 .meditation li .navtext p:nth-child(1)
 {
   text-align: left;
 }
 .meditation .side-nav li{
-  margin: 20px auto;
 padding:10px;
 }
 .meditation .side-nav li.active{
@@ -14841,7 +14840,7 @@ font-size: 13px;
 margin-top: -6px;
 }
 .meditation .iconbox img {
-  width: 54%;
+  width: 40%;
   padding: 12px;
   border-radius: 49%;
   background: #e0f4ff;
