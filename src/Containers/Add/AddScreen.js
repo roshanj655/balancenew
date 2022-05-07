@@ -687,7 +687,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/emoji-normal.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Mood</p>
@@ -711,7 +711,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/add-sleep.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Sleep</p>
@@ -733,7 +733,7 @@ class AddScreen extends React.Component {
                             }
                           >
                             <div className="float-left iconbox">
-                              <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
+                              <img src='http://zavius.in/balance/assets/images/activity.png' />
                             </div>
                             <div className="float-left navtext">
                               <p>Activity</p>
@@ -755,7 +755,7 @@ class AddScreen extends React.Component {
                             }
                           >
                           <div className="float-left iconbox">
-                            <img src='http://zavius.in/balance/assets/images/Moods/loved.png' />
+                            <img src='http://zavius.in/balance/assets/images/add-mindful.png' />
                           </div>
                           <div className="float-left navtext">
                             <p>Mindfulness</p>

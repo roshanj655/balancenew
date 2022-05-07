@@ -140,7 +140,7 @@ function Mindfull(props) {
                         <div
                             
                         >
-                           <img src={url+"notfound.jpeg"} className="not-found-image"/>
+                           <img src={url+"notfound.png"} className="not-found-image"/>
                         </div>
                         : ""}
                     {tabMood == 'moodDay' ?

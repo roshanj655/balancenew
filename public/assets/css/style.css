@@ -15263,3 +15263,20 @@ span tr{
     
 
 }
+.popovers{
+  border:1px solid #ddd;
+  text-align: left;
+  z-index: 9999;
+}
+.popovers .card-body {
+  padding: 0.5rem 2.5rem !important;
+}
+.popovers .card-body p{
+  white-space: pre-wrap;
+}
+td div div div div div:nth-child(1){
+  width:250px !important;
+}
+td div div div div div:nth-child(2) div{
+  width:10px !important;
+}

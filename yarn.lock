@@ -10701,6 +10701,11 @@ react-native-month-year-picker@^1.8.0:
     invariant "^2.2.4"
     moment "^2.24.0"
 
+react-native-popover-view@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-popover-view/-/react-native-popover-view-5.0.1.tgz#dc85548f6e9468dda8fc3b8ae42c1094893c2679"
+  integrity sha512-8Hk8+azF5gYY0kpQthJ1n+0S1CQt4C67ODPRFdqLboAGUtja8Yv9svQBCSQZz2hrb4u2yjMrXq1SWbEBcSuIFQ==
+
 react-native-popup-menu@^0.15.5:
   version "0.15.12"
   resolved "https://registry.npmjs.org/react-native-popup-menu/-/react-native-popup-menu-0.15.12.tgz"

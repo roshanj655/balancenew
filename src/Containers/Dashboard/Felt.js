@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { userService } from '../../Services/UserService';
+import Popover, { PopoverMode, PopoverPlacement } from 'react-native-popover-view';
 function Felt(props) {
     const url = "http://zavius.in/balance/assets/images/";
-    // props.moods.sort((a, b) => (a.score < b.score ? 1 : -1));
+    const [showPopover, setShowPopover] = useState("");
     let moodsArray = [];
     useEffect(() => {
         updateMoodArray("day");
@@ -51,7 +52,26 @@ function Felt(props) {
         let hours = new Date(item.day).getHours();
         let margin = (10 - item.score) * 17;
         // if(day==6){
-        return <td><div className={"width70 activity-icon text-center margin-top-" + margin}><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+        return <td>
+            <Popover
+                isVisible={(showPopover == 'mood' + index) ? true : false}
+                mode={PopoverMode.TOOLTIP}
+                placement={PopoverPlacement.RIGHT}
+                className="popdesc"
+                from={(
+                    <div className={"width70 activity-icon text-center margin-top-" + margin} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                )}>
+                <div className="card popovers">
+                    <div className="card-header">
+                        {item.type}
+                    </div>
+                    <div className="card-body">
+                        <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                    </div>
+                </div>
+            </Popover>
+
+        </td>
 
     })
     let moods3 = moodArray.map((item, index) => {
@@ -65,12 +85,31 @@ function Felt(props) {
     })
     let moods4 = moodArray.map((item, index) => {
         if (index < 4) {
-            return <td><div>{item.type}</div><div className="width70 activity-icon text-center margin-auto"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div></td>
+            return <td>
+                <Popover
+                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                    mode={PopoverMode.TOOLTIP}
+                    placement={PopoverPlacement.RIGHT}
+                    className="popdesc"
+                    from={(
+                        <div className={"width70 activity-icon text-center margin-auto"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                    )}>
+                    <div className="card popovers">
+                        <div className="card-header">
+                            {item.type}
+                        </div>
+                        <div className="card-body">
+                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                        </div>
+                    </div>
+                </Popover>
+            </td>
         }
     })
     const [tabMood, settabMood] = useState("moodDay");
     return (
         <div className="slept">
+
             <h4>You Felt</h4>
             <ul className=" justify-content-end nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
@@ -132,9 +171,9 @@ function Felt(props) {
                     aria-labelledby="ex1-tab-1">
                     {!moodArray.length ?
                         <div
-                            
+
                         >
-                           <img src={url+"notfound.jpeg"} className="not-found-image"/>
+                            <img src={url + "notfound.png"} className="not-found-image" />
                         </div>
                         : ""}
                     {tabMood == 'moodDay' ?
@@ -162,7 +201,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sun') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -173,7 +228,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Mon') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -184,7 +255,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Tue') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -195,7 +282,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Wed') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -206,7 +309,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
                                             { { getDayOfWeek[day] } }
                                             if (getDayOfWeek[day] === 'Thu') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -217,7 +336,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Fri') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -228,7 +363,23 @@ function Felt(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sat') {
-                                                return <div className="icon-box width70 activity-icon text-center"><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'mood' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"width70 activity-icon text-center"} ><img src={url + "Moods/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('mood' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{item.entry ? item.entry : "No Comment"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -252,7 +403,7 @@ function Felt(props) {
 
                                     :
                                     <span>
-                                        <tr><td colSpan={4}><div class="flexbox tab-pane fade show active"><h2 class="flex-item">Top Moods Last 30 Days</h2></div></td></tr>
+                                        <tr><td colSpan={4}><div className="flexbox tab-pane fade show active"><h2 className="flex-item">Top Moods Last 30 Days</h2></div></td></tr>
 
                                         <tr>
 
