@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { userService } from '../../Services/UserService';
+import Popover, { PopoverMode, PopoverPlacement } from 'react-native-popover-view';
 function Activity(props) {
     const url = "http://zavius.in/balance/assets/images/";
-    // props.moods.sort((a, b) => (a.score < b.score ? 1 : -1));
+    const [showPopover, setShowPopover] = useState("");
     let moodsArray = [];
     useEffect(() => {
         updateMoodArray("day");
@@ -50,7 +51,27 @@ function Activity(props) {
         let day = new Date(item.day).getDate();
         let hours = new Date(item.day).getHours();
         // if(day==6){
-        return <td><div className=" activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.duration} mins</p><p className='m0'>{item.type}</p></div></td>
+        return <td>
+            <Popover
+                isVisible={(showPopover == 'popover' + index) ? true : false}
+                mode={PopoverMode.TOOLTIP}
+                placement={PopoverPlacement.TOP}
+                className="popdesc"
+                from={(
+                    <div className={" activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /><p className='m0'>{item.duration} mins</p><p className='m0'>{item.type}</p></div>
+                )}>
+                <div className="card popovers">
+                    <div className="card-header">
+                        {item.type}
+                    </div>
+                    <div className="card-body">
+                        <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                    </div>
+                </div>
+            </Popover>
+
+            {/* <div className=" activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /><p className='m0'>{item.duration} mins</p><p className='m0'>{item.type}</p></div> */}
+        </td>
 
     })
     let moods3 = moodArray.map((item, index) => {
@@ -64,7 +85,25 @@ function Activity(props) {
     })
     let moods4 = moodArray.map((item, index) => {
         if (index < 4) {
-            return <td valign='top'><div className=" activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div><div>{item.type}</div></td>
+            return <td valign='top'>
+                <Popover
+                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                    mode={PopoverMode.TOOLTIP}
+                    placement={PopoverPlacement.TOP}
+                    className="popdesc"
+                    from={(
+                        <div className={" activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                    )}>
+                    <div className="card popovers">
+                        <div className="card-header">
+                            {item.type}
+                        </div>
+                        <div className="card-body">
+                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                        </div>
+                    </div>
+                </Popover>
+            </td>
         }
 
     })
@@ -132,9 +171,9 @@ function Activity(props) {
                     aria-labelledby="ex1-tab-1">
                     {!moodArray.length ?
                         <div
-                            
+
                         >
-                           <img src={url+"notfound.png"} className="not-found-image"/>
+                            <img src={url + "notfound.png"} className="not-found-image" />
                         </div>
                         : ""}
                     {tabMood == 'moodDay' ?
@@ -162,7 +201,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sun') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -173,7 +228,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Mon') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -184,7 +255,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Tue') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -195,7 +282,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Wed') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -206,7 +309,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
                                             { { getDayOfWeek[day] } }
                                             if (getDayOfWeek[day] === 'Thu') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -217,7 +336,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Fri') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
@@ -228,7 +363,23 @@ function Activity(props) {
                                             let day = new Date(item.day).getDay();
 
                                             if (getDayOfWeek[day] === 'Sat') {
-                                                return <div className="icon-box activity-icon text-center"><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" /></div>
+                                                return <Popover
+                                                    isVisible={(showPopover == 'popover' + index) ? true : false}
+                                                    mode={PopoverMode.TOOLTIP}
+                                                    placement={PopoverPlacement.RIGHT}
+                                                    className="popdesc"
+                                                    from={(
+                                                        <div className={"icon-box activity-icon text-center"} ><img src={url + "Activities/" + (item.type == 'Goofy' ? 'silly' : item.type.toLowerCase()) + ".png"} alt="image" onMouseEnter={() => setShowPopover('popover' + index)} onMouseOut={() => setShowPopover("")} /></div>
+                                                    )}>
+                                                    <div className="card popovers">
+                                                        <div className="card-header">
+                                                            {item.type}
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <p className="card-text">{"You play " + item.type + " for " + item.duration + " mins"}</p>
+                                                        </div>
+                                                    </div>
+                                                </Popover>
                                             }
 
 
