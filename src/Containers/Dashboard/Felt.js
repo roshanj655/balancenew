@@ -75,12 +75,13 @@ function Felt(props) {
 
     })
     let moods3 = moodArray.map((item, index) => {
-        let day = new Date(item.day).getDate();
-        let hours = new Date(item.day).getHours();
-        var minutes = new Date(item.day).getMinutes();
-        var ampm = hours >= 12 ? 'pm' : 'am';
+        var dt = new Date(item.day);
+        var hours = dt.getHours();
+        var AmOrPm = hours >= 12 ? 'pm' : 'am';
+        hours = (hours % 12) || 12;
+        var minutes = dt.getMinutes();
 
-        return <td>{hours + ":" + (minutes < 10 ? 0 : '') + minutes + " " + ampm}</td>
+        return <td>{hours + ":" + (minutes < 10 ? 0 : '') + minutes + " " + AmOrPm}</td>
 
     })
     let moods4 = moodArray.map((item, index) => {
