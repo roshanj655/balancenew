@@ -122,7 +122,7 @@ function Slept(props) {
                     >Month</a>
                 </li>
             </ul>
-            <div className="tab-content  h413" id="ex1-content">
+            <div className="tab-content text-center h413" id="ex1-content">
                 {sleeptime <= 0 ?
                     <div
                             

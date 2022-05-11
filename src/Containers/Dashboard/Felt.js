@@ -163,7 +163,7 @@ function Felt(props) {
                     >Month</a>
                 </li>
             </ul>
-            <div className="tab-content" id="ex1-content">
+            <div className="tab-content text-center" id="ex1-content">
 
                 <div
                     className="tab-pane fade h413 show active"
