@@ -30,6 +30,12 @@ socket.on('connect', () => {
     strategy: 'jwt',
     accessToken: localStorage.getItem('feathers-jwt')
   }, function(error, newAuthResult) {
+    if(error.message="jwt expired"){
+      if(localStorage.getItem('feathers-jwt')){
+        localStorage.clear();
+      location.reload();
+      }
+    }
   });
 
   setTimeout(function() {

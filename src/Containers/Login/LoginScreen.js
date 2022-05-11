@@ -155,7 +155,7 @@ class LoginScreen extends React.Component {
       <section className="vh-100">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-6">
+            <div className="col-md-6 col-sm-12">
             
               <div className="card shadow-2-strong">
                 <div className="card-body p-5 text-center">
