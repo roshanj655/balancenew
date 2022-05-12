@@ -14959,9 +14959,10 @@ nav .nav .nav-item{
   color: #d8dde8 !important;
 }
 .wish-title{
-  font-size: 3rem;
+  font-size: 2rem;
   margin-left: 14px;
-  margin-top: 20px;
+  margin-top: 13px;
+  color:#000;
 }
 .wish-sub-title{
   font-size: 1.2rem;
@@ -14987,6 +14988,10 @@ nav .nav .nav-item{
 }
 .cal{
   margin-bottom: 16px;
+  margin-top: 15px;
+}
+.balance-score{
+  margin-left: 85%;
 }
 .pr0{
   padding-right: 0 !important;

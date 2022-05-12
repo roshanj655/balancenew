@@ -6,6 +6,7 @@ import { userService } from "../../Services/UserService";
 function Header(props) {
   const [balanceScore, setBalanceScore] = useState(0);
   const [loading, setLoading] = useState(0);
+  const [wish, setWish] = useState(0);
   useEffect(() => {
     setLoading(0);
     setTimeout(() => {
@@ -14,9 +15,22 @@ function Header(props) {
         setBalanceScore(data.length?data[0].score:0);
       })
     }, 2000);
-    
+    var day = new Date();
+      var hr = day.getHours();
+      if (hr >= 0 && hr < 12) {
+        setWish("Good Morning");
+      } else if (hr == 12) {
+        setWish("Good Noon");
+      } else if (hr >= 12 && hr <= 17) {
+        setWish("Good Afternoon");
+      } else {
+        setWish("Good Evening");
+      }
 }, [props.newChange,props.selectedDate]);
  
+
+  
+
 
   const theme = {"icon":{"borderColor":"#a9a1a6","width":"20px","width":"20px"},"unseenBadge":{"backgroundColor":"#DF4759"},"header":{"backgroundColor":"#d2866d","textColor":"#ffffff","borderRadius":"16px"},"footer":{"backgroundColor":"#d2866d","textColor":"#ffffff","borderRadius":"16px"},"notification":{"default":{"textColor":"#15091F","borderRadius":"8px","backgroundColor":"#d2866d"},"unseen":{"backgroundColor":"#6113A3"},"unread":{"backgroundColor":"#6113A3"}}};
 
@@ -27,8 +41,10 @@ function Header(props) {
           
         </div>
         <div className="navbar-menu-wrapper d-flex align-items-stretch">
+          {/* <h2 className='wish-title'>{this.state.wish}, {this.props.user.firstName}</h2> */}
+        <h2 className='wish-title'>{wish}, {props.user.firstName}</h2>
         <ul className="navbar-nav">
-            <li className="nav-item nav-profile dropdown">
+            <li className="nav-item nav-profile dropdown balance-score">
               <a className="nav-link dropdown-toggle score-drop" id="" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div className="nav-profile-img">
                   <img src="assets/images/balanceTab.png" alt="image" />
