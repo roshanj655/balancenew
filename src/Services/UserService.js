@@ -17,11 +17,11 @@ const options = {
   pingTimeout: 10000,
   pingInterval: 5000,
   strategy: 'jwt',
-    authStrategies:'jwt' ,
-    extraHeaders: {
-      accessToken: localStorage.getItem('feathers-jwt'),
-      //Authorization: 'JhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NTA2ODMzOTIsImV4cCI6MTY1MDc2OTc5MiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwZTRkMjFhODUwZWQwMDFjOGNkOTJkIiwianRpIjoiNDQzMjZkNzAtMjc3OC00MGVkLTk1YTktMDlhZWUzMDI2OGMwIn0.V64szBzlMVI6jSoPQBNczopjjsxukzSQFe0QhDO8WH8'
-    }
+  authStrategies: 'jwt',
+  extraHeaders: {
+    accessToken: localStorage.getItem('feathers-jwt'),
+    //Authorization: 'JhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2NTA2ODMzOTIsImV4cCI6MTY1MDc2OTc5MiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoiNjIwZTRkMjFhODUwZWQwMDFjOGNkOTJkIiwianRpIjoiNDQzMjZkNzAtMjc3OC00MGVkLTk1YTktMDlhZWUzMDI2OGMwIn0.V64szBzlMVI6jSoPQBNczopjjsxukzSQFe0QhDO8WH8'
+  }
 }
 const socket = io('https://api.findingbalance.io:3030', options);
 
@@ -29,21 +29,22 @@ socket.on('connect', () => {
   socket.emit('create', 'authentication', {
     strategy: 'jwt',
     accessToken: localStorage.getItem('feathers-jwt')
-  }, function(error, newAuthResult) {
-    if(error.message="jwt expired"){
-      if(localStorage.getItem('feathers-jwt')){
-        localStorage.clear();
-      location.reload();
-      }
-    }
+  }, function (error, newAuthResult) {
+    // let err=error?error.message:null;
+    // if(err=="jwt expired" || err==null){
+    //   if(localStorage.getItem('feathers-jwt')){
+    //     localStorage.clear();
+    //   location.reload();
+    //   }
+    // }
   });
 
-  setTimeout(function() {
-       }, 100)
+  setTimeout(function () {
+  }, 100)
 });
 
 socket.on('disconnect', (err) => {
-  setTimeout(function() {
+  setTimeout(function () {
     NavigationService.navigate('NetworkErrorScreen')
   }, 100)
 })
@@ -55,7 +56,7 @@ app.configure(
 
 app.configure(hooks())
 app.configure(
-  
+
   authentication({
     path: 'authentication',
     service: 'users',
@@ -103,7 +104,7 @@ function fetchAverage(overall) {
   }
   var average = Math.round(total / overall.length)
   const response = { average: average, commitsData: commitsData }
-  
+
   return response
 }
 
@@ -354,7 +355,7 @@ function fetchMoodGraph(moods) {
   var moodEntries = []
   var moodIcons = []
 
-  var sortedMoods = moods.sort(function(a, b) {
+  var sortedMoods = moods.sort(function (a, b) {
     return new Date(a.day) - new Date(b.day)
   })
 
@@ -419,7 +420,7 @@ function fetchMindfulnessWeekGraph(action) {
 
       const orderedDates = {}
       Object.keys(groups)
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return a
             .split('-')
             .reverse()
@@ -431,7 +432,7 @@ function fetchMindfulnessWeekGraph(action) {
                 .join('')
             )
         })
-        .forEach(function(key) {
+        .forEach(function (key) {
           orderedDates[key] = groups[key]
         })
 
@@ -500,9 +501,9 @@ function getCalendarMonth(date) {
     var temp = moment(today)
     today = temp.subtract(1, 'days').toDate()
   }
-  const fromDate = moment(today).startOf('week')
+  const fromDate = moment(today).startOf('month')
   fromDate.add(1, 'days')
-  const toDate = moment(today).endOf('week')
+  const toDate = moment(today).endOf('month')
   toDate.add(1, 'days')
   return {
     fromDate,
@@ -528,7 +529,7 @@ function fetchMoodMonthData(action) {
       },
     })
     .then((response) => {
-       return response.data;
+      return response.data;
     })
 }
 
@@ -550,7 +551,7 @@ function fetchActivityMonthData(action) {
       },
     })
     .then((response) => {
-       return response.data;
+      return response.data;
     })
 }
 
@@ -572,7 +573,7 @@ function fetchMindfullMonthData(action) {
       },
     })
     .then((response) => {
-       return response.data;
+      return response.data;
     })
 }
 
@@ -616,7 +617,7 @@ function fetchMoodWeekGraph(action) {
 
       const orderedDates = {}
       Object.keys(groups)
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return a
             .split('-')
             .reverse()
@@ -628,7 +629,7 @@ function fetchMoodWeekGraph(action) {
                 .join('')
             )
         })
-        .forEach(function(key) {
+        .forEach(function (key) {
           orderedDates[key] = groups[key]
         })
 
@@ -788,7 +789,7 @@ async function fetchMonth(action) {
             obj['type'] = response.data[0].type
             obj['count'] = response.total
             moodMonthStats.push(obj)
-            moodMonthStats.sort(function(a, b) {
+            moodMonthStats.sort(function (a, b) {
               return b.count - a.count
             })
           }
@@ -814,7 +815,7 @@ async function fetchMonth(action) {
             obj['type'] = response.data[0].type
             obj['count'] = response.total
             activityMonthStats.push(obj)
-            activityMonthStats.sort(function(a, b) {
+            activityMonthStats.sort(function (a, b) {
               return b.count - a.count
             })
           }
@@ -904,7 +905,7 @@ function fetchActivityWeekGraph(action) {
 
       const orderedDates = {}
       Object.keys(groups)
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return a
             .split('-')
             .reverse()
@@ -916,7 +917,7 @@ function fetchActivityWeekGraph(action) {
                 .join('')
             )
         })
-        .forEach(function(key) {
+        .forEach(function (key) {
           orderedDates[key] = groups[key]
         })
 
@@ -977,7 +978,7 @@ function fetchSleepGraph(sleeps) {
   var weekHours = []
   var weekDays = []
 
-  var sortedSleeps = sleeps.sort(function(a, b) {
+  var sortedSleeps = sleeps.sort(function (a, b) {
     return new Date(a.day) - new Date(b.day)
   })
 
@@ -1377,7 +1378,7 @@ function loginUser(action) {
   const payload = {
     email: action.user.email,
     password: action.user.password,
-    firstName:action.user.firstName,
+    firstName: action.user.firstName,
     strategy: 'local',
     // email: "test@test.com",//action.user.email,
     // password: "TEST123!",//action.user.password,
@@ -1450,7 +1451,7 @@ function _authenticate(payload) {
       saveItem('token', response.accessToken)
       return temp
     })
-    .then((payload) => { 
+    .then((payload) => {
       return app.service('users').get(payload.sub)
     })
     .then((user) => {
@@ -1605,6 +1606,54 @@ function fetchSleepScores(action) {
     })
 }
 
+function getFullDate(date1) {
+  let date = new Date(date1)
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  let fullDate = day+"-"+month+"-"+year;
+  return fullDate;
+}
+
+function fetchBalanceScoreMonthData(action) {
+  // // Get previous day based on given day
+  const date = new Date(action.date);
+
+  const fromDate = moment(date).startOf('year')
+  fromDate.add(1, 'days')
+  const toDate = moment(date).endOf('year')
+  toDate.add(1, 'days')
+  console.log("fetchscore", toDate);
+  // get data where day is greater than `endOfPreviousDay` and less than `startOfNextDay`
+  const dayQuery = {
+    $gt: +fromDate,
+    $lt: +toDate,
+  }
+  return app
+    .service('balances')
+    .find({
+      query: {
+        type: 'Balance',
+        $select: ['day', 'score'],
+        $sort: {
+          createdAt: -1,
+        },
+        day: dayQuery,
+      },
+    })
+    .then((response) => {
+      let allBalanceData = [];
+      response.data.map((item, index) => {
+        const found = allBalanceData.some(el => getFullDate(el.day) == getFullDate(item.day));
+        if (!found) {
+          allBalanceData.push(item);
+        }
+      })
+      return allBalanceData;
+    })
+}
+
 function fetchBalanceScores(action) {
   // // Get previous day based on given day
   const date = action.date
@@ -1740,4 +1789,5 @@ export const userService = {
   fetchMoodMonthData,
   fetchActivityMonthData,
   fetchMindfullMonthData,
+  fetchBalanceScoreMonthData
 }
