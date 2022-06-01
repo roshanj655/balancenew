@@ -292,7 +292,7 @@ class Dashboard extends React.Component {
           <div className="row">
             <div className='col-md-12'>
 
-              {/* <p className='wish-sub-title'>You have <span class="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p> */}
+              {/* <p className='wish-sub-title'>You have <span className="badge badge-pill badge-danger">2</span> new task and 5% sleep to reach your goal</p> */}
             </div>
             <div className='col-md-12 cal'>
               <CalendarStrip
@@ -337,8 +337,8 @@ class Dashboard extends React.Component {
         }
 
         {!this.state.show &&
-          <div class="container-progress">
-            <div class="Loading"></div>
+          <div className="container-progress">
+            <div className="Loading"></div>
           </div>
         }
       </>

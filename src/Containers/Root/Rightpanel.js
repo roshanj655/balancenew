@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { RadialBarChart, RadialBar, Legend } from 'recharts';
 import { userService } from '../../Services/UserService';
 function Rightpanel(props) {
-    console.log(props.selectedDate);
     const url = "http://zavius.in/balance/assets/images/";
     let data = [];
     let journalData = [];
     let cDatas = [];
-    let journalArray = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+    let journalArray = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     // const myTimeout = setTimeout(function () {
     const [journal, setJournal] = useState([]);
     const [chartData, setChartData] = useState(JSON.parse('{"labels":["Activity","Mood","Sleep"],"data":[0,0,0]}'));
@@ -56,16 +56,18 @@ function Rightpanel(props) {
     journal.map((item, index) => {
         let dateTime = new Date(item.day);
         item['time'] = dateTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-        journalArray[dateTime.getDate()].push(item);
+        var date=dateTime.getDate();
+        var d=journalArray[date]=new Array(item);
+        // console.log("jou",d=item);
     });
-
+console.log("jou",journalArray);
     let journals = journalArray.map((item, index) => {
         if (item.length) {
             return (
                 <div>
                     <div className="row journal">
                         <div className="col-md-3">
-                            <div className="journal-date">{index}<br /> Sat</div>
+                            <div className="journal-date">{index}<br /> {days[new Date(item[0].day).getDay()]}</div>
                         </div>
                         <div className="col-md-9">
                             <ul class="side-nav">
