@@ -49,8 +49,9 @@ export default class Sidebar extends Component {
             }
             }
               data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
+                <img src={url + "deshboard-icon.png"} />
               <span className="menu-title">Dashboard</span>
-              <i className="mdi mdi-crosshairs-gps menu-icon"></i>
+              {/* <i className="mdi mdi-crosshairs-gps menu-icon"></i> */}
             </a>
           </li>
           <li className={this.state.selectedMenu == "med" ? "nav-item activemenu" : "nav-item"}>
@@ -59,8 +60,9 @@ export default class Sidebar extends Component {
               this.setMenu("med")
             }
               }>
+                <img src={url + "meditation-icon.png"} />
               <span className="menu-title">Medition</span>
-              <i className="mdi mdi-format-list-bulleted menu-icon"></i>
+              {/* <i className="mdi mdi-format-list-bulleted menu-icon"></i> */}
             </a>
           </li>
           {/* <li className="nav-item">

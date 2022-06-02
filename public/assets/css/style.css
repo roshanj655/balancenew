@@ -14912,6 +14912,13 @@ margin-top: -6px;
   padding: 4px;
   
 }
+.nav-item img{
+  width: 18%;
+  margin-right: 10px;
+}
+.sidebar .nav .nav-item .nav-link .menu-title {
+  font-size: 1.2rem !important;
+}
 nav .nav .nav-item{
   margin-top: 15px;
   padding: 0px 22px;
